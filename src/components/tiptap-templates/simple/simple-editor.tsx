@@ -229,6 +229,7 @@ export function SimpleEditor({
         "aria-label": "Main content area, start typing to enter text.",
         class: "simple-editor",
       },
+
     },
     extensions: [
       StarterKit.configure({
@@ -329,6 +330,16 @@ export function SimpleEditor({
     ],
     content: initialValue,
     contentType,
+    onUpdate: ({ editor }) => {
+      // You can handle content updates here if needed
+      const json = editor.getJSON();
+      console.log("Editor content updated:", json);
+      const markdown = editor.getMarkdown();
+      console.log("Editor content in Markdown:", markdown);
+
+      const html = editor.getHTML();
+      console.log("Editor content in HTML:", html);
+    },
   });
 
   const rect = useCursorVisibility({

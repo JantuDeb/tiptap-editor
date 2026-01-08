@@ -102,16 +102,18 @@ function ImageView(props: any) {
   }, [props?.editor]);
 
   const getMaxSize = useCallback(
-    throttle(() => {
-      const { editor } = props;
-      const { width } = getComputedStyle(editor.view.dom);
-      setMaxSize((prev) => {
-        return {
+    () => {
+      const throttledFn = throttle(() => {
+        const { editor } = props;
+        const { width } = getComputedStyle(editor.view.dom);
+        setMaxSize((prev) => ({
           ...prev,
           width: Number.parseInt(width, 10),
-        };
-      });
-    }, IMAGE_THROTTLE_WAIT_TIME),
+        }));
+      }, IMAGE_THROTTLE_WAIT_TIME);
+      
+      throttledFn();
+    },
     [props?.editor]
   );
 
