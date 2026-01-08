@@ -1,11 +1,9 @@
-"use client";
-
 import { useEffect, useRef, useState } from "react";
 import { EditorContent, EditorContext, useEditor } from "@tiptap/react";
 
 // --- Tiptap Core Extensions ---
 import { StarterKit } from "@tiptap/starter-kit";
-import { Image } from "@tiptap/extension-image";
+
 import { TaskItem, TaskList } from "@tiptap/extension-list";
 import { TextAlign } from "@tiptap/extension-text-align";
 import { Typography } from "@tiptap/extension-typography";
@@ -13,6 +11,15 @@ import { Highlight } from "@tiptap/extension-highlight";
 import { Subscript } from "@tiptap/extension-subscript";
 import { Superscript } from "@tiptap/extension-superscript";
 import { Selection } from "@tiptap/extensions";
+import { Markdown } from "@tiptap/markdown";
+import { FileHandler } from "@tiptap/extension-file-handler";
+import {
+  Table,
+  TableRow,
+  TableHeader,
+  TableCell,
+  TableKit,
+} from "@tiptap/extension-table";
 
 // --- UI Primitives ---
 import { Button } from "@/components/tiptap-ui-primitive/button";
@@ -53,6 +60,7 @@ import {
 import { MarkButton } from "@/components/tiptap-ui/mark-button";
 import { TextAlignButton } from "@/components/tiptap-ui/text-align-button";
 import { UndoRedoButton } from "@/components/tiptap-ui/undo-redo-button";
+import { InsertTable } from "@/components/tiptap-ui/insert-table-button/table-button";
 
 // --- Icons ---
 import { ArrowLeftIcon } from "@/components/tiptap-icons/arrow-left-icon";
@@ -72,8 +80,20 @@ import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils";
 
 // --- Styles ---
 import "@/components/tiptap-templates/simple/simple-editor.scss";
+import { Image } from "@/components/tiptap-extension/image/image";
 
-import content from "@/components/tiptap-templates/simple/data/content.json";
+// A mock function to simulate image uploads
+const uploadImage = (file: File) => {
+  return new Promise<{ url: string; alt?: string }>((resolve) => {
+    setTimeout(() => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        resolve({ url: e.target?.result as string });
+      };
+      reader.readAsDataURL(file);
+    }, 500);
+  });
+};
 
 const MainToolbarContent = ({
   onHighlighterClick,
@@ -103,6 +123,7 @@ const MainToolbarContent = ({
         />
         <BlockquoteButton />
         <CodeBlockButton />
+        <InsertTable />
       </ToolbarGroup>
 
       <ToolbarSeparator />
@@ -183,7 +204,14 @@ const MobileToolbarContent = ({
   </>
 );
 
-export function SimpleEditor() {
+export function SimpleEditor({
+  initialValue,
+  contentType = "json",
+}: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  initialValue?: string | Record<string, any>;
+  contentType?: "html" | "json" | "markdown";
+}) {
   const isMobile = useIsBreakpoint();
   const { height } = useWindowSize();
   const [mobileView, setMobileView] = useState<"main" | "highlighter" | "link">(
@@ -220,6 +248,9 @@ export function SimpleEditor() {
       Superscript,
       Subscript,
       Selection,
+      TableKit.configure({
+        table: { resizable: true },
+      }),
       ImageUploadNode.configure({
         accept: "image/*",
         maxSize: MAX_FILE_SIZE,
@@ -227,8 +258,77 @@ export function SimpleEditor() {
         upload: handleImageUpload,
         onError: (error) => console.error("Upload failed:", error),
       }),
+      // Official Markdown Extension
+      Markdown.configure({
+        markedOptions: {
+          gfm: true, // GitHub Flavored Markdown
+          breaks: true, // Convert \n to <br>
+          pedantic: false, // Strict Markdown mode
+        },
+      }),
+      // Official File Handler Extension
+      FileHandler.configure({
+        allowedMimeTypes: [
+          "image/png",
+          "image/jpeg",
+          "image/gif",
+          "image/webp",
+        ],
+        onDrop: (currentEditor, files, pos) => {
+          files.forEach(async (file) => {
+            const result = await uploadImage(file);
+            if (result) {
+              currentEditor
+                .chain()
+                .insertContentAt(pos, {
+                  type: "image",
+                  attrs: {
+                    src: result.url,
+                    alt: result.alt || file.name,
+                  },
+                })
+                .focus()
+                .run();
+            }
+          });
+        },
+        onPaste: (currentEditor, files, htmlContent) => {
+          files.forEach(async (file) => {
+            console.log("file", file);
+            if (htmlContent) {
+              // Handle images pasted from web (HTML content)
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(htmlContent, "text/html");
+              const imgElements = doc.querySelectorAll("img");
+
+              imgElements.forEach((img) => {
+                const src = img.src;
+                if (src) {
+                  editor
+                    ?.chain()
+                    .focus()
+                    .setImage({ src, alt: img.alt || "pasted image" })
+                    .run();
+                }
+              });
+            }
+            const result = await uploadImage(file);
+            if (result) {
+              currentEditor
+                .chain()
+                .focus()
+                .setImage({
+                  src: result.url,
+                  alt: result.alt || file.name,
+                })
+                .run();
+            }
+          });
+        },
+      }),
     ],
-    content,
+    content: initialValue,
+    contentType,
   });
 
   const rect = useCursorVisibility({
