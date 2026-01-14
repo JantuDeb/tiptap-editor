@@ -1,0 +1,77 @@
+.bubble-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  padding: 0.25rem;
+  color: #09090b;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  outline: none;
+}
+
+/* Dark mode support if parent has class 'dark' or if using system preference */
+@media (prefers-color-scheme: dark) {
+  .bubble-menu {
+    background-color: #242424;
+    border-color: #3f3f46;
+    color: #ffffff;
+  }
+}
+
+/* Or if the app uses a class for dark mode */
+:global(body.dark) .bubble-menu {
+  background-color: #242424;
+  border-color: #3f3f46;
+  color: #ffffff;
+}
+
+.bubble-menu button {
+  width: 1.75rem; /* 28px */
+  height: 1.75rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.bubble-menu button svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.bubble-menu button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.bubble-menu button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bubble-menu button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.bubble-menu-divider {
+  margin: 0 0.25rem;
+  height: 16px;
+  width: 1px;
+  background-color: #e5e7eb; /* Light mode divider */
+}
+
+@media (prefers-color-scheme: dark) {
+  .bubble-menu-divider {
+    background-color: #3f3f46;
+  }
+}

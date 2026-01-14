@@ -86,6 +86,10 @@ button:focus-visible {
   color: inherit;
 }
 
+.block-math-render {
+  padding: 1rem 0.5rem;
+}
+
 .math-input,
 .block-math-editor {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono",

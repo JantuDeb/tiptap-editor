@@ -1,17 +1,18 @@
-import React from 'react';
+import React from "react";
 
-import { Slot } from '@radix-ui/react-slot';
-import type { TooltipContentProps } from '@radix-ui/react-tooltip';
+import { Slot } from "@radix-ui/react-slot";
+import type { TooltipContentProps } from "@radix-ui/react-tooltip";
 
-import type { ButtonViewReturnComponentProps } from '@/types';
+import type { ButtonViewReturnComponentProps } from "@/types";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from '@/components/tiptap-ui-primitive/tooltip';
-import { cn, getShortcutKeys } from '@/lib/tiptap-utils';
-import { Toggle } from '@/components/tiptap-ui-primitive/toggle';
-import { icons } from '@/components/tiptap-icons/icons';
+} from "@/components/tiptap-ui-primitive/tooltip";
+import { cn, getShortcutKeys } from "@/lib/tiptap-utils";
+import { Toggle } from "@/components/tiptap-ui-primitive/toggle";
+import { icons } from "@/components/tiptap-icons/icons";
+// import "./action-button.scss";
 
 export interface ActionButtonProps {
   icon?: string;
@@ -23,8 +24,8 @@ export interface ActionButtonProps {
   loading?: boolean;
   tooltipOptions?: TooltipContentProps;
   color?: string;
-  action?: ButtonViewReturnComponentProps['action'];
-  isActive?: ButtonViewReturnComponentProps['isActive'];
+  action?: ButtonViewReturnComponentProps["action"];
+  isActive?: ButtonViewReturnComponentProps["isActive"];
   children?: React.ReactNode;
   asChild?: boolean;
   upload?: boolean;
@@ -40,7 +41,7 @@ const ActionButton = React.forwardRef<
     icon = undefined,
     tooltip = undefined,
     disabled = false,
-    customClass = '',
+    customClass = "",
     shortcutKeys = undefined,
     tooltipOptions = {},
     action = undefined,
@@ -54,7 +55,7 @@ const ActionButton = React.forwardRef<
   const Comp = asChild ? Slot : Toggle;
 
   const onClickHandler = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     if (disabled) {
       e.preventDefault();
@@ -67,13 +68,13 @@ const ActionButton = React.forwardRef<
     <Tooltip>
       <TooltipTrigger asChild>
         <Comp
-          className={cn('action-button', customClass)}
-          data-state={dataState ? 'on' : 'off'}
+          className={cn("action-button", customClass)}
+          data-state={dataState ? "on" : "off"}
           disabled={disabled}
           onClick={onClickHandler}
           ref={ref}
           size="sm"
-          {...(rest as Omit<typeof rest, 'loading'>)}
+          {...(rest as Omit<typeof rest, "loading">)}
         >
           {Icon && <Icon className="action-button__icon" />}
           {children}
@@ -81,10 +82,7 @@ const ActionButton = React.forwardRef<
       </TooltipTrigger>
 
       {tooltip && (
-        <TooltipContent
-          {...tooltipOptions}
-          className="tooltip"
-        >
+        <TooltipContent {...tooltipOptions} className="tooltip">
           <div className="tooltip__content">
             <div>{tooltip}</div>
 

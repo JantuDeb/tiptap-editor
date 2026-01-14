@@ -84,7 +84,7 @@ export const TableCellBackground = Extension.create<TableCellBackgroundOptions>(
     name: "tableCellBackground",
     addOptions() {
       return {
-        types: ["tableCell"],
+        types: ["tableCell", "tableHeader"],
         HTMLAttributes: {},
       };
     },

@@ -52,13 +52,14 @@ function ImageView(props: any) {
 
   const { align, inline } = props?.node?.attrs;
   const inlineFloat = inline && (align === "left" || align === "right");
+  const editor = props?.editor;
 
   const imgAttrs = useMemo(() => {
     const { src, alt, width: w, height: h, flipX, flipY } = props?.node?.attrs;
 
     const width = isNumber(w) ? `${w}px` : w;
     const height = isNumber(h) ? `${h}px` : h;
-    const transformStyles: any = [];
+    const transformStyles: string[] = [];
 
     if (flipX) transformStyles.push("rotateX(180deg)");
     if (flipY) transformStyles.push("rotateY(180deg)");
@@ -76,7 +77,7 @@ function ImageView(props: any) {
         ...floatStyle,
       },
     };
-  }, [props?.node?.attrs]);
+  }, [props?.node?.attrs, inlineFloat, align]);
 
   const imageMaxStyle = useMemo(() => {
     const {
@@ -99,23 +100,19 @@ function ImageView(props: any) {
       const { editor, getPos } = props;
       editor.commands.setNodeSelection(getPos());
     }
-  }, [props?.editor]);
+  }, [props]);
 
-  const getMaxSize = useCallback(
-    () => {
-      const throttledFn = throttle(() => {
-        const { editor } = props;
-        const { width } = getComputedStyle(editor.view.dom);
-        setMaxSize((prev) => ({
-          ...prev,
-          width: Number.parseInt(width, 10),
-        }));
-      }, IMAGE_THROTTLE_WAIT_TIME);
-      
-      throttledFn();
-    },
-    [props?.editor]
-  );
+  const getMaxSize = useCallback(() => {
+    const throttledFn = throttle(() => {
+      const { width } = getComputedStyle(editor.view.dom);
+      setMaxSize((prev) => ({
+        ...prev,
+        width: Number.parseInt(width, 10),
+      }));
+    }, IMAGE_THROTTLE_WAIT_TIME);
+
+    throttledFn();
+  }, [editor]);
 
   function onMouseDown(e: MouseEvent, dir: string) {
     e.preventDefault();
@@ -153,8 +150,10 @@ function ImageView(props: any) {
     });
   }
 
+  const updateAttributes = props.updateAttributes;
+
   const onMouseMove = useCallback(
-    throttle((e: MouseEvent) => {
+    (e: MouseEvent) => {
       e.preventDefault();
       e.stopPropagation();
 
@@ -170,12 +169,17 @@ function ImageView(props: any) {
       const width = clamp(w + dx, IMAGE_MIN_SIZE, maxSize.width);
       const height = null;
 
-      props.updateAttributes({
+      updateAttributes({
         width,
         height,
       });
-    }, IMAGE_THROTTLE_WAIT_TIME),
-    [resizing, resizerState, maxSize, props.updateAttributes]
+    },
+    [resizing, resizerState, maxSize, updateAttributes]
+  );
+
+  const throttledOnMouseMove = useMemo(
+    () => throttle(onMouseMove, IMAGE_THROTTLE_WAIT_TIME),
+    [onMouseMove]
   );
 
   const onMouseUp = useCallback(
@@ -201,14 +205,14 @@ function ImageView(props: any) {
   );
 
   const onEvents = useCallback(() => {
-    document?.addEventListener("mousemove", onMouseMove, true);
+    document?.addEventListener("mousemove", throttledOnMouseMove, true);
     document?.addEventListener("mouseup", onMouseUp, true);
-  }, [onMouseMove, onMouseUp]);
+  }, [throttledOnMouseMove, onMouseUp]);
 
   const offEvents = useCallback(() => {
-    document?.removeEventListener("mousemove", onMouseMove, true);
+    document?.removeEventListener("mousemove", throttledOnMouseMove, true);
     document?.removeEventListener("mouseup", onMouseUp, true);
-  }, [onMouseMove, onMouseUp]);
+  }, [throttledOnMouseMove, onMouseUp]);
 
   useEffect(() => {
     if (resizing) {

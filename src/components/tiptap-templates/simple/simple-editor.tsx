@@ -207,20 +207,35 @@ const MobileToolbarContent = ({
   </>
 );
 
-export function SimpleEditor({
-  initialValue,
-  contentType = "json",
-}: {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+export interface EditorProps {
   initialValue?: string | Record<string, any>;
   contentType?: "html" | "json" | "markdown";
-}) {
+  className?: string;
+  onImageUpload?: (file: File) => Promise<string>;
+  onVideoUpload?: (file: File) => Promise<string>;
+}
+
+export function Editor({
+  initialValue,
+  contentType = "json",
+  className,
+  onImageUpload,
+  onVideoUpload,
+}: EditorProps) {
   const isMobile = useIsBreakpoint();
   const { height } = useWindowSize();
   const [mobileView, setMobileView] = useState<"main" | "highlighter" | "link">(
     "main"
   );
   const toolbarRef = useRef<HTMLDivElement>(null);
+
+  const handleUploadFile = async (file: File) => {
+    if (onImageUpload) {
+      const url = await onImageUpload(file);
+      return { url };
+    }
+    return uploadImage(file);
+  };
 
   const editor = useEditor({
     immediatelyRender: false,
@@ -256,7 +271,7 @@ export function SimpleEditor({
         accept: "image/*",
         maxSize: MAX_FILE_SIZE,
         limit: 3,
-        upload: handleImageUpload,
+        upload: onImageUpload,
         onError: (error) => console.error("Upload failed:", error),
       }),
       // Official Markdown Extension
@@ -277,7 +292,7 @@ export function SimpleEditor({
         ],
         onDrop: (currentEditor, files, pos) => {
           files.forEach(async (file) => {
-            const result = await uploadImage(file);
+            const result = await handleUploadFile(file);
             if (result) {
               currentEditor
                 .chain()
@@ -313,7 +328,7 @@ export function SimpleEditor({
                 }
               });
             }
-            const result = await uploadImage(file);
+            const result = await handleUploadFile(file);
             if (result) {
               currentEditor
                 .chain()
@@ -327,7 +342,9 @@ export function SimpleEditor({
           });
         },
       }),
-      Video,
+      Video.configure({
+        upload: onVideoUpload,
+      }),
       Mathematics,
     ],
     content: initialValue,
@@ -356,7 +373,7 @@ export function SimpleEditor({
   }, [isMobile, mobileView]);
 
   return (
-    <div className="simple-editor-wrapper">
+    <div className={`simple-editor-wrapper ${className || ""}`}>
       <EditorContext.Provider value={{ editor }}>
         <Toolbar
           ref={toolbarRef}

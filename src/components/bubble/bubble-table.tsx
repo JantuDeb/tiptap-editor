@@ -6,6 +6,7 @@ import { useTiptapEditor } from "@/hooks/use-tiptap-editor";
 import { Table } from "../tiptap-extension/table/table";
 import { ActionButton } from "../tiptap-ui/buttons/action-button";
 import { Separator } from "../tiptap-ui-primitive/separator";
+import "./bubble-menu.css";
 
 interface RichTextBubbleTableProps {
   hiddenActions?: string[];
@@ -69,7 +70,7 @@ function RichTextBubbleTable({ hiddenActions = [] }: RichTextBubbleTableProps) {
       pluginKey={"RichTextBubbleTable"}
       shouldShow={shouldShow}
     >
-      <div className="richtext-flex richtext-items-center richtext-gap-2 richtext-rounded-md  !richtext-border !richtext-border-solid !richtext-border-border richtext-bg-popover richtext-p-1 richtext-text-popover-foreground richtext-shadow-md richtext-outline-none">
+      <div className="bubble-menu">
         {!isHidden("addColumnBefore") && (
           <ActionButton
             action={onAddColumnBefore}
@@ -100,10 +101,7 @@ function RichTextBubbleTable({ hiddenActions = [] }: RichTextBubbleTableProps) {
           />
         )}
 
-        <Separator
-          className="!richtext-mx-1 !richtext-my-2 !richtext-h-[16px]"
-          orientation="vertical"
-        />
+        <Separator className="bubble-menu-divider" orientation="vertical" />
 
         {!isHidden("addRowAbove") && (
           <ActionButton
@@ -135,10 +133,7 @@ function RichTextBubbleTable({ hiddenActions = [] }: RichTextBubbleTableProps) {
           />
         )}
 
-        <Separator
-          className="!richtext-mx-1 !richtext-my-2 !richtext-h-[16px]"
-          orientation="vertical"
-        />
+        <Separator className="bubble-menu-divider" orientation="vertical" />
 
         {!isHidden("mergeCells") && (
           <ActionButton
@@ -160,10 +155,7 @@ function RichTextBubbleTable({ hiddenActions = [] }: RichTextBubbleTableProps) {
           />
         )}
 
-        <Separator
-          className="!richtext-mx-1 !richtext-my-2 !richtext-h-[16px]"
-          orientation="vertical"
-        />
+        <Separator className="bubble-menu-divider" orientation="vertical" />
 
         {/* {!isHidden('setCellBackground') && (
         <HighlightActionButton

@@ -13,6 +13,7 @@ import type { Editor } from "@tiptap/core";
 import type { Node } from "@tiptap/pm/model";
 import { Video } from "../tiptap-extension/video/video";
 import { Image } from "../tiptap-extension/image";
+import "./bubble-menu.css";
 
 function ItemA({
   item,
@@ -32,10 +33,7 @@ function ItemA({
   return (
     <Fragment>
       {item.type === "divider" ? (
-        <Separator
-          className="!richtext-mx-1 !richtext-my-2 !richtext-h-[16px]"
-          orientation="vertical"
-        />
+        <Separator className="bubble-menu-divider" orientation="vertical" />
       ) : (
         <Comp {...item.componentProps} disabled={disabled} editor={editor} />
       )}
@@ -75,8 +73,6 @@ function RichTextBubbleImage() {
     if (editor) return getBubbleImage(editor);
   }, [editor]);
 
-  console.log("items", items);
-  console.log("editable", editable);
   if (!editable) {
     return <></>;
   }
@@ -89,7 +85,7 @@ function RichTextBubbleImage() {
       shouldShow={shouldShow}
     >
       {items?.length ? (
-        <div className="richtext-flex richtext-items-center richtext-gap-2 richtext-rounded-md  !richtext-border !richtext-border-solid !richtext-border-border richtext-bg-popover richtext-p-1 richtext-text-popover-foreground richtext-shadow-md richtext-outline-none">
+        <div className="bubble-menu">
           {items?.map((item, i) => {
             return (
               <ItemA
@@ -159,7 +155,7 @@ function RichTextBubbleImage() {
 //             </div>
 //         )
 //         : (
-//           <></>
+//           </>
 //         )}
 //     </BubbleMenu>
 //   );
@@ -201,7 +197,7 @@ function RichTextBubbleVideo() {
       shouldShow={shouldShow}
     >
       {items?.length ? (
-        <div className="richtext-flex richtext-items-center richtext-gap-2 richtext-rounded-md  !richtext-border !richtext-border-solid !richtext-border-border richtext-bg-popover richtext-p-1 richtext-text-popover-foreground richtext-shadow-md richtext-outline-none">
+        <div className="bubble-menu">
           {items?.map((item, i) => {
             return (
               <ItemA

@@ -6,11 +6,11 @@
   align-items: center;
   justify-content: center;
 
-  &[data-state='on'] {
+  &[data-state="on"] {
     background-color: var(--accent-bg, #e5e7eb);
   }
 
-  &[data-state='off'] {
+  &[data-state="off"] {
     background-color: transparent;
   }
 
@@ -18,6 +18,18 @@
     opacity: 0.5;
     pointer-events: none;
   }
+}
+
+/* Smaller uniform style for bubble menu buttons */
+.action-button.bubble-action {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+}
+
+.action-button.bubble-action .action-button__icon {
+  width: 0.875rem;
+  height: 0.875rem;
 }
 
 /* Icon */

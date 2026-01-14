@@ -1,36 +1,37 @@
+import type { ActionButtonProps } from "@/components/tiptap-ui/buttons/action-button";
 import type { Editor, Extension } from "@tiptap/core";
 
 /**
  * Represents the keys for different extensions.
  */
 export type ExtensionNameKeys =
-  | 'bold'
-  | 'italic'
-  | 'underline'
-  | 'strike'
-  | 'color'
-  | 'highlight'
-  | 'heading'
-  | 'textAlign'
-  | 'bulletList'
-  | 'orderedList'
-  | 'taskList'
-  | 'indent'
-  | 'link'
-  | 'image'
-  | 'video'
-  | 'table'
-  | 'blockquote'
-  | 'horizontalRule'
-  | 'code'
-  | 'codeBlock'
+  | "bold"
+  | "italic"
+  | "underline"
+  | "strike"
+  | "color"
+  | "highlight"
+  | "heading"
+  | "textAlign"
+  | "bulletList"
+  | "orderedList"
+  | "taskList"
+  | "indent"
+  | "link"
+  | "image"
+  | "video"
+  | "table"
+  | "blockquote"
+  | "horizontalRule"
+  | "code"
+  | "codeBlock"
   // | 'clear'
   // | 'history'
   // | 'twitter'
-  | 'katex'
-  // | 'excalidraw'
-  // | 'mermaid'
-  // | 'drawer';
+  | "katex";
+// | 'excalidraw'
+// | 'mermaid'
+// | 'drawer';
 
 export interface GeneralOptions {
   /** Enabled divider */
@@ -45,21 +46,21 @@ export interface GeneralOptions {
   shortcutKeys?: string[] | string[][];
 }
 
-export type VideoAlignment = 'flex-start' | 'center' | 'flex-end';
+export type VideoAlignment = "flex-start" | "center" | "flex-end";
 
 /**
  * Represents the props for the ButtonView component.
  */
 export interface ButtonViewReturnComponentProps {
   /** Method triggered when action is performed */
-  action?: (value?: any) => void
+  action?: (value?: any) => void;
   /** Whether it is in the active state */
-  isActive?: () => boolean
+  isActive?: () => boolean;
   /** Button icon */
-  icon?: any
+  icon?: any;
   /** Text displayed on hover */
-  tooltip?: string
-  [x: string]: any
+  tooltip?: string;
+  [x: string]: any;
 }
 
 /**
@@ -67,8 +68,8 @@ export interface ButtonViewReturnComponentProps {
  */
 export interface ButtonViewReturnComponentSlots {
   /** Dialog slot */
-  dialog: () => any
-  [x: string]: () => any
+  dialog: () => any;
+  [x: string]: () => any;
 }
 
 /**
@@ -76,11 +77,11 @@ export interface ButtonViewReturnComponentSlots {
  */
 export interface ButtonViewReturn {
   /** Component */
-  component: unknown
+  component: unknown;
   /** Component props */
-  componentProps: ButtonViewReturnComponentProps
+  componentProps: ButtonViewReturnComponentProps;
   /** Component slots */
-  componentSlots?: ButtonViewReturnComponentSlots
+  componentSlots?: ButtonViewReturnComponentSlots;
 }
 
 /**
@@ -88,19 +89,25 @@ export interface ButtonViewReturn {
  */
 export interface ButtonViewParams<T = any> {
   /** Editor object */
-  editor: Editor
+  editor: Editor;
   /** Extension object */
-  extension: Extension<T>
+  extension: Extension<T>;
   /** Translation function */
-  t: (path: string) => string
+  t: (path: string) => string;
 }
 
 /**
  * Represents the ButtonView function.
  */
-export type ButtonView<T = any> = (options: ButtonViewParams<T>) => ButtonViewReturn | ButtonViewReturn[];
+export type ButtonView<T = any> = (
+  options: ButtonViewParams<T>
+) => ButtonViewReturn | ButtonViewReturn[];
 
-
+export interface TableMenuConfig {
+  /**
+   * @description Column menu hidden
+   * @default false
+   
 
 
 export interface TableMenuConfig {
@@ -108,17 +115,17 @@ export interface TableMenuConfig {
      * @description Column menu hidden
      * @default false
      */
-  hidden?: boolean
+  hidden?: boolean;
 
   /**
    * custom menu actions
    */
-  actions?: ActionButtonProps[]
+  actions?: ActionButtonProps[];
 
   /**
    * hidden default actions, if any
    */
-  hiddenActions?: string[]
+  hiddenActions?: string[];
 }
 
 /**
@@ -130,104 +137,105 @@ export interface BubbleMenuProps {
      * @description Column menu hidden
      * @default false
      */
-    hidden?: boolean
-  }
-  tableConfig?: TableMenuConfig
+    hidden?: boolean;
+  };
+  tableConfig?: TableMenuConfig;
   floatingMenuConfig?: {
     /**
      * @description Floating menu hidden
      * @default false
      */
-    hidden?: boolean
-  }
+    hidden?: boolean;
+  };
   linkConfig?: {
     /**
      * @description Link menu hidden
      * @default false
      */
-    hidden?: boolean
-  }
+    hidden?: boolean;
+  };
   textConfig?: {
     /**
      * @description Text menu hidden
      * @default false
      */
-    hidden?: boolean
-  }
+    hidden?: boolean;
+  };
   imageConfig?: {
     /**
      * @description Image menu hidden
      * @default false
      */
-    hidden?: boolean
-  }
+    hidden?: boolean;
+  };
   imageGifConfig?: {
     /**
      * @description Image menu hidden
      * @default false
      */
-    hidden?: boolean
-  }
+    hidden?: boolean;
+  };
   videoConfig?: {
     /**
      * @description Video menu hidden
      * @default false
      */
-    hidden?: boolean
-  }
+    hidden?: boolean;
+  };
   katexConfig?: {
     /**
      * @description katex menu hidden
      * @default false
      */
-    hidden?: boolean
-  }
+    hidden?: boolean;
+  };
   excalidrawConfig?: {
     /**
      * @description excalidraw menu hidden
      * @default false
      */
-    hidden?: boolean
-  }
+    hidden?: boolean;
+  };
   iframeConfig?: {
     /**
      * @description iframe menu hidden
      * @default false
      */
-    hidden?: boolean
-  }
+    hidden?: boolean;
+  };
   mermaidConfig?: {
     /**
      * @description mermaid menu hidden
      * @default false
      */
-    hidden?: boolean
-  }
+    hidden?: boolean;
+  };
   twitterConfig?: {
     /**
      * @description twitter menu hidden
      * @default false
      */
-    hidden?: boolean
-  }
+    hidden?: boolean;
+  };
   drawerConfig?: {
     /**
      * @description twitter menu hidden
      * @default false
      */
-    hidden?: boolean
-  }
-  render?: (props: BubbleMenuRenderProps, dom: React.ReactNode) => React.ReactNode
+    hidden?: boolean;
+  };
+  render?: (
+    props: BubbleMenuRenderProps,
+    dom: React.ReactNode
+  ) => React.ReactNode;
 }
-
 
 /**
  * Represents the BubbleMenuRenderProps.
  */
 export interface BubbleMenuRenderProps {
-  editor: Editor
-  disabled: boolean
-  bubbleMenu: BubbleMenuProps
-  extensionsNames: string[]
+  editor: Editor;
+  disabled: boolean;
+  bubbleMenu: BubbleMenuProps;
+  extensionsNames: string[];
 }
-

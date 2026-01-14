@@ -20,7 +20,6 @@ import { Badge } from "@/components/tiptap-ui-primitive/badge";
 
 // --- Styles ---
 import "@/components/tiptap-ui/color-highlight-button/color-highlight-button.scss";
-import "@/components/tiptap-ui/insert-table-button/table.scss";
 export interface ColorHighlightButtonProps
   extends Omit<ButtonProps, "type">,
     UseColorHighlightConfig {

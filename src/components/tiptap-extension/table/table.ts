@@ -13,6 +13,7 @@ import {
   TableCellBackground,
   type TableCellBackgroundOptions,
 } from "./table-cell-selection-background";
+import "./table.css";
 
 export interface TableOptions extends GeneralOptions {
   HTMLAttributes: Record<string, any>;
@@ -38,11 +39,11 @@ export const Table = TiptapTable.extend<TableOptions>({
     return {
       ...this.parent?.(),
       HTMLAttributes: {
-        style: `
-          border: 1px solid #bb2929ff;
-          border-collapse: collapse;
-          width: 100%;
-        `,
+        // style: `
+        //   border: 1px solid #bb2929ff;
+        //   border-collapse: collapse;
+        //   width: 100%;
+        // `,
       },
       resizable: true,
       lastColumnResizable: true,
