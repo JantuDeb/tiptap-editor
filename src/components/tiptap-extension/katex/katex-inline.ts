@@ -313,6 +313,8 @@ export const InlineMath = Node.create<InlineMathOptions>({
       input.className = "math-input";
       input.type = "text";
       input.value = node.attrs.latex;
+      input.autocomplete = "off";
+      input.spellcheck = false;
       input.style.display = "none";
 
       wrapper.append(renderEl, input);

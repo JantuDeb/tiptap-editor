@@ -311,6 +311,7 @@ export const BlockMath = Node.create<BlockMathOptions>({
       editorEl.className = "block-math-editor";
 
       editorEl.spellcheck = false;
+      editorEl.autocomplete = "off";
       editorEl.style.display = "none";
 
       wrapper.append(renderEl, editorEl);
