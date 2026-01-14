@@ -13,13 +13,6 @@ import { Superscript } from "@tiptap/extension-superscript";
 import { Selection } from "@tiptap/extensions";
 import { Markdown } from "@tiptap/markdown";
 import { FileHandler } from "@tiptap/extension-file-handler";
-import {
-  Table,
-  TableRow,
-  TableHeader,
-  TableCell,
-  TableKit,
-} from "@tiptap/extension-table";
 
 // --- UI Primitives ---
 import { Button } from "@/components/tiptap-ui-primitive/button";
@@ -80,7 +73,17 @@ import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils";
 
 // --- Styles ---
 import "@/components/tiptap-templates/simple/simple-editor.scss";
+
 import { Image } from "@/components/tiptap-extension/image/image";
+import { Video } from "@/components/tiptap-extension/video/video";
+import { Table } from "@/components/tiptap-extension/table/table";
+import {
+  RichTextBubbleImage,
+  RichTextBubbleVideo,
+} from "@/components/bubble/bubble-media";
+import { RichTextBubbleTable } from "@/components/bubble/bubble-table";
+import Mathematics from "@/components/tiptap-extension/katex/katex";
+import "katex/dist/katex.min.css";
 
 // A mock function to simulate image uploads
 const uploadImage = (file: File) => {
@@ -229,7 +232,6 @@ export function SimpleEditor({
         "aria-label": "Main content area, start typing to enter text.",
         class: "simple-editor",
       },
-
     },
     extensions: [
       StarterKit.configure({
@@ -249,9 +251,7 @@ export function SimpleEditor({
       Superscript,
       Subscript,
       Selection,
-      TableKit.configure({
-        table: { resizable: true },
-      }),
+      Table,
       ImageUploadNode.configure({
         accept: "image/*",
         maxSize: MAX_FILE_SIZE,
@@ -327,18 +327,20 @@ export function SimpleEditor({
           });
         },
       }),
+      Video,
+      Mathematics,
     ],
     content: initialValue,
     contentType,
     onUpdate: ({ editor }) => {
+      console.log("editor", editor);
       // You can handle content updates here if needed
-      const json = editor.getJSON();
-      console.log("Editor content updated:", json);
-      const markdown = editor.getMarkdown();
-      console.log("Editor content in Markdown:", markdown);
-
-      const html = editor.getHTML();
-      console.log("Editor content in HTML:", html);
+      // const json = editor.getJSON();
+      // console.log("Editor content updated:", json);
+      // const markdown = editor.getMarkdown();
+      // console.log("Editor content in Markdown:", markdown);
+      // const html = editor.getHTML();
+      // console.log("Editor content in HTML:", html);
     },
   });
 
@@ -385,6 +387,9 @@ export function SimpleEditor({
           role="presentation"
           className="simple-editor-content"
         />
+        <RichTextBubbleImage />
+        <RichTextBubbleVideo />
+        <RichTextBubbleTable />
       </EditorContext.Provider>
     </div>
   );

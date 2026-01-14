@@ -636,18 +636,52 @@ export function getSelectedNodesOfType(
   return results;
 }
 
-
 export function getShortcutKey(key: string): string {
-  if (`${key}`.toLowerCase() === 'mod') {
-    return isMac() ? '⌘' : 'Ctrl';
-  } else if (`${key}`.toLowerCase() === 'alt') {
-    return isMac() ? '⌥' : 'Alt';
-  } else if (`${key}`.toLowerCase() === 'shift') {
-    return isMac() ? '⇧' : 'Shift';
+  if (`${key}`.toLowerCase() === "mod") {
+    return isMac() ? "⌘" : "Ctrl";
+  } else if (`${key}`.toLowerCase() === "alt") {
+    return isMac() ? "⌥" : "Alt";
+  } else if (`${key}`.toLowerCase() === "shift") {
+    return isMac() ? "⇧" : "Shift";
   } else {
     return key;
   }
 }
 export function getShortcutKeys(keys: string[]): string {
-  return keys.map(getShortcutKey).join(' ');
+  return keys.map(getShortcutKey).join(" ");
+}
+
+export const isNumber = (value: unknown): value is number =>
+  typeof value === "number";
+
+export const isString = (value: unknown): value is string =>
+  typeof value === "string";
+
+export const isBoolean = (value: unknown): value is boolean =>
+  typeof value === "boolean";
+
+export const isFunction = (value: unknown): boolean =>
+  typeof value === "function";
+
+export function getCssUnitWithDefault(
+  value?: string | number,
+  defaultUnit = "px"
+) {
+  if (!value) return value;
+
+  const stringValue = isNumber(value) ? String(value) : value;
+
+  const num = Number.parseFloat(stringValue);
+  const unitMatch = stringValue.match(/[%a-z]+$/i);
+  const unit = unitMatch ? unitMatch[0] : defaultUnit;
+
+  return Number.isNaN(num) ? value : num + unit;
+}
+
+export function toJSON(str: string) {
+  try {
+    return JSON.parse(str);
+  } catch (error: any) {
+    return;
+  }
 }
