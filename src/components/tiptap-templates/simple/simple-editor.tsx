@@ -13,13 +13,6 @@ import { Superscript } from "@tiptap/extension-superscript";
 import { Selection } from "@tiptap/extensions";
 import { Markdown } from "@tiptap/markdown";
 import { FileHandler } from "@tiptap/extension-file-handler";
-import {
-  Table,
-  TableRow,
-  TableHeader,
-  TableCell,
-  TableKit,
-} from "@tiptap/extension-table";
 
 // --- UI Primitives ---
 import { Button } from "@/components/tiptap-ui-primitive/button";
@@ -32,6 +25,7 @@ import {
 
 // --- Tiptap Node ---
 import { ImageUploadNode } from "@/components/tiptap-node/image-upload-node/image-upload-node-extension";
+import { VideoUploadNode } from "@/components/tiptap-node/video-upload-node/video-upload-node-extension";
 import { HorizontalRule } from "@/components/tiptap-node/horizontal-rule-node/horizontal-rule-node-extension";
 import "@/components/tiptap-node/blockquote-node/blockquote-node.scss";
 import "@/components/tiptap-node/code-block-node/code-block-node.scss";
@@ -44,6 +38,7 @@ import "@/components/tiptap-node/paragraph-node/paragraph-node.scss";
 // --- Tiptap UI ---
 import { HeadingDropdownMenu } from "@/components/tiptap-ui/heading-dropdown-menu";
 import { ImageUploadButton } from "@/components/tiptap-ui/image-upload-button";
+import { VideoUploadButton } from "@/components/tiptap-ui/video-upload-button";
 import { ListDropdownMenu } from "@/components/tiptap-ui/list-dropdown-menu";
 import { BlockquoteButton } from "@/components/tiptap-ui/blockquote-button";
 import { CodeBlockButton } from "@/components/tiptap-ui/code-block-button";
@@ -80,7 +75,17 @@ import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils";
 
 // --- Styles ---
 import "@/components/tiptap-templates/simple/simple-editor.scss";
+
 import { Image } from "@/components/tiptap-extension/image/image";
+import { Video } from "@/components/tiptap-extension/video/video";
+import { Table } from "@/components/tiptap-extension/table/table";
+import {
+  RichTextBubbleImage,
+  RichTextBubbleVideo,
+} from "@/components/bubble/bubble-media";
+import { RichTextBubbleTable } from "@/components/bubble/bubble-table";
+import Mathematics from "@/components/tiptap-extension/katex/katex";
+import "katex/dist/katex.min.css";
 
 // A mock function to simulate image uploads
 const uploadImage = (file: File) => {
@@ -161,7 +166,8 @@ const MainToolbarContent = ({
       <ToolbarSeparator />
 
       <ToolbarGroup>
-        <ImageUploadButton text="Add" />
+        <ImageUploadButton />
+        <VideoUploadButton />
       </ToolbarGroup>
 
       <Spacer />
@@ -204,20 +210,35 @@ const MobileToolbarContent = ({
   </>
 );
 
-export function SimpleEditor({
-  initialValue,
-  contentType = "json",
-}: {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+export interface EditorProps {
   initialValue?: string | Record<string, any>;
   contentType?: "html" | "json" | "markdown";
-}) {
+  className?: string;
+  onImageUpload?: (file: File) => Promise<string>;
+  onVideoUpload?: (file: File) => Promise<string>;
+}
+
+export function Editor({
+  initialValue,
+  contentType = "json",
+  className,
+  onImageUpload,
+  onVideoUpload,
+}: EditorProps) {
   const isMobile = useIsBreakpoint();
   const { height } = useWindowSize();
   const [mobileView, setMobileView] = useState<"main" | "highlighter" | "link">(
     "main"
   );
   const toolbarRef = useRef<HTMLDivElement>(null);
+
+  const handleUploadFile = async (file: File) => {
+    if (onImageUpload) {
+      const url = await onImageUpload(file);
+      return { url };
+    }
+    return uploadImage(file);
+  };
 
   const editor = useEditor({
     immediatelyRender: false,
@@ -248,14 +269,12 @@ export function SimpleEditor({
       Superscript,
       Subscript,
       Selection,
-      TableKit.configure({
-        table: { resizable: true },
-      }),
+      Table,
       ImageUploadNode.configure({
         accept: "image/*",
         maxSize: MAX_FILE_SIZE,
         limit: 3,
-        upload: handleImageUpload,
+        upload: onImageUpload,
         onError: (error) => console.error("Upload failed:", error),
       }),
       // Official Markdown Extension
@@ -276,7 +295,7 @@ export function SimpleEditor({
         ],
         onDrop: (currentEditor, files, pos) => {
           files.forEach(async (file) => {
-            const result = await uploadImage(file);
+            const result = await handleUploadFile(file);
             if (result) {
               currentEditor
                 .chain()
@@ -312,7 +331,7 @@ export function SimpleEditor({
                 }
               });
             }
-            const result = await uploadImage(file);
+            const result = await handleUploadFile(file);
             if (result) {
               currentEditor
                 .chain()
@@ -326,9 +345,27 @@ export function SimpleEditor({
           });
         },
       }),
+      Video.configure({
+        upload: onVideoUpload,
+      }),
+      VideoUploadNode.configure({
+        upload: handleImageUpload,
+        maxSize: MAX_FILE_SIZE,
+      }),
+      Mathematics,
     ],
     content: initialValue,
     contentType,
+    onUpdate: ({ editor }) => {
+      console.log("editor", editor);
+      // You can handle content updates here if needed
+      // const json = editor.getJSON();
+      // console.log("Editor content updated:", json);
+      // const markdown = editor.getMarkdown();
+      // console.log("Editor content in Markdown:", markdown);
+      // const html = editor.getHTML();
+      // console.log("Editor content in HTML:", html);
+    },
   });
 
   const rect = useCursorVisibility({
@@ -343,7 +380,7 @@ export function SimpleEditor({
   }, [isMobile, mobileView]);
 
   return (
-    <div className="simple-editor-wrapper">
+    <div className={`simple-editor-wrapper ${className || ""}`}>
       <EditorContext.Provider value={{ editor }}>
         <Toolbar
           ref={toolbarRef}
@@ -374,6 +411,9 @@ export function SimpleEditor({
           role="presentation"
           className="simple-editor-content"
         />
+        <RichTextBubbleImage />
+        <RichTextBubbleVideo />
+        <RichTextBubbleTable />
       </EditorContext.Provider>
     </div>
   );

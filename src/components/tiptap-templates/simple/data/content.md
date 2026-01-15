@@ -4,6 +4,8 @@ This is a more complex example of markdown content to showcase the capabilities 
 
 > This is a blockquote. It's a great way to highlight a quote or a piece of text.
 
+## Inline Math $x^2+y^2=\sqrt4$
+
 ## Lists
 
 Here are some examples of different list types:
@@ -31,7 +33,10 @@ Here are some examples of different list types:
 
 Here is an example of an image:
 
-![A placeholder image](https://via.placeholder.com/400x200)
+$$
+
+x^2+y^2=\sqrt(4)
+$$
 
 ## Text Formatting
 

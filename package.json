@@ -18,16 +18,14 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.16",
-    "@radix-ui/react-dropdown-menu": "^2.1.16",
-    "@radix-ui/react-popover": "^1.1.15",
     "@tiptap/extension-file-handler": "^3.14.0",
     "@tiptap/extension-table": "^3.14.0",
     "@tiptap/markdown": "^3.14.0",
+    "@types/katex": "^0.16.8",
+    "katex": "^0.16.27",
     "lodash-es": "^4.17.22",
     "lodash.throttle": "^4.1.1",
-    "react-hotkeys-hook": "^5.2.1"
-  },
-  "peerDependencies": {
+    "react-hotkeys-hook": "^5.2.1",
     "@tiptap/core": "^3.14.0",
     "@tiptap/extension-highlight": "^3.14.0",
     "@tiptap/extension-horizontal-rule": "^3.14.0",
@@ -40,9 +38,17 @@
     "@tiptap/extensions": "^3.14.0",
     "@tiptap/pm": "^3.14.0",
     "@tiptap/react": "^3.14.0",
-    "@tiptap/starter-kit": "^3.14.0",
+    "@tiptap/starter-kit": "^3.14.0"
+  },
+  "peerDependencies": {
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-popover": "^1.1.15",
+    "@radix-ui/react-toggle": "^1.1.10",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "class-variance-authority": "^0.7.1",
+    "lucide-react": "^0.562.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

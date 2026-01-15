@@ -7,6 +7,12 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
+  /* math input/theme variables */
+  --math-bg: rgba(250, 250, 250, 0.8);
+  --math-border: rgba(0, 0, 0, 0.08);
+  --math-focus-bg: #ffffff;
+  --math-focus-ring: rgba(124, 136, 255, 0.12);
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -58,11 +64,73 @@ button:focus-visible {
   :root {
     color: #213547;
     background-color: #ffffff;
+    --math-bg: rgba(250, 250, 250, 0.9);
+    --math-border: rgba(0, 0, 0, 0.08);
+    --math-focus-bg: #ffffff;
   }
   a:hover {
     color: #747bff;
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+/* KaTeX math input styling - make inline and block editors look like code editors */
+.tiptap-math-inline .math-render,
+.tiptap-mathematics-render .math-render,
+.block-math-render {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono",
+    "Courier New", monospace;
+  font-size: 0.95rem;
+  color: inherit;
+}
+
+.block-math-render {
+  padding: 1rem 0.5rem;
+}
+
+.math-input,
+.block-math-editor {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono",
+    "Courier New", monospace;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--math-border);
+  background: var(--math-bg);
+  color: inherit;
+  box-sizing: border-box;
+}
+
+.block-math-editor {
+  width: 100%;
+  min-height: 96px;
+  resize: vertical;
+  white-space: pre-wrap;
+}
+
+.math-input {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 3px 6px;
+  border: 1px solid transparent;
+}
+
+.math-input:focus,
+.block-math-editor:focus {
+  outline: none;
+  border-color: #7c88ff;
+  box-shadow: 0 0 0 3px var(--math-focus-ring);
+  background: var(--math-focus-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --math-bg: rgba(255, 255, 255, 0.03);
+    --math-border: rgba(255, 255, 255, 0.06);
+    --math-focus-bg: rgba(255, 255, 255, 0.06);
+    --math-focus-ring: rgba(124, 136, 255, 0.14);
   }
 }

@@ -1,0 +1,62 @@
+/* Action button base */
+.action-button {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &[data-state="on"] {
+    background-color: var(--accent-bg, #e5e7eb);
+  }
+
+  &[data-state="off"] {
+    background-color: transparent;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+/* Smaller uniform style for bubble menu buttons */
+.action-button.bubble-action {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+}
+
+.action-button.bubble-action .action-button__icon {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+/* Icon */
+.action-button__icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Tooltip */
+.tooltip {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+/* Tooltip content layout */
+.tooltip__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 6rem;
+}
+
+/* Shortcut keys */
+.tooltip__shortcut {
+  margin-top: 0.25rem;
+  opacity: 0.7;
+  font-size: 0.65rem;
+}

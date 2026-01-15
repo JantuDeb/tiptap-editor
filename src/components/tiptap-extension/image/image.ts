@@ -1,4 +1,4 @@
-import { Editor, mergeAttributes } from "@tiptap/core";
+import { mergeAttributes } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
 import TiptapImage from "@tiptap/extension-image";
 
@@ -88,26 +88,26 @@ export const Image = TiptapImage.extend<IImageOptions>({
       ...DEFAULT_OPTIONS,
       ...this.parent?.(),
       upload: () => Promise.reject("Image Upload Function"),
-      button: ({
-        editor,
-        extension,
-        t,
-      }: {
-        editor: Editor;
-        extension: any;
-        t: (key: string) => string;
-      }) => ({
-        componentProps: {
-          action: () => {
-            return true;
-          },
-          upload: extension.options.upload,
-          /* If setImage is not available(when Image Component is not imported), the button is disabled */
-          disabled: !editor.can().setImage?.({}),
-          icon: "ImageUp",
-          tooltip: t("editor.image.tooltip"),
-        },
-      }),
+      // button: ({
+      //   editor,
+      //   extension,
+      //   t,
+      // }: {
+      //   editor: Editor;
+      //   extension: any;
+      //   t: (key: string) => string;
+      // }) => ({
+      //   componentProps: {
+      //     action: () => {
+      //       return true;
+      //     },
+      //     upload: extension.options.upload,
+      //     /* If setImage is not available(when Image Component is not imported), the button is disabled */
+      //     disabled: !editor.can().setImage?.({}),
+      //     icon: "ImageUp",
+      //     tooltip: t("editor.image.tooltip"),
+      //   },
+      // }),
     };
   },
   addAttributes() {
