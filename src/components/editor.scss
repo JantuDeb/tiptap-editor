@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
-.simple-editor-wrapper {
+.editor-wrapper {
   --tt-toolbar-height: 44px;
   --tt-theme-text: var(--tt-gray-light-900);
 
@@ -42,7 +42,7 @@
   font-family: "DM Sans", sans-serif;
 }
 
-.simple-editor-content {
+.editor-content {
   max-width: 648px;
   width: 100%;
   margin: 0 auto;
@@ -52,13 +52,14 @@
   flex: 1;
 }
 
-.simple-editor-content .tiptap.ProseMirror.simple-editor {
+.editor-content .tiptap.ProseMirror.editor {
   flex: 1;
-  padding: 3rem 3rem 30vh;
+  padding: 1rem;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 480px) {
-  .simple-editor-content .tiptap.ProseMirror.simple-editor {
-    padding: 1rem 1.5rem 30vh;
+  .editor-content .tiptap.ProseMirror.editor {
+    padding: 0.8rem;
   }
 }

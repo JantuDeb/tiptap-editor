@@ -3,8 +3,8 @@ import { createRoot } from "react-dom/client";
 import "./styles/_keyframe-animations.scss";
 import "./styles/_variables.scss";
 import "./index.css";
-import { Editor } from "./components/tiptap-templates/simple/simple-editor";
-import content from "./components/tiptap-templates/simple/data/content.md?raw";
+import { Editor } from "./components/editor";
+import content from "./data/content.md?raw";
 
 const mockImageUpload = (file: File) => {
   return new Promise<string>((resolve) => {

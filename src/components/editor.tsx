@@ -68,13 +68,13 @@ import { useWindowSize } from "@/hooks/use-window-size";
 import { useCursorVisibility } from "@/hooks/use-cursor-visibility";
 
 // --- Components ---
-import { ThemeToggle } from "@/components/tiptap-templates/simple/theme-toggle";
+import { ThemeToggle } from "@/theme-toggle";
 
 // --- Lib ---
-import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils";
+import { cn, MAX_FILE_SIZE } from "@/lib/tiptap-utils";
 
 // --- Styles ---
-import "@/components/tiptap-templates/simple/simple-editor.scss";
+import "@/components/editor.scss";
 
 import { Image } from "@/components/tiptap-extension/image/image";
 import { Video } from "@/components/tiptap-extension/video/video";
@@ -89,11 +89,11 @@ import "katex/dist/katex.min.css";
 
 // A mock function to simulate image uploads
 const uploadImage = (file: File) => {
-  return new Promise<{ url: string; alt?: string }>((resolve) => {
+  return new Promise<string>((resolve) => {
     setTimeout(() => {
       const reader = new FileReader();
       reader.onload = (e) => {
-        resolve({ url: e.target?.result as string });
+        resolve(e.target?.result as string);
       };
       reader.readAsDataURL(file);
     }, 500);
@@ -235,7 +235,7 @@ export function Editor({
   const handleUploadFile = async (file: File) => {
     if (onImageUpload) {
       const url = await onImageUpload(file);
-      return { url };
+      return url;
     }
     return uploadImage(file);
   };
@@ -248,7 +248,7 @@ export function Editor({
         autocorrect: "off",
         autocapitalize: "off",
         "aria-label": "Main content area, start typing to enter text.",
-        class: "simple-editor",
+        class: "editor",
       },
     },
     extensions: [
@@ -295,15 +295,15 @@ export function Editor({
         ],
         onDrop: (currentEditor, files, pos) => {
           files.forEach(async (file) => {
-            const result = await handleUploadFile(file);
-            if (result) {
+            const url = await handleUploadFile(file);
+            if (url) {
               currentEditor
                 .chain()
                 .insertContentAt(pos, {
                   type: "image",
                   attrs: {
-                    src: result.url,
-                    alt: result.alt || file.name,
+                    src: url,
+                    // alt: result.alt || file.name,
                   },
                 })
                 .focus()
@@ -331,14 +331,14 @@ export function Editor({
                 }
               });
             }
-            const result = await handleUploadFile(file);
-            if (result) {
+            const url = await handleUploadFile(file);
+            if (url) {
               currentEditor
                 .chain()
                 .focus()
                 .setImage({
-                  src: result.url,
-                  alt: result.alt || file.name,
+                  src: url,
+                  alt: file.name,
                 })
                 .run();
             }
@@ -349,7 +349,7 @@ export function Editor({
         upload: onVideoUpload,
       }),
       VideoUploadNode.configure({
-        upload: handleImageUpload,
+        upload: (file) => handleUploadFile(file),
         maxSize: MAX_FILE_SIZE,
       }),
       Mathematics,
@@ -359,10 +359,10 @@ export function Editor({
     onUpdate: ({ editor }) => {
       console.log("editor", editor);
       // You can handle content updates here if needed
-      // const json = editor.getJSON();
-      // console.log("Editor content updated:", json);
-      // const markdown = editor.getMarkdown();
-      // console.log("Editor content in Markdown:", markdown);
+      const json = editor.getJSON();
+      console.log("Editor content updated:", json);
+      const markdown = editor.getMarkdown();
+      console.log("Editor content in Markdown:", markdown);
       // const html = editor.getHTML();
       // console.log("Editor content in HTML:", html);
     },
@@ -370,17 +370,18 @@ export function Editor({
 
   const rect = useCursorVisibility({
     editor,
-    overlayHeight: toolbarRef.current?.getBoundingClientRect().height ?? 0,
+    toolbarRef,
   });
 
   useEffect(() => {
     if (!isMobile && mobileView !== "main") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setMobileView("main");
     }
   }, [isMobile, mobileView]);
 
   return (
-    <div className={`simple-editor-wrapper ${className || ""}`}>
+    <div className={cn("editor-wrapper", className)}>
       <EditorContext.Provider value={{ editor }}>
         <Toolbar
           ref={toolbarRef}
@@ -409,7 +410,7 @@ export function Editor({
         <EditorContent
           editor={editor}
           role="presentation"
-          className="simple-editor-content"
+          className="editor-content"
         />
         <RichTextBubbleImage />
         <RichTextBubbleVideo />
