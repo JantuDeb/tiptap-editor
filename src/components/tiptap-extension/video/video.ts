@@ -3,7 +3,6 @@ import { Node, nodeInputRule } from "@tiptap/core";
 import { VIDEO_SIZE } from "@/constants";
 import type { GeneralOptions, VideoAlignment } from "@/types";
 import { getCssUnitWithDefault } from "@/lib/tiptap-utils";
-import { Plugin } from "@tiptap/pm/state";
 
 /* -------------------------------------------------------------------------- */
 /* Types                                                                      */
@@ -38,7 +37,7 @@ declare module "@tiptap/core" {
 /* -------------------------------------------------------------------------- */
 
 const VIDEO_URL_REGEX =
-  /^(https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/|vimeo\.com\/\d+|.*\.(?:mp4|webm|ogg))(?:\S*)?)$/i;
+  /^(https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?v=|shorts\/|live\/)[\w-]+|youtu\.be\/[\w-]+|vimeo\.com\/\d+|.*\.(?:mp4|webm|ogg))(?:\?\S*)?)$/i;
 
 function isYouTube(src: string) {
   return /youtube\.com|youtu\.be/.test(src);
@@ -239,55 +238,5 @@ export const Video = Node.create<VideoOptions>({
         ({ commands }) =>
           commands.updateAttributes(this.name, options),
     };
-  },
-
-  addProseMirrorPlugins() {
-    return [
-      new Plugin({
-        props: {
-          handlePaste(view, _event, slice) {
-            const { state } = view;
-            console.log("state", state);
-            const { schema } = state;
-
-            // Never interfere inside code blocks
-            if (state.selection.$from.parent.type.name === "codeBlock") {
-              return false;
-            }
-
-            // Only handle: single text node, single paragraph
-            if (
-              slice.content.childCount !== 1 ||
-              slice.content.firstChild?.type.name !== "paragraph"
-            ) {
-              return false;
-            }
-
-            const paragraph = slice.content.firstChild;
-            if (!paragraph || paragraph.childCount !== 1) {
-              return false;
-            }
-
-            const textNode = paragraph.firstChild;
-            if (!textNode || !textNode.isText) {
-              return false;
-            }
-
-            const text = textNode.text?.trim();
-            if (!text || !VIDEO_URL_REGEX.test(text)) {
-              return false;
-            }
-
-            // ✅ EXACT match: replace with video node
-            const tr = state.tr.replaceSelectionWith(
-              schema.nodes.video.create({ src: text })
-            );
-
-            view.dispatch(tr);
-            return true; // stop other handlers
-          },
-        },
-      }),
-    ];
   },
 });

@@ -1,4 +1,3 @@
-
 import {
   BetweenHorizonalEnd,
   BetweenHorizonalStart,
@@ -76,28 +75,25 @@ import {
   Loader2 as Loader,
   X,
   ExternalLink,
-  NotebookPen
-} from 'lucide-react';
+  NotebookPen,
+} from "lucide-react";
 
-
-
-
-import { AlignRightIcon } from './align-right-icon';
-import { AlignJustifyIcon } from './align-justify-icon';
-import { AlignLeftIcon } from './align-left-icon';
-import { AlignCenterIcon } from './align-center-icon';
-import { CodeBlockIcon } from './code-block-icon';
-import { ColumnAddLeftIcon } from './column-add-left-icon';
-import { ColumnAddRightIcon } from './column-add-right-icon';
-import { LineHeightIcon } from './line-height-icon';
-import { BlockquoteLeftIcon } from './blockquote-left-icon';
-import { MenuDownIcon } from './menu-down-icon';
-import { SizeLIcon } from './size-l-icon';
-import { SizeMIcon } from './size-m-icon';
-import { SizeSIcon } from './size-s-icon';
-import {  AspectRatioIcon } from './aspect-ratio-icon';
-import { DeleteColumnIcon } from './delete-column-icon';
-import { DeleteRowIcon } from './delete-row-icon';
+import { AlignRightIcon } from "./align-right-icon";
+import { AlignJustifyIcon } from "./align-justify-icon";
+import { AlignLeftIcon } from "./align-left-icon";
+import { AlignCenterIcon } from "./align-center-icon";
+import { CodeBlockIcon } from "./code-block-icon";
+import { ColumnAddLeftIcon } from "./column-add-left-icon";
+import { ColumnAddRightIcon } from "./column-add-right-icon";
+import { LineHeightIcon } from "./line-height-icon";
+import { BlockquoteLeftIcon } from "./blockquote-left-icon";
+import { MenuDownIcon } from "./menu-down-icon";
+import { SizeLIcon } from "./size-l-icon";
+import { SizeMIcon } from "./size-m-icon";
+import { SizeSIcon } from "./size-s-icon";
+import { AspectRatioIcon } from "./aspect-ratio-icon";
+import { DeleteColumnIcon } from "./delete-column-icon";
+import { DeleteRowIcon } from "./delete-row-icon";
 
 export const icons = {
   Bold,
@@ -147,7 +143,7 @@ export const icons = {
   Replace,
   ChevronsUpDown,
   LineHeight: LineHeightIcon,
-//   Word: FileWordOutline,
+  //   Word: FileWordOutline,
   HeadingParagraph: Pilcrow,
   Heading1,
   Heading2,
@@ -167,16 +163,16 @@ export const icons = {
   Columns: Columns2,
   Iframe: Frame,
 
-  MenuDown:MenuDownIcon,
+  MenuDown: MenuDownIcon,
   SizeS: SizeSIcon,
   SizeM: SizeMIcon,
   SizeL: SizeLIcon,
-  AspectRatio:AspectRatioIcon,
+  AspectRatio: AspectRatioIcon,
 
   Emoji: SmilePlus,
 
-  DeleteColumn:DeleteColumnIcon,
-  DeleteRow:DeleteRowIcon,
+  DeleteColumn: DeleteColumnIcon,
+  DeleteRow: DeleteRowIcon,
   SearchAndReplace: Replace,
   EmojiIcon: SmilePlusIcon,
   KatexIcon: Sigma,
@@ -189,24 +185,26 @@ export const icons = {
   Settings,
   Eye,
 
-//   TextDirection: Direction,
-//   LeftToRight,
-//   RightToLeft,
+  //   TextDirection: Direction,
+  //   LeftToRight,
+  //   RightToLeft,
 
   Attachment: Paperclip,
-//   GifIcon,
+  //   GifIcon,
   ChevronUp,
   Crop: CropIcon,
-//   Mermaid,
-//   Twitter,
-  CodeView:CodeBlockIcon,
+  //   Mermaid,
+  //   Twitter,
+  CodeView: CodeBlockIcon,
   FlipX: FlipVertical,
   FlipY: FlipHorizontal,
   PencilRuler,
   WrapText,
   Loader,
   X,
-//   Html,
+  //   Html,
   ExternalLink,
-  Callout: NotebookPen
+  Callout: NotebookPen,
 } as any;
+
+export * from "./video-icon";
