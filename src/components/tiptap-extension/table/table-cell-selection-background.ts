@@ -45,7 +45,7 @@ function setCellBackgroundMarkup(
 
 function updateCellBackground(
   tr: Transaction,
-  options: TableCellBackgroundOptions,
+  _options: TableCellBackgroundOptions,
   backgroundColor: string
 ): Transaction {
   const { doc, selection } = tr;
@@ -54,7 +54,7 @@ function updateCellBackground(
     return tr;
   }
 
-  selection.forEachCell((node, pos) => {
+  selection.forEachCell((_node, pos) => {
     tr = setCellBackgroundMarkup(tr, pos, backgroundColor);
   });
 

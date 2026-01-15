@@ -1,6 +1,6 @@
 /* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import  { useCallback, useEffect, useMemo, useState } from "react";
 
 import { NodeViewWrapper } from "@tiptap/react";
 import { clamp, isNumber, throttle } from "lodash-es";
