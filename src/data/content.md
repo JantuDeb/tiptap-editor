@@ -1,4 +1,4 @@
-# Tiptap Editor: Markdown Example
+#  Editor: Markdown Example
 
 This is a more complex example of markdown content to showcase the capabilities of the Tiptap editor.
 
@@ -33,6 +33,8 @@ Here are some examples of different list types:
 
 Here is an example of an image:
 
+![Demo](https://tse1.mm.bing.net/th/id/OIP.vpUUrAb6H7eMCIM4TRzpcAHaFj?rs=1&pid=ImgDetMain&o=7&rm=3)
+
 $$
 
 x^2+y^2=\sqrt(4)
@@ -41,3 +43,10 @@ $$
 ## Text Formatting
 
 You can use **bold text**, _italic text_, and `inline code`.
+
+
+## Youtube Video
+
+::video src="https://www.youtube.com/embed/-K4xJVfu2Qg?si=eFtCx9ArNvUUd9tM" ::
+
+

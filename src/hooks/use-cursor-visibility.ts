@@ -11,7 +11,8 @@ export interface CursorVisibilityOptions {
   /**
    * Reference to the toolbar element that may obscure the cursor
    */
-  overlayHeight?: number
+  // overlayHeight?: number
+  toolbarRef?: React.RefObject<HTMLDivElement | null>
 }
 
 /**
@@ -24,8 +25,10 @@ export interface CursorVisibilityOptions {
  */
 export function useCursorVisibility({
   editor,
-  overlayHeight = 0,
+ toolbarRef
 }: CursorVisibilityOptions) {
+
+  
   const { height: windowHeight } = useWindowSize()
   const rect = useBodyRect({
     enabled: true,
@@ -46,6 +49,7 @@ export function useCursorVisibility({
 
       if (windowHeight < rect.height && cursorCoords) {
         const availableSpace = windowHeight - cursorCoords.top
+        const overlayHeight = toolbarRef?.current?.getBoundingClientRect().height ?? 0;
 
         // If the cursor is hidden behind the overlay or offscreen, scroll it into view
         if (availableSpace < overlayHeight) {
@@ -63,7 +67,7 @@ export function useCursorVisibility({
     }
 
     ensureCursorVisibility()
-  }, [editor, overlayHeight, windowHeight, rect.height])
+  }, [editor, toolbarRef, windowHeight, rect.height])
 
   return rect
 }

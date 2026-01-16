@@ -221,6 +221,50 @@ export const Video = Node.create<VideoOptions>({
     ];
   },
 
+  markdownTokenizer: {
+    name: "video",
+    level: "block",
+
+    start: (src) => src.indexOf("::video"),
+
+    tokenize: (src) => {
+      const match = /^::video\s+([^]+?)\s*::/.exec(src);
+      if (!match) return;
+
+      const attrs: Record<string, string> = {};
+
+      match[1].replace(/(\w+)="([^"]+)"/g, (_, key, value) => {
+        attrs[key] = value;
+        return "";
+      });
+
+      return {
+        type: "video",
+        raw: match[0],
+        attrs,
+      };
+    },
+  },
+
+  parseMarkdown: (token) => {
+    return {
+      type: "video",
+      attrs: {
+        src: token.attrs.src,
+        width: Number(token.attrs.width) || VIDEO_SIZE["size-medium"],
+        align: token.attrs.align || "center",
+      },
+    };
+  },
+
+  renderMarkdown: (node) => {
+    const { src, width, align } = node.attrs || {};
+    if (src) {
+      return `::video src="${src}" width="${width}" align="${align}" ::\n\n`;
+    }
+    return "";
+  },
+
   /* ------------------------------- Commands ------------------------------- */
 
   addCommands() {

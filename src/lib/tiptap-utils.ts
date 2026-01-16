@@ -355,59 +355,6 @@ export function selectionWithinConvertibleTypes(
   return false;
 }
 
-/**
- * Handles image upload with progress tracking and abort capability
- * @param file The file to upload
- * @param onProgress Optional callback for tracking upload progress
- * @param abortSignal Optional AbortSignal for cancelling the upload
- * @returns Promise resolving to the URL of the uploaded image
- */
-export const handleImageUpload = async (
-  file: File,
-  onProgress?: (event: { progress: number }) => void,
-  abortSignal?: AbortSignal
-): Promise<string> => {
-  // Validate file
-  if (!file) {
-    throw new Error("No file provided");
-  }
-
-  if (file.size > MAX_FILE_SIZE) {
-    throw new Error(
-      `File size exceeds maximum allowed (${MAX_FILE_SIZE / (1024 * 1024)}MB)`
-    );
-  }
-
-  // Simulate upload progress and convert file to data URL
-  const dataUrl = await new Promise<string>((resolve, reject) => {
-    const reader = new FileReader();
-
-    reader.onprogress = (event) => {
-      if (abortSignal?.aborted) {
-        reader.abort();
-        reject(new Error("Upload cancelled"));
-        return;
-      }
-
-      if (event.lengthComputable) {
-        const progress = Math.round((event.loaded / event.total) * 100);
-        onProgress?.({ progress });
-      }
-    };
-
-    reader.onload = () => {
-      resolve(reader.result as string);
-    };
-
-    reader.onerror = () => {
-      reject(new Error("Failed to read file"));
-    };
-
-    reader.readAsDataURL(file);
-  });
-
-  return dataUrl;
-};
 
 type ProtocolOptions = {
   /**
@@ -682,6 +629,7 @@ export function toJSON(str: string) {
   try {
     return JSON.parse(str);
   } catch (error: any) {
+    console.error("Failed to parse JSON:", error.message);
     return;
   }
 }
