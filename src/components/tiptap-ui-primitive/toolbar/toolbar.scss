@@ -30,7 +30,18 @@
     }
   }
 
-  &[data-variant="fixed"] {
+  &[data-variant="input"] {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--tt-bg-color);
+    border-bottom: 1px solid var(--tt-border-color);
+    padding: 0.5rem;
+    min-height: var(--tt-toolbar-height);
+    flex-shrink: 0;
+  }
+
+  &[data-variant="fullpage"] {
     position: sticky;
     top: 0;
     z-index: 10;

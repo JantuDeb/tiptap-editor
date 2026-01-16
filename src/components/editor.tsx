@@ -216,6 +216,13 @@ export interface EditorProps {
   className?: string;
   onImageUpload?: (file: File) => Promise<string>;
   onVideoUpload?: (file: File) => Promise<string>;
+  variant?: "fullpage" | "input";
+  // Input variant specific props
+  minHeight?: number;
+  maxHeight?: number;
+  placeholder?: string;
+  resize?: "none" | "vertical" | "horizontal" | "both";
+  showToolbarOnFocus?: boolean; // For input variant
 }
 
 export function Editor({
@@ -224,6 +231,12 @@ export function Editor({
   className,
   onImageUpload,
   onVideoUpload,
+
+  variant = "fullpage",
+  minHeight,
+  maxHeight,
+  placeholder = "Start typing...",
+  resize = "vertical",
 }: EditorProps) {
   const isMobile = useIsBreakpoint();
   const { height } = useWindowSize();
@@ -240,6 +253,8 @@ export function Editor({
     return uploadImage(file);
   };
 
+  const isInputVariant = variant === "input";
+
   const editor = useEditor({
     immediatelyRender: false,
     editorProps: {
@@ -247,8 +262,12 @@ export function Editor({
         autocomplete: "off",
         autocorrect: "off",
         autocapitalize: "off",
-        "aria-label": "Main content area, start typing to enter text.",
-        class: "editor",
+        "aria-label":
+          placeholder || "Main content area, start typing to enter text.",
+        class: cn("editor", isInputVariant && "editor-input"),
+        ...(isInputVariant && placeholder
+          ? { "data-placeholder": placeholder }
+          : {}),
       },
     },
     extensions: [
@@ -380,18 +399,32 @@ export function Editor({
     }
   }, [isMobile, mobileView]);
 
+  const containerStyle = isInputVariant
+    ? {
+        minHeight: minHeight ? `${minHeight}px`:undefined,
+        maxHeight: maxHeight ? `${maxHeight}px` : undefined,
+        resize,
+      }
+    : undefined;
+
   return (
-    <div className={cn("editor-wrapper", className)}>
+    <div
+      className={cn("editor-wrapper", className)}
+      data-variant={variant}
+      data-resize={isInputVariant ? resize : undefined}
+      style={containerStyle}
+    >
       <EditorContext.Provider value={{ editor }}>
         <Toolbar
           ref={toolbarRef}
           style={{
-            ...(isMobile
+            ...(isMobile && variant === "fullpage"
               ? {
                   bottom: `calc(100% - ${height - rect.y}px)`,
                 }
               : {}),
           }}
+          data-variant={variant}
         >
           {mobileView === "main" ? (
             <MainToolbarContent
@@ -411,6 +444,7 @@ export function Editor({
           editor={editor}
           role="presentation"
           className="editor-content"
+          data-variant={variant}
         />
         <RichTextBubbleImage />
         <RichTextBubbleVideo />
