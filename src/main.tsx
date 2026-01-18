@@ -34,54 +34,17 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <div
       style={{
-        width: "100vw",
-        height: "100vh",
+        height: "100%",
         display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        gap: 20,
-        margin: "0 auto",
-        flexWrap: "wrap",
-        overflow: "hidden",
+        flexDirection: "column",
       }}
     >
-      <div style={{ flexShrink: 0, flex: 1, overflowY: "auto", height: "100%", }}>
-        <Editor
-          initialValue={content}
-          contentType="markdown"
-          onImageUpload={mockImageUpload}
-          onVideoUpload={mockVideoUpload}
-        />
-      </div>
-      <div
-        style={{
-          flexShrink: 0,
-          display: "flex",
-          flexDirection: "column",
-          gap: 20,
-          overflowY: "auto",
-          flex: 1,
-        }}
-      >
-        <Editor
-          initialValue={content}
-          contentType="markdown"
-          onImageUpload={mockImageUpload}
-          onVideoUpload={mockVideoUpload}
-          variant="input"
-          maxHeight={400}
-          minHeight={200}
-        />
-
-        <Editor
-          initialValue={content}
-          contentType="markdown"
-          onImageUpload={mockImageUpload}
-          onVideoUpload={mockVideoUpload}
-          variant="input"
-          maxHeight={600}
-        />
-      </div>
+      <Editor
+        initialValue={content}
+        contentType="markdown"
+        onImageUpload={mockImageUpload}
+        onVideoUpload={mockVideoUpload}
+      />
     </div>
-  </StrictMode>
+  </StrictMode>,
 );
