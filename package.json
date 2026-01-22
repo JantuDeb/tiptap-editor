@@ -23,7 +23,7 @@
     "@tiptap/markdown": "^3.14.0",
     "@types/katex": "^0.16.8",
     "katex": "^0.16.27",
-    "lodash-es": "^4.17.22",
+    "lodash-es": "^4.17.23",
     "lodash.throttle": "^4.1.1",
     "react-hotkeys-hook": "^5.2.1",
     "@tiptap/core": "^3.14.0",
