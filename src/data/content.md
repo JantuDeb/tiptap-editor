@@ -1,9 +1,321 @@
+**Exercise 14.1**
+
+**1. Calculate the mean for the following distribution:**
+
+| $\mathbf{x}_{\mathbf{i}}$ | 5 | 6 | 7  | 8  | 9 |
+| ------------------------- | - | - | -- | -- | - |
+| f:                        | 4 | 8 | 14 | 11 | 3 |
+
+**Solution:**
+
+| $x_{i}$ | $f_{i}$ |    $f_{i}x_{i}$    |
+| :-----: | :-----: | :----------------: |
+|    5    |    4    |         20         |
+|    6    |    8    |         48         |
+|    7    |    14   |         98         |
+|    8    |    11   |         88         |
+|    9    |    3    |         27         |
+|         |  N = 40 | Σ$f_{i}x_{i}$= 281 |
+
+$$
+Mean\  = \frac{\ \Sigma f_{i}x_{i}}{N} = \frac{281}{40} = 7.025
+$$
+
+**2. Find the missing value of p for the following distribution whose
+mean is 12.58**
+
+| x: | 5 | 8 | 10 | 12 | p | 20 | 25 |
+| -- | - | - | -- | -- | - | -- | -- |
+| f: | 2 | 5 | 8  | 22 | 7 | 4  | 2  |
+
+**Solution:**
+
+| $x_{i}$ | $f_{i}x_{i}$ |       $f_{i}x_{i}$       |
+| :-----: | :----------: | :----------------------: |
+|    5    |       2      |            10            |
+|    8    |       5      |            40            |
+|    10   |       8      |            80            |
+|    12   |      22      |            264           |
+|    P    |       7      |            7p            |
+|    20   |       4      |            80            |
+|    25   |       2      |            50            |
+|         |    N = 50    | Σ$f_{i}x_{i}$ = 524 + 7p |
+
+We know that,
+
+$$
+Mean = \frac{\Sigma f_{i}x_{i}}{N} = \frac{524 + 7p}{50}
+$$
+
+Given,
+
+Mean = 12.58
+
+$$
+\Rightarrow \frac{524 + 7p}{50} = 12.58 \\
+\Rightarrow 524 + 7p = 629 \\
+\Rightarrow 7p = 629 - 524 \\
+\Rightarrow 7p = 105 \\
+\Rightarrow p = 15
+$$
+
+**3. The following table gives the number of boys of a particular age in
+a class of 40 students. Calculate the mean age of the students**
+
+| Age (in years)  | 15 | 16 | 17 | 18 | 19 | 20 |
+| --------------- | -- | -- | -- | -- | -- | -- |
+| No. of students | 3  | 8  | 10 | 10 | 5  | 4  |
+
+**Solution:**
+
+| Age (in years) x i | No. of students f i | f i x i         |
+| ------------------ | ------------------- | --------------- |
+| 15                 | 3                   | 45              |
+| 16                 | 8                   | 128             |
+| 17                 | 10                  | 170             |
+| 18                 | 10                  | 180             |
+| 19                 | 5                   | 95              |
+| 20                 | 4                   | 80              |
+|                    | N = 40              | Σ f i x i = 698 |
+
+$$
+Mean\ age = \frac{\Sigma f_{i}x_{i}}{N} = \frac{698}{40} = 17.45\ years
+$$
+
+**4. Five coins were simultaneously tossed 1000 times and at each toss
+the number of heads were observed. The number of tosses during which 0,
+1, 2, 3, 4 and 5 heads were obtained are shown in the table below. Find
+the mean number of heads per toss.**
+
+| No. of heads per toss | No. of tosses |
+| --------------------- | ------------- |
+| 0                     | 38            |
+| 1                     | 144           |
+| 2                     | 342           |
+| 3                     | 287           |
+| 4                     | 164           |
+| 5                     | 25            |
+| Total                 | 1000          |
+
+**Solution:**
+
+| No. of heads per toss $\left( \mathbf{x}_{\mathbf{i}} \right)$ | No. of tosses $\left( \mathbf{f}_{\mathbf{i}} \right)$ | $\mathbf{f} {\mathbf{i}}\mathbf{x} {\mathbf{i}}$ |
+| :------------------------------------------------------------: | :----------------------------------------------------: | :----------------------------------------------: |
+|                                0                               |                           38                           |                         0                        |
+|                                1                               |                           144                          |                        144                       |
+|                                2                               |                           342                          |                        684                       |
+|                                3                               |                           287                          |                        861                       |
+|                                4                               |                           164                          |                        656                       |
+|                                5                               |                           25                           |                        125                       |
+|                              Total                             |                          1000                          |            $\Sigma f_{i}x_{i} = 2470$            |
+
+$$
+\therefore Mean\ heads = \frac{\Sigma f_{i}x_{i}}{N} = \frac{2470}{1000} = 2.47
+$$
+
+**5. The arithmetic mean of the following data is 14, find the value of
+k.**
+
+| $\mathbf{x}_{\mathbf{i}}$ | 5 | 10 | 15 | 20 | 25 |
+| ------------------------- | - | -- | -- | -- | -- |
+| $\mathbf{f}_{\mathbf{i}}$ | 7 | k  | 8  | 4  | 5  |
+
+**Solution:**
+
+| $x_{i}$ |   $f_{i}$  |           $f_{i}x_{i}$          |
+| :-----: | :--------: | :-----------------------------: |
+|    5    |      7     |                35               |
+|    10   |      k     |               10k               |
+|    15   |      8     |               120               |
+|    20   |      4     |                80               |
+|    25   |      5     |               125               |
+|         | N = k + 24 | $\Sigma f_{i}x_{i}$ = 10k + 360 |
+
+Given,
+
+Mean = 14
+
+$$
+\Rightarrow \frac{\Sigma f_{i}x_{i}}{N} = 14 \\
+\Rightarrow \frac{10k + 360}{k + 24} = 14 \\
+\Rightarrow 10k + 360 = 14k + 336 \\
+\Rightarrow 14k - 10k = 360 - 336 \\
+\Rightarrow 4k = 24 \\
+\Rightarrow k = 6
+$$
+
+**6. The arithmetic mean of the following data is 25, find the value of
+k.**
+
+| $\mathbf{x}_{\mathbf{i}}$ | 5 | 15 | 25 | 35 | 45 |
+| ------------------------- | - | -- | -- | -- | -- |
+| $\mathbf{f}_{\mathbf{i}}$ | 3 | k  | 3  | 6  | 2  |
+
+**Solution:**
+
+| $x_{i}$ |   $f_{i}$  |           $f_{i}x_{i}$          |
+| :-----: | :--------: | :-----------------------------: |
+|    5    |      3     |                15               |
+|    15   |      k     |               15k               |
+|    25   |      3     |                75               |
+|    35   |      6     |               210               |
+|    45   |      2     |                90               |
+|         | N = k + 14 | $\Sigma f_{i}x_{i}$ = 15k + 390 |
+
+Given,
+
+Mean = 25
+
+$$
+\Rightarrow \frac{\Sigma f_{i}x_{i}}{N} = 25 \\
+\Rightarrow \frac{15k + 390}{k + 14} = 25 \\
+\Rightarrow 15k + 390 = 25k + 350 \\
+\Rightarrow 25k - 15k = 390 - 350 \\
+\Rightarrow 10k = 40 \\
+\Rightarrow k = 4
+$$
+
+**7. If the mean of the following data is 18.75. Find the value of p.**
+
+| $\mathbf{x}_{\mathbf{i}}$ | 10 | 15 | P | 25 | 30 |
+| ------------------------- | -- | -- | - | -- | -- |
+| $\mathbf{f}_{\mathbf{i}}$ | 5  | 10 | 7 | 8  | 2  |
+
+**Solution:**
+
+| $x_{i}$ | $f_{i}$ |          $f_{i}x_{i}$         |
+| :-----: | :-----: | :---------------------------: |
+|    10   |    5    |               50              |
+|    15   |    10   |              150              |
+|    p    |    7    |              20p              |
+|    25   |    8    |              200              |
+|    30   |    2    |               60              |
+|         |  N = 32 | $\Sigma f_{i}x_{i}$= 7p + 460 |
+
+Given,
+
+Mean = 18.75
+
+$$
+\Rightarrow \frac{\Sigma f_{i}x_{i}}{N} = 18.75 \\
+\Rightarrow \frac{7p + 460}{32} = 18.75 \\
+\Rightarrow 7p + 460 = 600 \\
+\Rightarrow 7p = 600 - 460 \\
+\Rightarrow 7p = 140 \\
+\Rightarrow p = \frac{140}{7} \\
+\Rightarrow p = 20
+$$
+
+**8. Find the value of p, if the mean of the following distribution is
+20.**
+
+| $\mathbf{x}_{\mathbf{i}}$ | 15 | 17 | 19 | 20 + p | 23 |
+| ------------------------- | -- | -- | -- | ------ | -- |
+| $\mathbf{f}_{\mathbf{i}}$ | 2  | 3  | 4  | 5p     | 6  |
+
+**Solution:**
+
+| $x_{i}$ |   $f_{i}$   |              $f_{i}x_{i}$             |
+| :-----: | :---------: | :-----------------------------------: |
+|    15   |      2      |                   30                  |
+|    17   |      3      |                   51                  |
+|    19   |      4      |                   76                  |
+|  20 + p |      5p     |              100p + 5p^2^             |
+|    23   |      6      |                  138                  |
+|         | N = 5p + 15 | $\Sigma f_{i}x_{i}$= 295 +100p +5p^2^ |
+
+Given,
+
+Mean = 20
+
+$$
+\Rightarrow \frac{\Sigma f_{i}x_{i}}{N} = 20 \\
+\Rightarrow \frac{295 + 100p + 5p^{2}}{5p + 15} = 20
+$$
+
+⇒ 5p^2^ + 100p + 295 = 20 (15 + 5p)\
+⇒ 5p^2^ + 100p + 295 = 300 + 100p\
+⇒ 5p^2^ + 100p -- 100p = 300 -- 295\
+⇒ 5p^2^ = 5 
+
+⇒ p^2^ = 1\
+⇒ p = ±1\
+p = -1 is not possible\
+∴ p = 1
+
+**9. Find the missing frequencies in the following frequency
+distribution if it is known that the mean of the distribution is 50.**
+
+| x: | 10 | 30  | 50 | 70  | 90 |           |
+| -- | -- | --- | -- | --- | -- | --------- |
+| f: | 17 | f 1 | 32 | f 2 | 19 | Total 120 |
+
+**\
+Solution:**
+
+| $x_{i}$ |         $f_{i}$         |         $f_{i}x_{i}$         |
+| :-----: | :---------------------: | :--------------------------: |
+|    10   |            17           |              170             |
+|    30   |           f 1           |             30f 1            |
+|    50   |            32           |             1600             |
+|    70   |           f 2           |             70f 2            |
+|    90   |            19           |             1710             |
+|         | N = 68 + f 1 + f 2 =120 | Sum = 30f\~1 + 70f 2 \~+3480 |
+
+Now,\
+68 + f~~1~~ + f~~2~~ =120
+
+⇒ f~~1~~ + f~~2~~ =120 -- 68
+
+⇒ f~~1~~ + f~~2~~ = 52 ...(i)
+
+Given,
+
+Mean = 50
+
+$$
+\Rightarrow \frac{\Sigma f_{i}x_{i}}{N} = 50 \\
+\Rightarrow \frac{30f_{1} + 70f_{2} + 3480}{68 + f_{1} + f_{2}} = 50 \\
+\Rightarrow 30f_{1} + 70f_{2} + 3480 = 3400 + 50f_{1} + 50f_{2} \\
+\Rightarrow 50f_{1} - 30f_{1} + 50f_{2} - 70f_{2} = 3480 - 3400 \\
+\Rightarrow 20f_{1} - 20f_{2} = 80 \\
+\Rightarrow 20\left( f_{1} - f_{2} \right) = 80
+$$
+
+$\Rightarrow f_{1} - f_{2} = 4$ ...(ii)
+
+Adding (i) and (ii), we get
+
+f~~1~~ + f~~2~~ + $f_{1} - f_{2} = 52 + 4$
+
+$$
+\Rightarrow 2f_{1} = 56 \\
+\Rightarrow f_{1} = \frac{56}{2} \\
+\Rightarrow f_{1} = 28
+$$
+
+Putting $f_{1} = 28$ in equation (i), we get
+
+$$
+28 + f_{2} = 52 \\
+\Rightarrow f_{2} = 52 - 28 \\
+\Rightarrow f_{2} = 24
+$$
+
+∴ f~~1~~ = 28, f~~2~~ = 24
+
+
+
+## IMAGE
+
 **Exercise 11.1**
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image1-4e97dd8b.png" width="342" height="228" />**1. A tower stands vertically on the
+**1. A tower stands vertically on the
 ground. From a point on the ground, 20 m away from the foot of the
 tower, the angle of elevation of the top the tower is 60°. What is the
 height of the tower?**
+
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image1-15bdc649.png" width="342" height="228" />
 
 **Solution:**
 
@@ -18,21 +330,22 @@ And, Height of tower = AB = h m
 
 Now, from fig. ABC
 
-$$\tan\theta = \frac{Opposite\ side\ (AB)}{Adjacent\ side\ (BC)}$$
-
-$$\Rightarrow \tan{60{^\circ}} = \frac{h}{20}$$
-
-$$\Rightarrow h = 20\tan{60{^\circ}}$$
-
-$$\Rightarrow h = 20 \times \sqrt{3}$$
+$$
+\tan\theta = \frac{Opposite\ side\ (AB)}{Adjacent\ side\ (BC)} \\
+\Rightarrow \tan{60{^\circ}} = \frac{h}{20} \\
+\Rightarrow h = 20\tan{60{^\circ}} \\
+\Rightarrow h = 20 \times \sqrt{3}
+$$
 
 $\Rightarrow h = 20\sqrt{3}$ m
 
 Hence height of tower is $20\sqrt{3}$ meters.
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image2-a76b9940.png" width="251" height="186" />**2. The angle of elevation of a ladder
+**2. The angle of elevation of a ladder
 against a wall is 60° and the foot of the ladder is 9.5 m away from the
 wall. Find the length of the ladder.**
+
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image2-95041d31.png" width="251" height="186" />
 
 **Solution:** Given:
 
@@ -48,21 +361,22 @@ Now, from fig. ABC
 
 So,
 
-$$\cos\theta = \frac{Adjacent\ side\ (AB)}{Hypotenuse\ (BC)}$$
-
-$$\Rightarrow \cos{60{^\circ}} = \frac{9.5}{L}$$
-
-$$\Rightarrow \frac{1}{2} = \frac{9.5}{L}$$
-
-$$\Rightarrow L = 2 \times 9.5$$
+$$
+\cos\theta = \frac{Adjacent\ side\ (AB)}{Hypotenuse\ (BC)} \\
+\Rightarrow \cos{60{^\circ}} = \frac{9.5}{L} \\
+\Rightarrow \frac{1}{2} = \frac{9.5}{L} \\
+\Rightarrow L = 2 \times 9.5
+$$
 
 $\Rightarrow L = 19$ m
 
 Hence length of ladder is 19 meters.
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image3-82ad119f.png" width="207" height="178" />**3. A ladder 15 metres long reaches the
+**3. A ladder 15 metres long reaches the
 top of a vertical wall. If the ladder makes an angle of 60^o^ with the
 wall, find the height of the wall.**
+
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image3-5cb7597c.png" width="207" height="178" />
 
 **Solution:** Given that, the height of the ladder PQ = 15 m
 
@@ -73,11 +387,11 @@ and the ladder makes an angle of elevation 60° with the wall i.e., θ =
 
 Now, in ΔPQR
 
-$$\cos{60{^\circ}} = \frac{PR}{PQ}$$
-
-$$\Rightarrow \frac{1}{2} = \frac{h}{15}$$
-
-$$\Rightarrow h = \frac{15}{2}$$
+$$
+\cos{60{^\circ}} = \frac{PR}{PQ} \\
+\Rightarrow \frac{1}{2} = \frac{h}{15} \\
+\Rightarrow h = \frac{15}{2}
+$$
 
 $\Rightarrow h = 7.5$ m
 
@@ -91,42 +405,48 @@ of the flag staff and that of the tower.**
 
 D is a point on the ground 70 m away from the foot of the tower C.
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image4-a8b1d692.png" width="369" height="328" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image4-2074f42a.png" width="369" height="328" />
 
 Let h be the height of flag staff and x be the height of the tower
 
 Now,
 
-$$tan\ 45{^\circ} = \frac{AB}{DC}$$
+$$
+tan\ 45{^\circ} = \frac{AB}{DC} \\
+\Rightarrow 1 = \frac{h}{70}
+$$
 
-$$\Rightarrow 1 = \frac{h}{70}$$
-
-$\Rightarrow \ $h = 70 ...(i)
+$\Rightarrow$h = 70 ...(i)
 
 Again,
 
-$$tan\ 60{^\circ} = \frac{AC}{DC}$$
-
-$$\Rightarrow \sqrt{3} = \frac{AB + BC}{70}$$
-
-$$\Rightarrow 70\sqrt{3}\  = x + h$$
+$$
+tan\ 60{^\circ} = \frac{AC}{DC} \\
+\Rightarrow \sqrt{3} = \frac{AB + BC}{70} \\
+\Rightarrow 70\sqrt{3}\  = x + h
+$$
 
 $\Rightarrow 70\sqrt{3}\  = x + 70$ \[Using (i)]
 
-$$\Rightarrow x = 70\sqrt{3} - 70$$
-
-$$\Rightarrow x = 70\left( \sqrt{3} - 1 \right)$$
-
-$$\Rightarrow x = 70(1.732 - 1)$$
-
-$$\Rightarrow x = 70(0.732)$$
+$$
+\Rightarrow x = 70\sqrt{3} - 70 \\
+\Rightarrow x = 70\left( \sqrt{3} - 1 \right) \\
+\Rightarrow x = 70(1.732 - 1) \\
+\Rightarrow x = 70(0.732)
+$$
 
 $\Rightarrow x = 51.24$ m
 
 Therefore, the height of tower = 70 m and the height of flag staff =
 51.24 m
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image5-5bc8aea7.png" width="211" height="199" />
+**5. Two points A and B are on the same
+side of a tower and in the same straight line with its base. The angles
+of depression of these points from the top of the tower are 60° and 45°
+respectively. If the height of the tower is 15 m, then find the distance
+between these points.**
+
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image5-60dd0a6a.png" width="211" height="199" />
 
 **Solution:** Let CD be the tower and A, B are two points
 
@@ -135,38 +455,42 @@ which makes angles of elevation with top of the tower
 as 45° and 60° respectively
 
 In ∆DBC,\
-$$tan\ 60{^\circ} = \frac{DC}{BC}$$
 
-$$\Rightarrow \sqrt{3} = \frac{15}{BC}$$
+$$
+tan\ 60{^\circ} = \frac{DC}{BC}
+$$
 
-$$\Rightarrow BC = \frac{15}{\sqrt{3}}\ $$
-
-$$\Rightarrow BC = \frac{15}{\sqrt{3}} \times \frac{\sqrt{3}}{\sqrt{3}}$$
-
-$$\Rightarrow BC = \frac{15\sqrt{3}}{3}$$
+$$
+\Rightarrow \sqrt{3} = \frac{15}{BC} \\
+\Rightarrow BC = \frac{15}{\sqrt{3}} \\
+\Rightarrow BC = \frac{15}{\sqrt{3}} \times \frac{\sqrt{3}}{\sqrt{3}} \\
+\Rightarrow BC = \frac{15\sqrt{3}}{3}
+$$
 
 $\Rightarrow BC = 5\sqrt{3}$ m ...(i)
 
 In ∆DAC,\
-$$tan\ 45{^\circ} = \frac{DC}{AC}$$
 
-$$\Rightarrow 1 = \frac{15}{AC}$$
+$$
+tan\ 45{^\circ} = \frac{DC}{AC}
+$$
 
-$$\Rightarrow AC = 15\ \ \ \ \ \ \ \ \ \ \ldots(ii)$$
+$$
+\Rightarrow 1 = \frac{15}{AC} \\
+\Rightarrow AC = 15\ \ \ \ \ \ \ \ \ \ \ldots(ii)
+$$
 
 ∴ The distance between the two points A and B = AB
 
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = AC - BC$$
+$$
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = AC - BC \\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 15 - 5\sqrt{3} \\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 5\left( 3 - \sqrt{3} \right) \\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 5(3 - 1.732) \\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 5(1.268)
+$$
 
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 15 - 5\sqrt{3}$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 5\left( 3 - \sqrt{3} \right)$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 5(3 - 1.732)$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 5(1.268)$$
-
-$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ = 6.34\ $m
+$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 6.34$m
 
 **6. A vertical tower stands on a horizontal plane and is surmounted by
 a vertical flag staff of height 5 meters. At a point on the plane, the
@@ -178,7 +502,7 @@ respectively 30° and 60°. Find the height of the tower.**
 D is a point on the ground such that it makes angles of elevation of the
 bottom and top of the flag staff of 30° and 60° respectively
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image6-931409c7.png" width="353" height="310" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image6-0e398069.png" width="353" height="310" />
 
 Let h be the height of the tower
 
@@ -192,19 +516,20 @@ DC = x cm
 
 Now, in a triangle BCD
 
-$$tan\ 30{^\circ} = \frac{BC}{CD}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{x}$$
+$$
+tan\ 30{^\circ} = \frac{BC}{CD} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{x}
+$$
 
 $\Rightarrow$ $x = \sqrt{3}h$ ...(i)
 
 Again, in a triangle ACD
 
-$$tan\ 60{^\circ} = \frac{AC}{CD}$$
-
-$$\Rightarrow \sqrt{3} = \frac{AB + BC}{x}$$
-
-$$\Rightarrow \sqrt{3}x = 5 + h$$
+$$
+tan\ 60{^\circ} = \frac{AC}{CD} \\
+\Rightarrow \sqrt{3} = \frac{AB + BC}{x} \\
+\Rightarrow \sqrt{3}x = 5 + h
+$$
 
 $\Rightarrow \sqrt{3} \times h\sqrt{3}\  = 5 + h$ \[Using (i)]
 
@@ -227,7 +552,7 @@ the height of the tower is 129.9 metres.**
 makes an angle of elevation of 30° with the top of the tower AB, and 150
 m from D towards the foot of the
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image7-cc4985c6.png" width="368" height="246" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image7-633e5180.png" width="368" height="246" />
 
 Let height of tower AB = H m
 
@@ -239,31 +564,36 @@ BD = 150 + x
 
 Now, In ΔABC
 
-$$tan\ 60{^\circ} = \frac{AB}{BC}$$
-
-$$\Rightarrow \sqrt{3} = \frac{H}{x}\ $$
+$$
+tan\ 60{^\circ} = \frac{AB}{BC} \\
+\Rightarrow \sqrt{3} = \frac{H}{x}
+$$
 
 $\Rightarrow H = \sqrt{3}x$ ...(i)
 
 Now, In ΔABD
 
-$$tan\ 30{^\circ} = \frac{AB}{BD}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{H}{150 + x}\ $$
-
-$$\Rightarrow 150 + x = \sqrt{3}H$$
+$$
+tan\ 30{^\circ} = \frac{AB}{BD} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{H}{150 + x} \\
+\Rightarrow 150 + x = \sqrt{3}H
+$$
 
 $\Rightarrow x = \sqrt{3}H - 150$
 
 $\Rightarrow x = \sqrt{3}\left( \sqrt{3}x \right) - 150$ {Using (i)}
 
-$$\Rightarrow x = 3x - 150$$
+$$
+\Rightarrow x = 3x - 150
+$$
 
 $\Rightarrow 3x - x = 150$
 
 $\Rightarrow 2x = 150$
 
-$$\Rightarrow x = 75$$
+$$
+\Rightarrow x = 75
+$$
 
 Now, putting the value of $x$ in equation (i) we get
 
@@ -287,7 +617,7 @@ elevations of top A of the tower are 32° and 63° respectively.
 
 Let the height of the tower AB = h m
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image8-abd0a892.png" width="418" height="278" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image8-9693e660.png" width="418" height="278" />
 
 CD = 100 m
 
@@ -295,37 +625,32 @@ Then, from the fig.
 
 In ΔABC
 
-$$tan\ 63{^\circ} = \frac{AB}{BC}$$
-
-$$\Rightarrow 1.9626 = \frac{h}{x}$$
-
-$$\Rightarrow h = 1.9626x\ \ \ \ \ \ \ \ \ \ \ \ldots(i)$$
+$$
+tan\ 63{^\circ} = \frac{AB}{BC} \\
+\Rightarrow 1.9626 = \frac{h}{x} \\
+\Rightarrow h = 1.9626x\ \ \ \ \ \ \ \ \ \ \ \ldots(i)
+$$
 
 Again, in ΔABD
 
-$$\tan 32{^\circ} = \frac{AB}{BD}$$
-
-$$\Rightarrow tan\ 32{^\circ} = \frac{AB}{CD + BC}$$
-
-$$\Rightarrow 0.6248 = \frac{h}{100 + x}$$
-
-$$\Rightarrow h = 0.6248(100 + x)$$
-
-$$\Rightarrow h = 62.48 + \ 0.6248x$$
-
-$$\Rightarrow 1.9626x = 62.48 + \ 0.6248x\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left\lbrack Using\ (i) \right\rbrack$$
-
-$$\Rightarrow 1.9626x - 0.6248x = 62.48$$
-
-$$\Rightarrow 1.3378x = 62.48$$
-
-$$\Rightarrow x = \frac{62.48}{1.3378}$$
-
-$$\Rightarrow x = 46.7$$
+$$
+\tan 32{^\circ} = \frac{AB}{BD} \\
+\Rightarrow tan\ 32{^\circ} = \frac{AB}{CD + BC} \\
+\Rightarrow 0.6248 = \frac{h}{100 + x} \\
+\Rightarrow h = 0.6248(100 + x) \\
+\Rightarrow h = 62.48 + \ 0.6248x \\
+\Rightarrow 1.9626x = 62.48 + \ 0.6248x\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left\lbrack Using\ (i) \right\rbrack \\
+\Rightarrow 1.9626x - 0.6248x = 62.48 \\
+\Rightarrow 1.3378x = 62.48 \\
+\Rightarrow x = \frac{62.48}{1.3378} \\
+\Rightarrow x = 46.7
+$$
 
 Now, putting the value of $x$ in equation (i) we get
 
-$$h = 1.9626 \times 46.7$$
+$$
+h = 1.9626 \times 46.7
+$$
 
 $\ \ \ \  = 91.65$ m
 
@@ -346,42 +671,42 @@ the top of tower from a point A on the ground is $30{^\circ}$ and on
 moving with distance 20 m towards the foot of tower on the point B is
 $60{^\circ}$.
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image9-7dc58154.png" width="341" height="227" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image9-baa5fd02.png" width="341" height="227" />
 
 Now we have to find height of tower and distance of tower from
 point *A*.
 
 In ΔDBC
 
-$$tan\ 60{^\circ} = \frac{CD}{BC}$$
-
-$$\Rightarrow \sqrt{3} = \frac{h}{x}$$
-
-$$\Rightarrow h = \sqrt{3}x\ \ \ \ \ \ldots(i)$$
+$$
+tan\ 60{^\circ} = \frac{CD}{BC} \\
+\Rightarrow \sqrt{3} = \frac{h}{x} \\
+\Rightarrow h = \sqrt{3}x\ \ \ \ \ \ldots(i)
+$$
 
 Again, in ΔABC
 
-$$\tan 30{^\circ} = \frac{CD}{AC}$$
-
-$$\Rightarrow tan\ 30{^\circ} = \frac{CD}{AB + BC}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{20 + x}$$
-
-$$\Rightarrow \sqrt{3}h = 20 + x$$
+$$
+\tan 30{^\circ} = \frac{CD}{AC} \\
+\Rightarrow tan\ 30{^\circ} = \frac{CD}{AB + BC} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{20 + x} \\
+\Rightarrow \sqrt{3}h = 20 + x
+$$
 
 $\Rightarrow \sqrt{3}\left( \sqrt{3}x \right) = 20 + x$ \[Using (i)]
 
-$$\Rightarrow 3x = 20 + x$$
-
-$$\Rightarrow 3x - x = 20$$
-
-$$\Rightarrow 2x = 20$$
-
-$$\Rightarrow x = 10$$
+$$
+\Rightarrow 3x = 20 + x \\
+\Rightarrow 3x - x = 20 \\
+\Rightarrow 2x = 20 \\
+\Rightarrow x = 10
+$$
 
 Now, putting the value of $x$ in equation (i) we get
 
-$$h = \sqrt{3} \times 10$$
+$$
+h = \sqrt{3} \times 10
+$$
 
 $= 1.732 \times 10$
 
@@ -393,11 +718,13 @@ Height of the tower = 17.32 m
 
 Distance of the tower from point A = AC = AB + BC = (20 + 10) = 30 m
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image10-f33b628f.png" width="293" height="277" />**10. From the top of a building 15 m high
+**10. From the top of a building 15 m high
 the angle of elevation of the top of tower is found to be 30°. From the
 bottom of the same building, the angle of elevation of the top of the
 tower is found to be 60°. Find the height of the tower and the distance
 between the tower and the building.**
+
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image10-8d4a1d8f.png" width="293" height="277" />
 
 **Solution:** Let EC be the tower and AB be the building.
 
@@ -421,47 +748,37 @@ Then, from fig.
 
 In ΔBEC,
 
-$$tan\ 60{^\circ} = \frac{CE}{BE}$$
-
-$$\Rightarrow \sqrt{3} = \frac{h}{x}$$
-
-$$\Rightarrow h = \sqrt{3}x\ \ \ \ \ \ \ \ \ \ \ \ \ldots.(i)$$
+$$
+tan\ 60{^\circ} = \frac{CE}{BE} \\
+\Rightarrow \sqrt{3} = \frac{h}{x} \\
+\Rightarrow h = \sqrt{3}x\ \ \ \ \ \ \ \ \ \ \ \ \ldots.(i)
+$$
 
 Now, in ΔCDA,
 
-$$tan\ 30{^\circ} = \frac{CD}{DA}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{h - 15}{x}$$
-
-$$\Rightarrow x = \sqrt{3}h - 15\sqrt{3}$$
-
-$$\Rightarrow x = \sqrt{3}\left( \sqrt{3}x \right) - 15\sqrt{3}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left\lbrack Using\ (i) \right\rbrack$$
-
-$$\Rightarrow x = 3x - 15\sqrt{3}$$
-
-$$\Rightarrow 3x - x = 15\sqrt{3}$$
-
-$$\Rightarrow 2x = 15\sqrt{3}$$
-
-$$\Rightarrow x = \frac{15\sqrt{3}}{2}$$
-
-$$\Rightarrow x = \frac{15 \times 1.732}{2}$$
-
-$$\Rightarrow x = \frac{25.95}{2}$$
-
-$$\Rightarrow x = 12.975$$
+$$
+tan\ 30{^\circ} = \frac{CD}{DA} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{h - 15}{x} \\
+\Rightarrow x = \sqrt{3}h - 15\sqrt{3} \\
+\Rightarrow x = \sqrt{3}\left( \sqrt{3}x \right) - 15\sqrt{3}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left\lbrack Using\ (i) \right\rbrack \\
+\Rightarrow x = 3x - 15\sqrt{3} \\
+\Rightarrow 3x - x = 15\sqrt{3} \\
+\Rightarrow 2x = 15\sqrt{3} \\
+\Rightarrow x = \frac{15\sqrt{3}}{2} \\
+\Rightarrow x = \frac{15 \times 1.732}{2} \\
+\Rightarrow x = \frac{25.95}{2} \\
+\Rightarrow x = 12.975
+$$
 
 Now,
 
-$$h = \sqrt{3}x$$
-
-$$\ \ \ \ \  = \sqrt{3}\left( \frac{15\sqrt{3}}{2} \right)$$
-
-$$\ \ \ \ \  = \left( \frac{15 \times 3}{2} \right)$$
-
-$$\ \ \ \ \  = \frac{45}{2}$$
-
-$$\ \ \ \ \  = 22.5$$
+$$
+h = \sqrt{3}x \\
+\ \ \ \ \  = \sqrt{3}\left( \frac{15\sqrt{3}}{2} \right) \\
+\ \ \ \ \  = \left( \frac{15 \times 3}{2} \right) \\
+\ \ \ \ \  = \frac{45}{2} \\
+\ \ \ \ \  = 22.5
+$$
 
 Therefore, the height of the building = 22.5 m
 
@@ -477,7 +794,7 @@ mounted on it.**
 
 Distance of the point of observation from foot of the tower DC = 9 m
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image11-6cbf5aca.png" width="350" height="322" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image11-b08ba902.png" width="350" height="322" />
 
 Angle of elevation of bottom of flagstaff is 30°
 
@@ -489,31 +806,29 @@ From fig, we have
 
 In ΔBCD,
 
-$$tan\ 30{^\circ} = \frac{BC}{DC}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{9}$$
-
-$$\Rightarrow h = \frac{9}{\sqrt{3}}\ $$
-
-$$\Rightarrow h = \frac{9}{\sqrt{3}} \times \frac{\sqrt{3}}{\sqrt{3}}$$
-
-$$\Rightarrow h = \frac{9\sqrt{3}}{3}$$
-
-$$\Rightarrow h = \ 3\sqrt{3}$$
+$$
+tan\ 30{^\circ} = \frac{BC}{DC} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{9} \\
+\Rightarrow h = \frac{9}{\sqrt{3}} \\
+\Rightarrow h = \frac{9}{\sqrt{3}} \times \frac{\sqrt{3}}{\sqrt{3}} \\
+\Rightarrow h = \frac{9\sqrt{3}}{3} \\
+\Rightarrow h = \ 3\sqrt{3}
+$$
 
 Now, in ΔACD
 
-$$tan\ 60{^\circ} = \frac{AC}{DC}$$
-
-$$\Rightarrow \sqrt{3} = \frac{x + h}{9}$$
-
-$$\Rightarrow x + h = 9\sqrt{3}$$
+$$
+tan\ 60{^\circ} = \frac{AC}{DC} \\
+\Rightarrow \sqrt{3} = \frac{x + h}{9} \\
+\Rightarrow x + h = 9\sqrt{3}
+$$
 
 $\Rightarrow x + 3\sqrt{3} = 9\sqrt{3}$ \[Using (i)]
 
-$$\Rightarrow x = 9\sqrt{3} - 3\sqrt{3}$$
-
-$$\Rightarrow x = 6\sqrt{3}\ m$$
+$$
+\Rightarrow x = 9\sqrt{3} - 3\sqrt{3} \\
+\Rightarrow x = 6\sqrt{3}\ m
+$$
 
 Therefore,
 
@@ -528,8 +843,7 @@ eye.\*\*
 **Solution:** Let AB is the tower and CD is the observer who is 28.5 m
 away from the tower
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image12-94b0cb38.png" width="367" height="257" />\
-Height of the tower AB = 30 m
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image12-bd3b3020.png" width="367" height="257" />
 
 Height of the observer CD = 1.5 m
 
@@ -543,17 +857,18 @@ DC = EB = 1.5
 
 In △ADE
 
-$$\tan\theta = \frac{AE}{DE}$$
-
-$$\Rightarrow \tan\theta = \frac{AB - DE}{DE}$$
-
-$$\Rightarrow \tan\theta = \frac{30 - 1.5}{28.5}$$
-
-$$\Rightarrow \tan\theta = \frac{28.5}{28.5}$$
+$$
+\tan\theta = \frac{AE}{DE} \\
+\Rightarrow \tan\theta = \frac{AB - DE}{DE} \\
+\Rightarrow \tan\theta = \frac{30 - 1.5}{28.5} \\
+\Rightarrow \tan\theta = \frac{28.5}{28.5}
+$$
 
 ⇒$\  tan\ \theta = 1$
 
-$$\Rightarrow tan\ \theta = \tan{45{^\circ}}$$
+$$
+\Rightarrow tan\ \theta = \tan{45{^\circ}}
+$$
 
 $\Rightarrow \theta = 45$°
 
@@ -580,32 +895,32 @@ AS = BT = RQ = 1.5 m
 
 PR = PQ -- RQ = (30 -- 1.5) m = 28.5 m
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image13-57844e24.png" width="404" height="268" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image13-43adee30.png" width="404" height="268" />
 
-$$tan\ 30{^\circ} = \frac{PR}{AR}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{28.5}{AR}$$
-
-$$\Rightarrow AR = 28.5\sqrt{3}$$
+$$
+tan\ 30{^\circ} = \frac{PR}{AR} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{28.5}{AR} \\
+\Rightarrow AR = 28.5\sqrt{3}
+$$
 
 In ΔPRB,
 
-$$tan\ 60{^\circ} = \frac{PR}{BR}$$
-
-$$\Rightarrow \sqrt{3} = \frac{28.5}{BR}$$
-
-$$\Rightarrow BR = \frac{28.5}{\sqrt{3}}\ $$
-
-$$\Rightarrow BR = 9.5\sqrt{3}$$
+$$
+tan\ 60{^\circ} = \frac{PR}{BR} \\
+\Rightarrow \sqrt{3} = \frac{28.5}{BR} \\
+\Rightarrow BR = \frac{28.5}{\sqrt{3}} \\
+\Rightarrow BR = 9.5\sqrt{3}
+$$
 
 So, ST = AB = AR -- BR
 
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 28.5\sqrt{3} - 9.5\sqrt{3}\ $$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = \ 19\sqrt{3}$$
+$$
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 28.5\sqrt{3} - 9.5\sqrt{3} \\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = \ 19\sqrt{3}
+$$
 
 Therefore, the distance which the boy walked towards the building is
-19$\sqrt{3}\ $m.
+19$\sqrt{3}$m.
 
 **14.** **The shadow of a tower standing on level ground is found to be
 40 m longer when Sun's altitude is 30° than when it was 60°. Find the
@@ -617,37 +932,31 @@ top of the tower from the tip of the shadow.
 Let AB be h m and BC be x m. From the question, DB is 40 m longer than
 BC.
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image14-c58f1460.png" width="222" height="223" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image14-61f87965.png" width="222" height="223" />
 
 And two right triangles ABC and ABD are formed.
 
 In ΔABC,
 
-$$tan\ 60{^\circ} = \frac{AB}{BC}$$
-
-$$\Rightarrow \sqrt{3} = \frac{h}{x}$$
-
-$$\Rightarrow x = \frac{h}{\sqrt{3}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ldots\ (i)$$
+$$
+tan\ 60{^\circ} = \frac{AB}{BC} \\
+\Rightarrow \sqrt{3} = \frac{h}{x} \\
+\Rightarrow x = \frac{h}{\sqrt{3}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ldots\ (i)
+$$
 
 In ΔABD,
 
-$$tan\ 30{^\circ} = \frac{AB}{BD}$$
-
-$$tan\ 30{^\circ} = \frac{AB}{DC + CB}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{x + 40}$$
-
-$$\Rightarrow x + 40 = \sqrt{3}h$$
-
-$$\Rightarrow \frac{h}{\sqrt{3}} + 40 = \sqrt{3}h\ \ \ \ \ \ \ \ \ \lbrack using\ (i)\rbrack$$
-
-$$\Rightarrow \frac{h + 40\sqrt{3}}{\sqrt{3}} = \sqrt{3}h\ \ \ \ $$
-
-$$\Rightarrow h + 40\sqrt{3} = 3h$$
-
-$$\Rightarrow 2h = 40\sqrt{3}$$
-
-$$\Rightarrow h = 20\sqrt{3}$$
+$$
+tan\ 30{^\circ} = \frac{AB}{BD} \\
+tan\ 30{^\circ} = \frac{AB}{DC + CB} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{x + 40} \\
+\Rightarrow x + 40 = \sqrt{3}h \\
+\Rightarrow \frac{h}{\sqrt{3}} + 40 = \sqrt{3}h\ \ \ \ \ \ \ \ \ \lbrack using\ (i)\rbrack \\
+\Rightarrow \frac{h + 40\sqrt{3}}{\sqrt{3}} = \sqrt{3}h\ \ \ \\
+\Rightarrow h + 40\sqrt{3} = 3h \\
+\Rightarrow 2h = 40\sqrt{3} \\
+\Rightarrow h = 20\sqrt{3}
+$$
 
 Therefore, the height of the tower is 20$\sqrt{3}$ m.
 
@@ -656,7 +965,9 @@ and top of a transmission tower fixed at the top of 20 m high building
 are 45° and 60° respectively. Find the height of the transmission
 tower.**
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image15-f0462c49.png" width="271" height="264" />**Solution:** Given,
+**Solution:** Given,
+
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image15-ca38fadc.png" width="271" height="264" />
 
 Height of the building = AB = 20 m
 
@@ -670,27 +981,25 @@ Let distance between tower and observation point = x m
 
 Then, from the fig. we have
 
-$$\tan{45{^\circ}} = \frac{AB}{AO}$$
-
-$$\Rightarrow 1 = \frac{20}{x}$$
+$$
+\tan{45{^\circ}} = \frac{AB}{AO} \\
+\Rightarrow 1 = \frac{20}{x}
+$$
 
 $\Rightarrow x = 20\ m$ ...(i)
 
 Again,
 
-$$\tan{60{^\circ}} = \frac{AC}{AO}$$
+$$
+\tan{60{^\circ}} = \frac{AC}{AO} \\
+\tan{60{^\circ}} = \frac{AB + BC}{AO} \\
+\Rightarrow \sqrt{3} = \frac{h + 20}{x} \\
+\Rightarrow x\sqrt{3} = h + 20 \\
+\Rightarrow 20\sqrt{3} = h + 20\ \ \ \ \ \ \ \ \ \left\lbrack Using\ (i) \right\rbrack \\
+\Rightarrow h = 20\sqrt{3} - 20
+$$
 
-$$\tan{60{^\circ}} = \frac{AB + BC}{AO}$$
-
-$$\Rightarrow \sqrt{3} = \frac{h + 20}{x}$$
-
-$$\Rightarrow x\sqrt{3} = h + 20$$
-
-$$\Rightarrow 20\sqrt{3} = h + 20\ \ \ \ \ \ \ \ \ \left\lbrack Using\ (i) \right\rbrack$$
-
-$$\Rightarrow h = 20\sqrt{3} - 20\ $$
-
-$\Rightarrow h = 20\left( \sqrt{3} - 1 \right)\ $m
+$\Rightarrow h = 20\left( \sqrt{3} - 1 \right)$m
 
 Therefore, the height of the tower is $20\left( \sqrt{3} - 1 \right)\ m$
 
@@ -712,7 +1021,7 @@ building = 30°
 
 And, let the distance between the two buildings = ED = 'x' m
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image16-69ec13fb.png" width="244" height="308" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image16-52dfbc16.png" width="244" height="308" />
 
 So, BC = x and CD = 8 m
 
@@ -720,41 +1029,31 @@ From the fig. we have
 
 In ΔADE
 
-$$tan\ 45{^\circ} = \frac{AD}{ED}$$
-
-$$\Rightarrow 1\  = \frac{h}{x}\ $$
+$$
+tan\ 45{^\circ} = \frac{AD}{ED} \\
+\Rightarrow 1\  = \frac{h}{x}
+$$
 
 $\Rightarrow h = x$ ...(i)
 
 In ΔBCA
 
-$$tan\ 30{^\circ} = \frac{AC}{BC}$$
-
-$$\Rightarrow tan\ 30{^\circ} = \frac{AD - CD}{BC}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{h - 8}{x}$$
-
-$$\Rightarrow x = \sqrt{3}(h - 8)$$
-
-$$\Rightarrow h = \sqrt{3}(h - 8)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \lbrack using\ (i)\rbrack$$
-
-$$\Rightarrow h = \sqrt{3}h - 8\sqrt{3}$$
-
-$$\Rightarrow \sqrt{3}h - h = 8\sqrt{3}$$
-
-$$\Rightarrow (\sqrt{3} - 1)h = 8\sqrt{3}$$
-
-$$\Rightarrow h = \frac{8\sqrt{3}}{\sqrt{3} - 1}\ \ $$
-
-$$\Rightarrow h = \frac{8\sqrt{3}}{\sqrt{3} - 1} \times \frac{\sqrt{3} - 1}{\sqrt{3} + 1}$$
-
-$$\Rightarrow h = \frac{8\sqrt{3}\left( \sqrt{3} + 1 \right)}{3 - 1}\ $$
-
-$$\Rightarrow h = \frac{8\sqrt{3}\left( \sqrt{3} + 1 \right)}{2}\ $$
-
-$$\Rightarrow h = 4\sqrt{3}(\sqrt{3} + 1)$$
-
-$$\Rightarrow h = 12 + 4\sqrt{3}$$
+$$
+tan\ 30{^\circ} = \frac{AC}{BC} \\
+\Rightarrow tan\ 30{^\circ} = \frac{AD - CD}{BC} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{h - 8}{x} \\
+\Rightarrow x = \sqrt{3}(h - 8) \\
+\Rightarrow h = \sqrt{3}(h - 8)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \lbrack using\ (i)\rbrack \\
+\Rightarrow h = \sqrt{3}h - 8\sqrt{3} \\
+\Rightarrow \sqrt{3}h - h = 8\sqrt{3} \\
+\Rightarrow (\sqrt{3} - 1)h = 8\sqrt{3} \\
+\Rightarrow h = \frac{8\sqrt{3}}{\sqrt{3} - 1}\ \\
+\Rightarrow h = \frac{8\sqrt{3}}{\sqrt{3} - 1} \times \frac{\sqrt{3} - 1}{\sqrt{3} + 1} \\
+\Rightarrow h = \frac{8\sqrt{3}\left( \sqrt{3} + 1 \right)}{3 - 1} \\
+\Rightarrow h = \frac{8\sqrt{3}\left( \sqrt{3} + 1 \right)}{2} \\
+\Rightarrow h = 4\sqrt{3}(\sqrt{3} + 1) \\
+\Rightarrow h = 12 + 4\sqrt{3}
+$$
 
 $\Rightarrow h = 4\left( 3 + \sqrt{3} \right)$ m
 
@@ -779,53 +1078,48 @@ Angle of elevation of the top of statue is 60^o^
 
 Angle of elevation of the top of the pedestal is 45^o^
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image17-11e9b092.png" width="327" height="288" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image17-fcfdf8d2.png" width="327" height="288" />
 
 In ΔBCD,
 
-$$tan\ 45{^\circ} = \frac{BC}{CD}$$
+$$
+tan\ 45{^\circ} = \frac{BC}{CD} \\
+\Rightarrow 1\  = \frac{h}{x}
+$$
 
-$$\Rightarrow 1\  = \frac{h}{x}\ $$
-
-$\Rightarrow x = h\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ $...(i)
+$\Rightarrow x = h\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$...(i)
 
 h
 
 x
 
-$$tan\ 60{^\circ} = \frac{AC}{CD}$$
-
-$$\Rightarrow \sqrt{3} = \frac{AB + BC}{CD}\ $$
-
-$$\Rightarrow \sqrt{3} = \frac{1.6 + h}{x}\ $$
-
-$$\Rightarrow x\sqrt{3} = 1.6 + h$$
+$$
+tan\ 60{^\circ} = \frac{AC}{CD} \\
+\Rightarrow \sqrt{3} = \frac{AB + BC}{CD} \\
+\Rightarrow \sqrt{3} = \frac{1.6 + h}{x} \\
+\Rightarrow x\sqrt{3} = 1.6 + h
+$$
 
 $\Rightarrow x\sqrt{3} = 1.6 + x$ \[Using (i)]
 
-$$\Rightarrow x\sqrt{3} - x = 1.6$$
-
-$$\Rightarrow x\left( \sqrt{3} - 1 \right) = 1.6$$
-
-$$\Rightarrow x = \frac{1.6}{\sqrt{3} - 1}$$
-
-$$\Rightarrow x = \frac{1.6}{\sqrt{3} - 1} \times \frac{\sqrt{3} + 1}{\sqrt{3} + 1}$$
-
-$$\Rightarrow x = \frac{1.6\left( \sqrt{3} + 1 \right)}{3 - 1}$$
-
-$$\Rightarrow x = \frac{1.6\left( \sqrt{3} + 1 \right)}{2}$$
-
-$$\Rightarrow x = \frac{16\left( \sqrt{3} + 1 \right)}{10 \times 2}$$
-
-$$\Rightarrow x = \frac{16\left( \sqrt{3} + 1 \right)}{20}$$
-
-$$\Rightarrow x = \frac{4\left( \sqrt{3} + 1 \right)}{5}\ m$$
+$$
+\Rightarrow x\sqrt{3} - x = 1.6 \\
+\Rightarrow x\left( \sqrt{3} - 1 \right) = 1.6 \\
+\Rightarrow x = \frac{1.6}{\sqrt{3} - 1} \\
+\Rightarrow x = \frac{1.6}{\sqrt{3} - 1} \times \frac{\sqrt{3} + 1}{\sqrt{3} + 1} \\
+\Rightarrow x = \frac{1.6\left( \sqrt{3} + 1 \right)}{3 - 1} \\
+\Rightarrow x = \frac{1.6\left( \sqrt{3} + 1 \right)}{2} \\
+\Rightarrow x = \frac{16\left( \sqrt{3} + 1 \right)}{10 \times 2} \\
+\Rightarrow x = \frac{16\left( \sqrt{3} + 1 \right)}{20} \\
+\Rightarrow x = \frac{4\left( \sqrt{3} + 1 \right)}{5}\ m
+$$
 
 Putting the value of $x$ in equation (i), we get
 
-$$h = \frac{4\left( \sqrt{3} + 1 \right)}{5}\ m$$
-
-$$Therefore,\ the\ height\ of\ pedestal\ is\ \frac{4\left( \sqrt{3} + 1 \right)}{5}\ m$$
+$$
+h = \frac{4\left( \sqrt{3} + 1 \right)}{5}\ m \\
+Therefore,\ the\ height\ of\ pedestal\ is\ \frac{4\left( \sqrt{3} + 1 \right)}{5}\ m
+$$
 
 **18. From the top of a 120 m high tower, a man observes two cars on the
 opposite sides of the tower and in straight line with the base of tower
@@ -837,35 +1131,41 @@ which are at angle of depression 45° and 60° respectively when observed
 from the top of the tower.
 
 In right ∆ADB,\
-$$tan\ 60{^\circ} = \frac{AB}{DB}$$
 
-$$\Rightarrow \sqrt{3} = \frac{120}{DB}$$
+$$
+tan\ 60{^\circ} = \frac{AB}{DB}
+$$
 
-$$\Rightarrow DB = \frac{120}{\sqrt{3}}$$
-
-$$\Rightarrow DB = \frac{120}{\sqrt{3}} \times \frac{\sqrt{3}}{\sqrt{3}}$$
-
-$$\Rightarrow DB = \frac{120\sqrt{3}}{3}$$
-
-$$\Rightarrow DB = 40\sqrt{3}$$
-
-$$\Rightarrow DB = 40 \times 1.732$$
+$$
+\Rightarrow \sqrt{3} = \frac{120}{DB} \\
+\Rightarrow DB = \frac{120}{\sqrt{3}} \\
+\Rightarrow DB = \frac{120}{\sqrt{3}} \times \frac{\sqrt{3}}{\sqrt{3}} \\
+\Rightarrow DB = \frac{120\sqrt{3}}{3} \\
+\Rightarrow DB = 40\sqrt{3} \\
+\Rightarrow DB = 40 \times 1.732
+$$
 
 $\Rightarrow DB = 69.28\ m$ ...(ii)
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image18-a12c550b.png" width="273" height="181" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image18-25d3f5b5.png" width="273" height="181" />
 
 In ∆ACB,\
-$$tan\ 45{^\circ} = \frac{AB}{BC}$$
 
-$$\Rightarrow 1 = \frac{120}{BC}$$
+$$
+tan\ 45{^\circ} = \frac{AB}{BC}
+$$
 
-$$\Rightarrow BC = 120\ \ \ \ \ \ \ \ \ \ \ldots(ii)$$
+$$
+\Rightarrow 1 = \frac{120}{BC} \\
+\Rightarrow BC = 120\ \ \ \ \ \ \ \ \ \ \ldots(ii)
+$$
 
 ∴ Distance between the two cars will be\
 \= DB + BC
 
-$$= 120 + 69.28$$
+$$
+= 120 + 69.28
+$$
 
 \= 189.28 m
 
@@ -885,17 +1185,17 @@ building = 60°
 Angle of depression of the bottom of the building from the top of the
 building= 45°
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image19-b3d37646.png" width="225" height="294" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image19-6d221d5f.png" width="225" height="294" />
 
 ED = AB = 7 m
 
 So, in ΔABD, we have
 
-$$tan\ 45{^\circ} = \frac{AB}{BD}$$
-
-$$\Rightarrow 1 = \frac{7}{BD}$$
-
-$$\Rightarrow BD = 7\ cm$$
+$$
+tan\ 45{^\circ} = \frac{AB}{BD} \\
+\Rightarrow 1 = \frac{7}{BD} \\
+\Rightarrow BD = 7\ cm
+$$
 
 In ΔACE,
 
@@ -903,11 +1203,11 @@ AE = BD = 7
 
 So,
 
-$$tan\ 60{^\circ} = \frac{CE}{AE}$$
-
-$$\Rightarrow \sqrt{3} = \frac{CE}{7}$$
-
-$$\Rightarrow CE = 7\sqrt{3}\ m$$
+$$
+tan\ 60{^\circ} = \frac{CE}{AE} \\
+\Rightarrow \sqrt{3} = \frac{CE}{7} \\
+\Rightarrow CE = 7\sqrt{3}\ m
+$$
 
 So, CD = CE + ED
 
@@ -936,30 +1236,28 @@ Let distance between ships be 'x' m = CD
 
 So, in ΔABC, we have
 
-$$tan\ 45{^\circ} = \frac{AB}{BC}$$
-
-$$\Rightarrow 1 = \frac{75}{BC}$$
+$$
+tan\ 45{^\circ} = \frac{AB}{BC} \\
+\Rightarrow 1 = \frac{75}{BC}
+$$
 
 $\Rightarrow BC = 75\ cm$ ...(i)
 
-![](https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image21-aa80cace.png)
+![](https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image21-6b42f000.png)
 
 In ΔABD,
 
-$$tan\ 30{^\circ} = \frac{AB}{BD}$$
-
-$$\Rightarrow tan\ 30{^\circ} = \frac{AB}{BC + CD}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{75}{75 + x}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ldots\left\lbrack Using\ (i) \right\rbrack$$
-
-$$\Rightarrow 75 + x = 75\sqrt{3}$$
-
-$$\Rightarrow x = 75\sqrt{3} - 75$$
-
-$$\Rightarrow x = 75\left( \sqrt{3} - 1 \right)$$
+$$
+tan\ 30{^\circ} = \frac{AB}{BD} \\
+\Rightarrow tan\ 30{^\circ} = \frac{AB}{BC + CD} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{75}{75 + x}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ldots\left\lbrack Using\ (i) \right\rbrack \\
+\Rightarrow 75 + x = 75\sqrt{3} \\
+\Rightarrow x = 75\sqrt{3} - 75 \\
+\Rightarrow x = 75\left( \sqrt{3} - 1 \right)
+$$
 
 Therefore, the distance from the ships is 75($\sqrt{3}$
-$- \ $`<!-- -->`{=html}1) m
+$-$`<!-- -->`{=html}1) m
 
 **21. The angle of elevation of the top of the building from the foot of
 the tower is 30° and the angle of the top of the tower from the foot of
@@ -976,31 +1274,28 @@ tower is 30^o^.
 And, the angle of elevation of the top of the tower from the foot of the
 building is 60^o^.
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image22-799fd2d0.png" width="307" height="223" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image22-4ce10b90.png" width="307" height="223" />
 
 From the fig. we have
 
 In ΔCDB,
 
-$$\ tan\ 60{^\circ} = \frac{CD}{BD}$$
-
-$$\Rightarrow \sqrt{3} = \frac{50}{BD}\ $$
-
-$$\Rightarrow BD = \frac{50}{\sqrt{3}}\ \ldots.\ (i)$$
+$$
+\ tan\ 60{^\circ} = \frac{CD}{BD} \\
+\Rightarrow \sqrt{3} = \frac{50}{BD} \\
+\Rightarrow BD = \frac{50}{\sqrt{3}}\ \ldots.\ (i)
+$$
 
 Now, in ΔABD,
 
-$$tan\ 30{^\circ} = \frac{AB}{BD}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{AB}{BD}\ $$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{AB}{\frac{50}{\sqrt{3}}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left\lbrack Using\ (i) \right\rbrack$$
-
-$$\Rightarrow AB\sqrt{3} = \frac{50}{\sqrt{3}}$$
-
-$$\Rightarrow AB = \frac{50}{3}$$
-
-$$Therefore,\ the\ height\ of\ the\ building\ is\ \frac{50}{3}\ m.$$
+$$
+tan\ 30{^\circ} = \frac{AB}{BD} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{AB}{BD} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{AB}{\frac{50}{\sqrt{3}}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left\lbrack Using\ (i) \right\rbrack \\
+\Rightarrow AB\sqrt{3} = \frac{50}{\sqrt{3}} \\
+\Rightarrow AB = \frac{50}{3} \\
+Therefore,\ the\ height\ of\ the\ building\ is\ \frac{50}{3}\ m.
+$$
 
 **22. From a point on a bridge across a river the angle of depression of
 the banks on opposite side of the river are 30° and 45° respectively. If
@@ -1017,7 +1312,7 @@ river. And, AB is
 the width of the river. P is a point on the bridge which is at the
 height of 30 m from the banks.
 
-![](https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image24-08f33da1.png)Now,
+![](https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image24-c66b879f.png)Now,
 from the fig, we have
 
 AB = AD + DB
@@ -1028,15 +1323,13 @@ In ΔAPD,
 
 So,
 
-$$tan\ 30{^\circ} = \frac{PD}{AD}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{PD}{AD}$$
-
-$$\Rightarrow AD = \sqrt{3}PD$$
-
-$$\Rightarrow AD = \sqrt{3}(30)$$
-
-$$\Rightarrow AD = 30\sqrt{3}\ m$$
+$$
+tan\ 30{^\circ} = \frac{PD}{AD} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{PD}{AD} \\
+\Rightarrow AD = \sqrt{3}PD \\
+\Rightarrow AD = \sqrt{3}(30) \\
+\Rightarrow AD = 30\sqrt{3}\ m
+$$
 
 Now, in ΔPBD
 
@@ -1044,11 +1337,11 @@ Now, in ΔPBD
 
 So,
 
-$$tan\ 45{^\circ} = \frac{PD}{BD}$$
-
-$$\Rightarrow 1 = \frac{30}{BD}\ $$
-
-$$\Rightarrow BD = 30\ m$$
+$$
+tan\ 45{^\circ} = \frac{PD}{BD} \\
+\Rightarrow 1 = \frac{30}{BD} \\
+\Rightarrow BD = 30\ m
+$$
 
 Now, AB = AD + DB
 
@@ -1069,31 +1362,33 @@ height 50 m.
 Angle of elevation of the top of hill from the foot of tower is 60° and
 angle of elevation of top of tower from foot of hill is 30°.
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image25-74e7ff8c.png" width="247" height="175" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image25-d48753f7.png" width="247" height="175" />
 
 Let AC $= x$ m 
 
 Now, in ΔACD,
 
-$$tan\ 30{^\circ} = \frac{CD}{AC}$$
+$$
+tan\ 30{^\circ} = \frac{CD}{AC} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{50}{x}
+$$
 
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{50}{x}\ $$
-
-$\Rightarrow x = 50\sqrt{3}\ \ \ \ \ \ \ \ \ \ \ \ $...(i)
+$\Rightarrow x = 50\sqrt{3}\ \ \ \ \ \ \ \ \ \ \$...(i)
 
 Similarly, in ΔABC,
 
-$$tan\ 60{^\circ} = \frac{AB}{AC}$$
-
-$$\Rightarrow \sqrt{3} = \frac{h}{x}\ $$
-
-$$\Rightarrow h = \sqrt{3}x\ $$
+$$
+tan\ 60{^\circ} = \frac{AB}{AC} \\
+\Rightarrow \sqrt{3} = \frac{h}{x} \\
+\Rightarrow h = \sqrt{3}x
+$$
 
 $\Rightarrow h = \sqrt{3}\left( 50\sqrt{3} \right)$ \[Using (i)]
 
-$$\Rightarrow h = 50 \times 3$$
-
-$$\Rightarrow h = 150$$
+$$
+\Rightarrow h = 50 \times 3 \\
+\Rightarrow h = 150
+$$
 
 Hence the height of hill is 150 m.
 
@@ -1108,36 +1403,33 @@ elevation as 30° and 45° respectively.
 
 Now, in ΔBHL,
 
-$$tan\ 45{^\circ} = \frac{LH}{BH}$$
+$$
+tan\ 45{^\circ} = \frac{LH}{BH} \\
+\Rightarrow 1 = \frac{h}{x}
+$$
 
-$$\Rightarrow 1 = \frac{h}{x}\ $$
+$\Rightarrow x = h\ \ \ \ \ \ \ \ \ \ \$...(i)
 
-$\Rightarrow x = h\ \ \ \ \ \ \ \ \ \ \ \ $...(i)
-
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image26-a9342fc6.png" width="411" height="211" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image26-f7424aab.png" width="411" height="211" />
 
 Similarly, in right ΔAHL,
 
-$$tan\ 30{^\circ} = \frac{LH}{AH}$$
+$$
+tan\ 30{^\circ} = \frac{LH}{AH} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{100 - x} \\
+\Rightarrow 100 - x = \sqrt{3}h\
+$$
 
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{100 - x}\ $$
-
-$$\Rightarrow 100 - x = \sqrt{3}h\ \ $$
-
-$\Rightarrow 100 - h = \sqrt{3}h\ \ $ \[Using (i)]
+$\Rightarrow 100 - h = \sqrt{3}h\$ \[Using (i)]
 
 $$
 {\Rightarrow \sqrt{3}h + h = 100
-}{\Rightarrow h\left( \sqrt{3} + 1 \right) = 100}
+}{\Rightarrow h\left( \sqrt{3} + 1 \right) = 100} \\
+\Rightarrow h = \frac{100}{\sqrt{3} + 1} \\
+\Rightarrow h = \frac{100}{\sqrt{3} + 1} \times \frac{\sqrt{3} - 1}{\sqrt{3} - 1} \\
+\Rightarrow h = \frac{100\left( \sqrt{3} - 1 \right)}{3 - 1} \\
+\Rightarrow h = \frac{100\left( \sqrt{3} - 1 \right)}{2}
 $$
-
-$$\Rightarrow h = \frac{100}{\sqrt{3} + 1}$$
-
-$$\Rightarrow h = \frac{100}{\sqrt{3} + 1} \times \frac{\sqrt{3} - 1}{\sqrt{3} - 1}$$
-
-$$\Rightarrow h = \frac{100\left( \sqrt{3} - 1 \right)}{3 - 1}$$
-
-$$\Rightarrow h = \frac{100\left( \sqrt{3} - 1 \right)}{2}$$
 
 $\Rightarrow h = 50\left( \sqrt{3} - 1 \right)$ m
 
@@ -1155,39 +1447,36 @@ Given,
 
 Height of cliff CL = 80 m
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image27-a211c1f1.png" width="357" height="201" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image27-84eb7b47.png" width="357" height="201" />
 
 Now, in ΔABC
 
-$$tan\ 30{^\circ} = \frac{CL}{AL}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{80}{x}$$
+$$
+tan\ 30{^\circ} = \frac{CL}{AL} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{80}{x}
+$$
 
 $\Rightarrow x = 80\sqrt{3}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ldots(i)$
 
 Again, in ΔBCL
 
-$$tan\ 60{^\circ} = \frac{CL}{BL}$$
-
-$$\Rightarrow \sqrt{3} = \frac{80}{y}$$
-
-$$\Rightarrow y = \frac{80}{\sqrt{3}}\ $$
+$$
+tan\ 60{^\circ} = \frac{CL}{BL} \\
+\Rightarrow \sqrt{3} = \frac{80}{y} \\
+\Rightarrow y = \frac{80}{\sqrt{3}}
+$$
 
 ∴ Distance between the two men = AB = x + y
 
 $$
 {\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 80\sqrt{3} + \frac{80}{\sqrt{3}}
 }{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{80(3) + 80}{\sqrt{3}}
-}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{240 + 80}{\sqrt{3}}}
+}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{240 + 80}{\sqrt{3}}} \\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{320}{\sqrt{3}} \\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{320}{1.732} \\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 184.75 \\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 184.8
 $$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{320}{\sqrt{3}}$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{320}{1.732}$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 184.75$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 184.8$$
 
 Hence the height of cliff is 184.8 m.
 
@@ -1196,7 +1485,7 @@ at some instant the angles of depression of two points in a line in
 opposite directions on both the banks of the river are 45° and 60°. Find
 the width of the river. (Use \*\*$\sqrt{\mathbf{3}}$ \*\*= 1.73)         \*\*
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image28-5b75fb99.png" width="261" height="177" />**Solution:** Let CD be the height of the
+**Solution:** Let CD be the height of the
 aeroplane above the river at some instant and A and B be the two points
 on the opposite banks of the river.\
 Height of the aeroplane above the river, CD = 210 m\
@@ -1204,27 +1493,34 @@ Now,\
 ∠CAD = ∠ADX = 60°         (Alternate angles)\
 ∠CBD = ∠BDY = 45°         (Alternate angles)
 
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image28-1ea41948.png" width="261" height="177" />
+
 In right ∆ACD,\
-$$tan\ 60{^\circ} = \frac{CD}{AC}$$
 
-$$\Rightarrow \sqrt{3} = \frac{210}{AC}$$
+$$
+tan\ 60{^\circ} = \frac{CD}{AC}
+$$
 
-$$\Rightarrow AC = \frac{210}{\sqrt{3}}$$
+$$
+\Rightarrow \sqrt{3} = \frac{210}{AC} \\
+\Rightarrow AC = \frac{210}{\sqrt{3}} \\
+\Rightarrow AC = \frac{210}{\sqrt{3}} \times \frac{\sqrt{3}}{\sqrt{3}} \\
+\Rightarrow AC = \frac{210\sqrt{3}}{3} \\
+\Rightarrow AC = 70\sqrt{3} \\
+\Rightarrow AC = 70 \times 1.73
+$$
 
-$$\Rightarrow AC = \frac{210}{\sqrt{3}} \times \frac{\sqrt{3}}{\sqrt{3}}$$
-
-$$\Rightarrow AC = \frac{210\sqrt{3}}{3}$$
-
-$$\Rightarrow AC = 70\sqrt{3}\ $$
-
-$$\Rightarrow AC = 70 \times 1.73$$
-
-$\Rightarrow AC = 121.1\ $m
+$\Rightarrow AC = 121.1$m
 
 In right ∆BCD,\
-$$tan\ 45{^\circ} = \frac{CD}{BC}$$
 
-$$\Rightarrow 1 = \frac{210}{BC}$$
+$$
+tan\ 45{^\circ} = \frac{CD}{BC}
+$$
+
+$$
+\Rightarrow 1 = \frac{210}{BC}
+$$
 
 ⇒ BC = 210 m
 
@@ -1243,35 +1539,27 @@ tower is 45°. Find the height of the flag­staff.**
 **Solution:** Let AC is the flag-staff situated on the top of the tower
 BC.
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image29-1a01bf5a.png" width="277" height="229" />\
-\
-Now, in ∆BCD,
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image29-5de43c64.png" width="277" height="229" />
 
-$$tan\ 45{^\circ} = \frac{BC}{BD}$$
-
-$$\Rightarrow 1 = \frac{5}{x}\ $$
-
-$$\Rightarrow x = 5\ \ \ \ \ \ \ \ \ \ \ \ldots(i)$$
+$$
+tan\ 45{^\circ} = \frac{BC}{BD} \\
+\Rightarrow 1 = \frac{5}{x} \\
+\Rightarrow x = 5\ \ \ \ \ \ \ \ \ \ \ \ldots(i)
+$$
 
 Again, in ∆ABD,
 
-$$\tan 60{^\circ} = \frac{AB}{BD}$$
-
-$$\Rightarrow tan\ 60{^\circ} = \frac{AC + BC}{BD}$$
-
-$$\Rightarrow \sqrt{3} = \frac{h + 5}{x}\ $$
-
-$$\Rightarrow \sqrt{3} = \frac{h + 5}{5}\ \ \ \ \ \ \ \ \ \ \ \ \left\lbrack Using\ (i) \right\rbrack$$
-
-$$\Rightarrow 5\sqrt{3} = h + 5$$
-
-$$\Rightarrow h = 5\sqrt{3} - 5$$
-
-$$\Rightarrow h = 5(\sqrt{3} - 1)$$
-
-$$\Rightarrow h = 5(1.73 - 1)$$
-
-$$\Rightarrow h = 5(0.73)$$
+$$
+\tan 60{^\circ} = \frac{AB}{BD} \\
+\Rightarrow tan\ 60{^\circ} = \frac{AC + BC}{BD} \\
+\Rightarrow \sqrt{3} = \frac{h + 5}{x} \\
+\Rightarrow \sqrt{3} = \frac{h + 5}{5}\ \ \ \ \ \ \ \ \ \ \ \ \left\lbrack Using\ (i) \right\rbrack \\
+\Rightarrow 5\sqrt{3} = h + 5 \\
+\Rightarrow h = 5\sqrt{3} - 5 \\
+\Rightarrow h = 5(\sqrt{3} - 1) \\
+\Rightarrow h = 5(1.73 - 1) \\
+\Rightarrow h = 5(0.73)
+$$
 
 $\Rightarrow h = 3.65$ m
 
@@ -1284,8 +1572,7 @@ height of the first pole. (Use **$\sqrt{\mathbf{3}}$** = 1.73)**
 
 **Solution:** Let AB be the first pole and CD be the second pole.
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image30-fe334cdb.png" width="235" height="225" />\
-Height of the second pole, CD = 24 m
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image30-9d0293bf.png" width="235" height="225" />
 
 Angle of elevation from top of pole AB, to pole CD = 30°\
 From A, draw AE || DB
@@ -1300,25 +1587,26 @@ Suppose the height of the first pole be *h* m.\
 AE = BD = 15 m\
 Now, ∠CAE = ∠ACF = 30°        (Alternate angles)\
 In right ∆ACE,\
-$$tan\ 30{^\circ} = \frac{CE}{AE}$$
 
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{24 - h}{15}$$
+$$
+tan\ 30{^\circ} = \frac{CE}{AE}
+$$
 
-$$\Rightarrow \frac{15}{\sqrt{3}} = 24 - h$$
+$$
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{24 - h}{15} \\
+\Rightarrow \frac{15}{\sqrt{3}} = 24 - h \\
+\Rightarrow \frac{15}{\sqrt{3}} \times \frac{\sqrt{3}}{\sqrt{3}} = 24 - h \\
+\Rightarrow \frac{15\sqrt{3}}{3} = 24 - h \\
+\Rightarrow 5\sqrt{3} = 24 - h \\
+\Rightarrow h = 24 - 5\sqrt{3} \\
+\Rightarrow h = 24 - 5 \times 1.732 \\
+\Rightarrow h = 24 - 8.66
+$$
 
-$$\Rightarrow \frac{15}{\sqrt{3}} \times \frac{\sqrt{3}}{\sqrt{3}} = 24 - h$$
+$$
+\Rightarrow h = 15.34\ m
+$$
 
-$$\Rightarrow \frac{15\sqrt{3}}{3} = 24 - h$$
-
-$$\Rightarrow 5\sqrt{3} = 24 - h$$
-
-$$\Rightarrow h = 24 - 5\sqrt{3}$$
-
-$$\Rightarrow h = 24 - 5 \times 1.732$$
-
-$$\Rightarrow h = 24 - 8.66$$
-
-$$\Rightarrow h = 15.34\ m$$
 Hence, the height of the first pole is 15.34 m.
 
 **29. The angles of depression of two ships from the top of a light
@@ -1326,9 +1614,11 @@ house and on the same side of it are found to be 45° and 30°
 respectively. If the ships are 200 m apart, find the height of the light
 house.**
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image31-78af2752.png" width="243" height="180" />**Solution:** Let CD be the light house
+**Solution:** Let CD be the light house
 and A and B are two ships on the same side of the light house Angle of
 depression from top of the light house of the two ships are 30° and 45°
+
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image31-80f4e2f3.png" width="243" height="180" />
 
 Now,
 
@@ -1344,42 +1634,38 @@ Now,
 
 In right ∆BCD,
 
-$$tan\ 45{^\circ} = \frac{CD}{BC}$$
-
-$$\Rightarrow 1 = \frac{h}{x}$$
-
-$$\Rightarrow x = h\ \ \ \ \ \ \ \ \ \ \ \ .....(i)\ $$
+$$
+tan\ 45{^\circ} = \frac{CD}{BC} \\
+\Rightarrow 1 = \frac{h}{x} \\
+\Rightarrow x = h\ \ \ \ \ \ \ \ \ \ \ \ .....(i)
+$$
 
 In right ∆ACD,
 
-$$tan\ 30{^\circ} = \frac{CD}{AC}$$
+$$
+tan\ 30{^\circ} = \frac{CD}{AC} \\
+\Rightarrow tan\ 30{^\circ} = \frac{CD}{AB + BC} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{x + 200} \\
+\Rightarrow \sqrt{3}h = x + 200
+$$
 
-$$\Rightarrow tan\ 30{^\circ} = \frac{CD}{AB + BC}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{x + 200}$$
-
-$$\Rightarrow \sqrt{3}h = x + 200\ $$
-
-$\Rightarrow \sqrt{3}h = h + 200\ \ \ \ \ \ \ \ \ \ \ \ \ $\[Using (i)]
-
-$$\Rightarrow \sqrt{3}h - h = 200$$
-
-$$\Rightarrow \left( \sqrt{3} - 1 \right)h = 200$$
+$\Rightarrow \sqrt{3}h = h + 200\ \ \ \ \ \ \ \ \ \ \ \$\[Using (i)]
 
 $$
+\Rightarrow \sqrt{3}h - h = 200 \\
+\Rightarrow \left( \sqrt{3} - 1 \right)h = 200 \\
 {\Rightarrow h = \frac{200}{\sqrt{3} - 1}
-}{\Rightarrow h = \frac{200}{\sqrt{3} - 1} \times \frac{\sqrt{3} + 1}{\sqrt{3} + 1}}
+}{\Rightarrow h = \frac{200}{\sqrt{3} - 1} \times \frac{\sqrt{3} + 1}{\sqrt{3} + 1}} \\
+\Rightarrow h = \frac{200\left( \sqrt{3} + 1 \right)}{3 - 1} \\
+\Rightarrow h = \frac{200\left( \sqrt{3} + 1 \right)}{2}
 $$
-
-$$\Rightarrow h = \frac{200\left( \sqrt{3} + 1 \right)}{3 - 1}$$
-
-$$\Rightarrow h = \frac{200\left( \sqrt{3} + 1 \right)}{2}$$
 
 $\Rightarrow h = 100\left( \sqrt{3} + 1 \right)$
 
-$$\Rightarrow h = 100(1.732 + 1)$$
-
-$$\Rightarrow h = 100 \times 2.732$$
+$$
+\Rightarrow h = 100(1.732 + 1) \\
+\Rightarrow h = 100 \times 2.732
+$$
 
 $\Rightarrow h = 273.2$ m\
 Hence, the height of the light house is $273.2\ m.$
@@ -1389,27 +1675,29 @@ distance of 4 m and 9 m from the base of the tower and in the same
 straight line with it are complementary. Prove that the height of the
 tower is 6 m.**
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image32-6b3ad559.png" width="250" height="168" />**Solution:** Let AB be tower of height $h$ m and angle
+**Solution:** Let AB be tower of height $h$ m and angle
 of elevation of the top of tower from two points
-are $\theta\ $and $90{^\circ} - \theta$
+are $\theta$and $90{^\circ} - \theta$
+
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image32-99c58aa3.png" width="250" height="168" />
 
 Let, AB = $h$ m and AC = 4 m and AD = 9 m
 
 Now, in ∆ABC,
 
-$$tan\ \theta = \frac{AB}{AC}$$
-
-$$\Rightarrow tan\ \theta = \frac{h}{4}\ \ \ \ \ \ \ \ \ \ \ \ldots(i)$$
+$$
+tan\ \theta = \frac{AB}{AC} \\
+\Rightarrow tan\ \theta = \frac{h}{4}\ \ \ \ \ \ \ \ \ \ \ \ldots(i)
+$$
 
 Now, in ∆ABC,
 
-$$tan\ (90{^\circ} - \theta) = \frac{AB}{AD}$$
-
-$$\Rightarrow tan\ \theta = \frac{AB}{AD}$$
-
-$$\Rightarrow \frac{h}{4} = \frac{9}{h}$$
-
-$$\Rightarrow h^{2} = 36$$
+$$
+tan\ (90{^\circ} - \theta) = \frac{AB}{AD} \\
+\Rightarrow tan\ \theta = \frac{AB}{AD} \\
+\Rightarrow \frac{h}{4} = \frac{9}{h} \\
+\Rightarrow h^{2} = 36
+$$
 
 $\Rightarrow h = 6$m
 
@@ -1430,7 +1718,7 @@ river. And, AB is
 the width of the river. P is a point on the bridge which is at the
 height of 8 m from the banks.
 
-![](https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image24-08f33da1.png)Now,
+![](https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image24-c66b879f.png)Now,
 from the fig, we have
 
 AB = AD + DB
@@ -1441,15 +1729,13 @@ In ΔAPD,
 
 So,
 
-$$tan\ 30{^\circ} = \frac{PD}{AD}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{PD}{AD}$$
-
-$$\Rightarrow AD = \sqrt{3}PD$$
-
-$$\Rightarrow AD = \sqrt{3}(8)$$
-
-$$\Rightarrow AD = 8\sqrt{3}\ m$$
+$$
+tan\ 30{^\circ} = \frac{PD}{AD} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{PD}{AD} \\
+\Rightarrow AD = \sqrt{3}PD \\
+\Rightarrow AD = \sqrt{3}(8) \\
+\Rightarrow AD = 8\sqrt{3}\ m
+$$
 
 Now, in ΔPBD
 
@@ -1457,11 +1743,11 @@ Now, in ΔPBD
 
 So,
 
-$$tan\ 45{^\circ} = \frac{PD}{BD}$$
-
-$$\Rightarrow 1 = \frac{8}{BD}\ $$
-
-$$\Rightarrow BD = 8\ m$$
+$$
+tan\ 45{^\circ} = \frac{PD}{BD} \\
+\Rightarrow 1 = \frac{8}{BD} \\
+\Rightarrow BD = 8\ m
+$$
 
 Now, AB = AD + BD
 
@@ -1479,41 +1765,42 @@ minimum height of a smoke emitting chimney should be 100 m. State if the
 height of the above mentioned chimney meets the pollution norms. What
 value is discussed in this question? \*\*
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image33-15abed45.png" width="184" height="287" />**Solution:** Let AB be the tower and CD
+**Solution:** Let AB be the tower and CD
 be the chimney.\
 Height of the tower, AB = 40 m\
 Suppose the height of the chimney be *h* m.\
 \
 Draw AE ⊥ CD.
 
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image33-1639de4c.png" width="184" height="287" />
+
 Here, CE = AB = 40 m\
 DE = CD − CE = (*h* − 40) m\
 \
 In right ∆AEC,\
-$$tan\ 30{^\circ} = \frac{CE}{AE}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{40}{AE}$$
 
 $$
-{\Rightarrow AE = 40\sqrt{3}\ m\\
+tan\ 30{^\circ} = \frac{CE}{AE}
+$$
+
+$$
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{40}{AE} \\
+{\Rightarrow AE = 40\sqrt{3}\ m\
 }
 {In\ right\ \mathrm{\Delta}AED,
-}{tan\ 60{^\circ} = \frac{DE}{AE}}
+}{tan\ 60{^\circ} = \frac{DE}{AE}} \\
+\Rightarrow tan\ 60{^\circ} = \frac{CD - CE}{AE} \\
+\Rightarrow \sqrt{3} = \frac{h - 40}{40\sqrt{3}} \\
+\Rightarrow h - 40 = 40\sqrt{3} \times \sqrt{3} \\
+\Rightarrow h - 40 = 40 \times 3 \\
+\Rightarrow h - 40 = 120 \\
+\Rightarrow h = 120 + 40
 $$
 
-$$\Rightarrow tan\ 60{^\circ} = \frac{CD - CE}{AE}$$
+$$
+\Rightarrow h = 160\ m
+$$
 
-$$\Rightarrow \sqrt{3} = \frac{h - 40}{40\sqrt{3}}\ $$
-
-$$\Rightarrow h - 40 = 40\sqrt{3} \times \sqrt{3}$$
-
-$$\Rightarrow h - 40 = 40 \times 3$$
-
-$$\Rightarrow h - 40 = 120$$
-
-$$\Rightarrow h = 120 + 40$$
-
-$$\Rightarrow h = 160\ m$$
 Thus, the height of the chimney is 160 m.\
 \
 Clearly, the height of the chimney meets the pollution norms.\
@@ -1531,7 +1818,7 @@ post.\*\*
 **Solution:** Let AB be the building of height 60 m and CD be the lamp
 post of height$\ h$,
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image34-4e9c8efc.png" width="243" height="283" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image34-27b86bdd.png" width="243" height="283" />
 
 Then AE = 60 -- h
 
@@ -1545,45 +1832,37 @@ Draw CE || DB || AX
 
 Now, in right ΔACE,
 
-$$tan\ 30{^\circ} = \frac{AE}{CE}$$
+$$
+tan\ 30{^\circ} = \frac{AE}{CE} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{60 - h}{x}
+$$
 
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{60 - h}{x}\ $$
-
-$\Rightarrow x = \sqrt{3}(60 - h)\ \ \ \ \ \ \ \ \ \ \ \ \ $...(i)
+$\Rightarrow x = \sqrt{3}(60 - h)\ \ \ \ \ \ \ \ \ \ \ \$...(i)
 
 Similarly, in right ΔADE,
 
-$$tan\ 60{^\circ} = \frac{AB}{DB}$$
-
-$$\Rightarrow \sqrt{3} = \frac{60}{x}\ $$
-
-$$\Rightarrow x = \frac{60}{\sqrt{3}}\ \ \ \ \ \ \ \ \ldots(ii)$$
-
-$$\Rightarrow x = \frac{60}{\sqrt{3}} \times \frac{\sqrt{3}}{\sqrt{3}}\ $$
-
-$$\Rightarrow x = \frac{60\sqrt{3}}{3}\ $$
-
-$$\Rightarrow x = 20\sqrt{3}\ $$
-
-$$\Rightarrow x = 20(1.732)$$
-
-$$\Rightarrow x = 34.64$$
+$$
+tan\ 60{^\circ} = \frac{AB}{DB} \\
+\Rightarrow \sqrt{3} = \frac{60}{x} \\
+\Rightarrow x = \frac{60}{\sqrt{3}}\ \ \ \ \ \ \ \ \ldots(ii) \\
+\Rightarrow x = \frac{60}{\sqrt{3}} \times \frac{\sqrt{3}}{\sqrt{3}} \\
+\Rightarrow x = \frac{60\sqrt{3}}{3} \\
+\Rightarrow x = 20\sqrt{3} \\
+\Rightarrow x = 20(1.732) \\
+\Rightarrow x = 34.64
+$$
 
 Now, comparing (i) and (ii), we get
 
-$$\frac{60}{\sqrt{3}} = \sqrt{3}(60 - h)$$
-
-$$\Rightarrow 60 = 3(60 - h)$$
-
-$$\Rightarrow 60 = 180 - 3h$$
-
-$$\Rightarrow 3h = 180 - 60$$
-
-$$\Rightarrow 3h = 120$$
-
-$$\Rightarrow h = \frac{120}{3}$$
-
-$$\Rightarrow h = 40\ m$$
+$$
+\frac{60}{\sqrt{3}} = \sqrt{3}(60 - h) \\
+\Rightarrow 60 = 3(60 - h) \\
+\Rightarrow 60 = 180 - 3h \\
+\Rightarrow 3h = 180 - 60 \\
+\Rightarrow 3h = 120 \\
+\Rightarrow h = \frac{120}{3} \\
+\Rightarrow h = 40\ m
+$$
 
 (i) The horizontal distance between AB and CD = DB = $x$ = $34.64$ m
 
@@ -1604,65 +1883,55 @@ from 60° to 45° in 2 minutes. Find the speed of the boat in m/h.**
 
 In ΔABC,
 
-$$tan\ 60{^\circ} = \frac{AB}{BC}$$
+$$
+tan\ 60{^\circ} = \frac{AB}{BC} \\
+\Rightarrow \sqrt{3} = \frac{150}{x} \\
+\Rightarrow x = \frac{150}{\sqrt{3}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ldots(i)
+$$
 
-$$\Rightarrow \sqrt{3} = \frac{150}{x}$$
-
-$$\Rightarrow x = \frac{150}{\sqrt{3}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ldots(i)$$
-
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image35-f4d4a15b.png" width="224" height="240" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image35-7b8d5a37.png" width="224" height="240" />
 
 In ΔABD,
 
-$$tan\ 45{^\circ} = \frac{AB}{BD}$$
-
-$$\Rightarrow 1 = \frac{150}{x + y}$$
-
-$$\Rightarrow x + y = 150\ $$
-
-$$\Rightarrow y = 150 - x$$
-
-$$\Rightarrow y = 150 - \frac{150}{\sqrt{3}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \lbrack Using\ (i)\rbrack$$
-
-$$\Rightarrow y = \frac{150\sqrt{3} - 150}{\sqrt{3}}\ \ $$
-
-$$\Rightarrow y = \frac{150\left( \sqrt{3} - 1 \right)}{\sqrt{3}}\ \ $$
-
-$$\Rightarrow y = \frac{150\left( \sqrt{3} - 1 \right)}{\sqrt{3}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ldots(ii)$$
-
-$$Time\ taken\ to\ move\ from\ point\ C\ to\ point\ D\ is\ 2\ min = \frac{2}{60}\ h = \frac{1}{30}h$$
+$$
+tan\ 45{^\circ} = \frac{AB}{BD} \\
+\Rightarrow 1 = \frac{150}{x + y} \\
+\Rightarrow x + y = 150 \\
+\Rightarrow y = 150 - x \\
+\Rightarrow y = 150 - \frac{150}{\sqrt{3}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \lbrack Using\ (i)\rbrack \\
+\Rightarrow y = \frac{150\sqrt{3} - 150}{\sqrt{3}}\ \\
+\Rightarrow y = \frac{150\left( \sqrt{3} - 1 \right)}{\sqrt{3}}\ \\
+\Rightarrow y = \frac{150\left( \sqrt{3} - 1 \right)}{\sqrt{3}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ldots(ii) \\
+Time\ taken\ to\ move\ from\ point\ C\ to\ point\ D\ is\ 2\ min = \frac{2}{60}\ h = \frac{1}{30}h
+$$
 
 Now,\
-$$Speed = \frac{Distance}{Time}$$
 
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{y}{\frac{1}{30}}$$
+$$
+Speed = \frac{Distance}{Time}
+$$
 
-$$\ \ \ \ \ \ \ \ \ \ \ \ \  = 30y$$
+$$
+\ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{y}{\frac{1}{30}} \\
+\ \ \ \ \ \ \ \ \ \ \ \ \  = 30y \\
+\ \ \ \ \ \ \ \ \ \ \ \ \  = 30 \times \frac{150\left( \sqrt{3} - 1 \right)}{\sqrt{3}}\ \ \ \ \ \\
+\ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{4500\left( \sqrt{3} - 1 \right)}{\sqrt{3}}\ \ \ \ \ \\
+\ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{4500\left( \sqrt{3} - 1 \right)}{\sqrt{3}} \times \frac{\sqrt{3}}{\sqrt{3}} \\
+\ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{4500\sqrt{3}\left( \sqrt{3} - 1 \right)}{3} \\
+\ \ \ \ \ \ \ \ \ \ \ \ \  = 1500\sqrt{3}\left( \sqrt{3} - 1 \right) \\
+\ \ \ \ \ \ \ \ \ \ \ \ \  = 1500 \times 1.732(1.732 - 1) \\
+\ \ \ \ \ \ \ \ \ \ \ \ \  = 2598(0.732) \\
+\ \ \ \ \ \ \ \ \ \ \ \ \  = 1901.736
+$$
 
-$$\ \ \ \ \ \ \ \ \ \ \ \ \  = 30 \times \frac{150\left( \sqrt{3} - 1 \right)}{\sqrt{3}}\ \ \ \ \ \ $$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{4500\left( \sqrt{3} - 1 \right)}{\sqrt{3}}\ \ \ \ \ \ $$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{4500\left( \sqrt{3} - 1 \right)}{\sqrt{3}} \times \frac{\sqrt{3}}{\sqrt{3}}$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{4500\sqrt{3}\left( \sqrt{3} - 1 \right)}{3}$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \  = 1500\sqrt{3}\left( \sqrt{3} - 1 \right)$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \  = 1500 \times 1.732(1.732 - 1)$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \  = 2598(0.732)$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \  = 1901.736$$
-
-$\ \ \ \ \ \ \ \ \ \ \ \ \  = 1902\ m$/$h\ $ {Approx}
+$\ \ \ \ \ \ \ \ \ \ \ \ \  = 1902\ m$/$h$ {Approx}
 
 **35. A man in a boat rowing away from a light house 100 m high takes 2
 minutes to change the angle of elevation of the top of the light house
 from 60° to 30°. Find the speed of the boat in metres per minute. (Use**
 $\sqrt{\mathbf{3}}$ **= 1.732)**
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image36-0bbb4c51.png" width="279" height="175" />**Solution:** Let AB be the light house.
+**Solution:** Let AB be the light house.
 Suppose C and D be the two positions of the boat.\
 Here, AB = 100 m.\
 Let the speed of the boat be v m/min.\
@@ -1670,44 +1939,43 @@ Let the speed of the boat be v m/min.\
 So,\
 CD = $v$ m/min × 2 min \[Distance = Speed × Time]
 
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image36-25a98f1d.png" width="279" height="175" />
+
 \= 2v m         
 
 In right ∆ABC,\
-$$tan\ 60{^\circ} = \frac{AB}{BC}$$
-
-$$\Rightarrow \sqrt{3} = \frac{100}{BC}$$
-
-$$\Rightarrow BC = \frac{100}{\sqrt{3}}\ $$
 
 $$
+tan\ 60{^\circ} = \frac{AB}{BC}
+$$
+
+$$
+\Rightarrow \sqrt{3} = \frac{100}{BC} \\
+\Rightarrow BC = \frac{100}{\sqrt{3}} \\
 {\Rightarrow BC = \frac{100}{\sqrt{3}} \times \frac{\sqrt{3}}{\sqrt{3}}
 }{\Rightarrow BC = \frac{100\sqrt{3}}{3}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ldots(i)}
 $$
 
 In right ∆ABD,\
-$$tan\ 30{^\circ} = \frac{AB}{BD}$$
 
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{100}{CD + BC}$$
+$$
+tan\ 30{^\circ} = \frac{AB}{BD}
+$$
 
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{100}{2v + \frac{100\sqrt{3}}{3}}$$
+$$
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{100}{CD + BC} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{100}{2v + \frac{100\sqrt{3}}{3}} \\
+\Rightarrow 2v + \frac{100\sqrt{3}}{3} = 100\sqrt{3} \\
+\Rightarrow 2v = 100\sqrt{3} - \frac{100\sqrt{3}}{3} \\
+\Rightarrow 2v = 100\sqrt{3}\left( 1 - \frac{1}{3} \right) \\
+\Rightarrow 2v = 100\sqrt{3}\left( \frac{3 - 1}{3} \right) \\
+\Rightarrow v = \frac{100\sqrt{3}}{2} \times \frac{2}{3} \\
+\Rightarrow v = \frac{100\sqrt{3}}{3} \\
+\Rightarrow v = \frac{100(1.732)}{3} \\
+\Rightarrow v = \frac{173.2}{3}
+$$
 
-$$\Rightarrow 2v + \frac{100\sqrt{3}}{3} = 100\sqrt{3}$$
-
-$$\Rightarrow 2v = 100\sqrt{3} - \frac{100\sqrt{3}}{3}$$
-
-$$\Rightarrow 2v = 100\sqrt{3}\left( 1 - \frac{1}{3} \right)$$
-
-$$\Rightarrow 2v = 100\sqrt{3}\left( \frac{3 - 1}{3} \right)$$
-
-$$\Rightarrow v = \frac{100\sqrt{3}}{2} \times \frac{2}{3}$$
-
-$$\Rightarrow v = \frac{100\sqrt{3}}{3}$$
-
-$$\Rightarrow v = \frac{100(1.732)}{3}$$
-
-$$\Rightarrow v = \frac{173.2}{3}$$
-
-$\Rightarrow v = 57.73\ $ m/min
+$\Rightarrow v = 57.73$ m/min
 
 Hence, the speed of the boat is 57.73 m/min.
 
@@ -1716,7 +1984,9 @@ lake is a and the angle of depression of its reflection in the lake be
 p, prove that the distance of the cloud from the point of observation
 is**
 
-$$\frac{\mathbf{2h\ sec\ \alpha}}{\mathbf{tan\ \beta - tan\ \alpha\ \ }}$$
+$$
+\frac{\mathbf{2h\ sec\ \alpha}}{\mathbf{tan\ \beta - tan\ \alpha\ \ }}
+$$
 
 **Solution:** Let C is the cloud over a lake LK
 
@@ -1730,8 +2000,7 @@ angle of elevation is α and angle of reflection
 
 of the cloud C, is β
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image37-668d0856.png" width="344" height="345" />\
-Now, Let CK $= p$, then KR = $p$
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image37-4a6894ab.png" width="344" height="345" />
 
 NK = ML = $h$ m, then NR $= h + p$ m\
 CN = $p - h$ m
@@ -1740,49 +2009,46 @@ MN = LK = $x$
 
 Now, in ΔCMN
 
-$$\cos\alpha = \frac{MN}{CM}$$
-
-$$\Rightarrow \cos\alpha = \frac{x}{y}$$
-
-$$\Rightarrow x = y\cos\alpha\ \ \ \ \ldots(i)$$
+$$
+\cos\alpha = \frac{MN}{CM} \\
+\Rightarrow \cos\alpha = \frac{x}{y} \\
+\Rightarrow x = y\cos\alpha\ \ \ \ \ldots(i)
+$$
 
 Again, in ΔCMN
 
-$$\tan\alpha = \frac{CN}{MN}$$
-
-$$\Rightarrow \tan\alpha = \frac{p - h}{x}$$
-
-$$\Rightarrow p - h = x\tan\alpha$$
-
-$$\Rightarrow p = x\tan\alpha + h\ \ \ \ \ldots(ii)$$
+$$
+\tan\alpha = \frac{CN}{MN} \\
+\Rightarrow \tan\alpha = \frac{p - h}{x} \\
+\Rightarrow p - h = x\tan\alpha \\
+\Rightarrow p = x\tan\alpha + h\ \ \ \ \ldots(ii)
+$$
 
 Now, in ΔMNR
 
-$$tan\ 45{^\circ} = \frac{NR}{MN}$$
-
-$$\Rightarrow \tan\beta = \frac{p + h}{x}$$
-
-$$\Rightarrow p + h = x\ \tan\beta$$
+$$
+tan\ 45{^\circ} = \frac{NR}{MN} \\
+\Rightarrow \tan\beta = \frac{p + h}{x} \\
+\Rightarrow p + h = x\ \tan\beta
+$$
 
 $\Rightarrow x\tan\alpha + h\  + h = x\tan\beta$ \[Using (ii)]
 
-$$\Rightarrow x\tan\alpha + h\  + h = x\tan\beta$$
-
-$$\Rightarrow 2h = x\tan\beta - x\tan\alpha$$
-
-$$\Rightarrow 2h = x\left( \tan\beta - \tan\alpha \right)$$
-
-$$\Rightarrow x = \frac{2h}{\tan\beta - \tan\alpha}$$
-
-$$\Rightarrow y\cos\alpha = \frac{2h}{\tan\beta - \tan\alpha}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \lbrack Using\ (i)\rbrack$$
-
-$$\Rightarrow y = \frac{2h}{\cos\alpha\left( \tan\beta - \tan\alpha \right)}$$
-
-$$\Rightarrow y = \frac{2h\sec\alpha}{\tan\beta - \tan\alpha}$$
+$$
+\Rightarrow x\tan\alpha + h\  + h = x\tan\beta \\
+\Rightarrow 2h = x\tan\beta - x\tan\alpha \\
+\Rightarrow 2h = x\left( \tan\beta - \tan\alpha \right) \\
+\Rightarrow x = \frac{2h}{\tan\beta - \tan\alpha} \\
+\Rightarrow y\cos\alpha = \frac{2h}{\tan\beta - \tan\alpha}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \lbrack Using\ (i)\rbrack \\
+\Rightarrow y = \frac{2h}{\cos\alpha\left( \tan\beta - \tan\alpha \right)} \\
+\Rightarrow y = \frac{2h\sec\alpha}{\tan\beta - \tan\alpha}
+$$
 
 ∴ The distance of the cloud C from the point of observation M is
 
-$$\frac{2h\sec\alpha}{\tan\beta - \tan\alpha}$$
+$$
+\frac{2h\sec\alpha}{\tan\beta - \tan\alpha}
+$$
 
 Hence proved.
 
@@ -1791,7 +2057,9 @@ angles of depression of two consecutive mile stones on opposite sides of
 the aeroplane are observed to be a and p. Show that the height in miles
 of aeroplane above the road is given by \*\*
 
-$$\frac{\mathbf{tan\ \alpha\ tan\ \beta}}{\mathbf{tan\ \alpha + tan\ \beta}}\mathbf{\ }$$
+$$
+\frac{\mathbf{tan\ \alpha\ tan\ \beta}}{\mathbf{tan\ \alpha + tan\ \beta}}\mathbf{\ }
+$$
 
 **Solution:** Let A is aeroplane and C and D are two such points that
 the angles of depression from A are $a$ and$\ p$ respectively and CD = 1
@@ -1802,41 +2070,33 @@ XY || CD
 
 ∠XAC = ∠C = α {Alternate angles}
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image38-b21c1322.png" width="330" height="255" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image38-9d2b1bc5.png" width="330" height="255" />
 
 Let BC = $x$ km, then BD $= (1 - x)$ km
 
 Now, in ΔACB
 
-$$\tan\alpha = \frac{AB}{BC}$$
-
-$$\Rightarrow \tan\alpha = \frac{h}{x}$$
-
-$$\Rightarrow x = \frac{h}{\tan\alpha}\ \ \ \ \ \ \ \ \ \ \ \ \ldots(i)$$
+$$
+\tan\alpha = \frac{AB}{BC} \\
+\Rightarrow \tan\alpha = \frac{h}{x} \\
+\Rightarrow x = \frac{h}{\tan\alpha}\ \ \ \ \ \ \ \ \ \ \ \ \ldots(i)
+$$
 
 Similarly, in ΔABD
 
-$$\tan\beta = \frac{AB}{BD}$$
-
-$$\Rightarrow \tan\beta = \frac{h}{1 - x}$$
-
-$$\Rightarrow h = \tan\beta(1 - x)\ $$
-
 $$
+\tan\beta = \frac{AB}{BD} \\
+\Rightarrow \tan\beta = \frac{h}{1 - x} \\
+\Rightarrow h = \tan\beta(1 - x) \\
 {\Rightarrow h = \tan\beta - x\tan\beta
 }{\Rightarrow h = \tan\beta - \frac{h}{\tan\alpha}\tan\beta\ \ \ \ \ \ \ \ \ \ \ \ \ \ \left\lbrack Using\ (i) \right\rbrack
-}{\Rightarrow h = \tan\beta - \frac{h\ \tan\beta}{\tan\alpha}}
+}{\Rightarrow h = \tan\beta - \frac{h\ \tan\beta}{\tan\alpha}} \\
+\Rightarrow h + \frac{h\ \tan\beta}{\tan\alpha} = \tan\beta \\
+\Rightarrow h\left( 1 + \frac{\tan\beta}{\tan\alpha} \right) = \tan\beta \\
+\Rightarrow h\left( \frac{{tan\ \alpha + tan}\beta}{\tan\alpha} \right) = \tan\beta \\
+\Rightarrow h = \frac{tan\ \alpha\ tan\ \beta}{tan\ \alpha + tan\ \beta} \\
+\therefore Height\ of\ aeroplane = \frac{tan\ \alpha\ tan\ \beta}{tan\ \alpha + tan\ \beta}
 $$
-
-$$\Rightarrow h + \frac{h\ \tan\beta}{\tan\alpha} = \tan\beta$$
-
-$$\Rightarrow h\left( 1 + \frac{\tan\beta}{\tan\alpha} \right) = \tan\beta$$
-
-$$\Rightarrow h\left( \frac{{tan\ \alpha + tan}\beta}{\tan\alpha} \right) = \tan\beta$$
-
-$$\Rightarrow h = \frac{tan\ \alpha\ tan\ \beta}{tan\ \alpha + tan\ \beta}$$
-
-$$\therefore Height\ of\ aeroplane = \frac{tan\ \alpha\ tan\ \beta}{tan\ \alpha + tan\ \beta}$$
 
 Hence proved.
 
@@ -1845,12 +2105,14 @@ foot is pulled away from the wall through a distance a, so that it
 slides a distance b down the wall making an angle p with the horizontal.
 Show that \*\*
 
-$$\frac{\mathbf{a}}{\mathbf{b}}\mathbf{=}\frac{\mathbf{cos\ \alpha - cos\ \beta}}{\mathbf{sin\ \beta - sin\ \alpha}}$$
+$$
+\frac{\mathbf{a}}{\mathbf{b}}\mathbf{=}\frac{\mathbf{cos\ \alpha - cos\ \beta}}{\mathbf{sin\ \beta - sin\ \alpha}}
+$$
 
 **Solution:** Let PQ be the ladder such that its top Q is on the
 wall OQ and bottom P is on
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image39-4cdfd78e.png" width="278" height="163" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image39-94a6e682.png" width="278" height="163" />
 
 So, PQ = P'Q'
 
@@ -1862,59 +2124,58 @@ PO $= x,\ {OQ}' = y$
 
 Now, in ΔPOQ
 
-$$\sin\alpha = \frac{OQ}{PQ}$$
-
-$$\Rightarrow \sin\alpha = \frac{b + y}{h}\ \ \ \ \ldots(i)$$
+$$
+\sin\alpha = \frac{OQ}{PQ} \\
+\Rightarrow \sin\alpha = \frac{b + y}{h}\ \ \ \ \ldots(i)
+$$
 
 And
 
-$$\cos\alpha = \frac{OP}{PQ}$$
-
-$$\Rightarrow \cos\alpha = \frac{x}{h}\ \ \ \ \ \ \ \ \ \ldots(ii)$$
+$$
+\cos\alpha = \frac{OP}{PQ} \\
+\Rightarrow \cos\alpha = \frac{x}{h}\ \ \ \ \ \ \ \ \ \ldots(ii)
+$$
 
 Now, in ΔP'OQ'
 
-$$\sin\beta = \frac{OQ'}{P'Q'}$$
-
-$$\Rightarrow \sin\beta = \frac{y}{h}\ \ \ \ \ \ \ \ \ \ldots(iii)$$
+$$
+\sin\beta = \frac{OQ'}{P'Q'} \\
+\Rightarrow \sin\beta = \frac{y}{h}\ \ \ \ \ \ \ \ \ \ldots(iii)
+$$
 
 And
 
-$$\cos\beta = \frac{OP'}{P'Q'}$$
-
-$$\Rightarrow \cos\beta = \frac{a + x}{h}\ \ \ \ \ \ \ \ldots(iv)$$
+$$
+\cos\beta = \frac{OP'}{P'Q'} \\
+\Rightarrow \cos\beta = \frac{a + x}{h}\ \ \ \ \ \ \ \ldots(iv)
+$$
 
 On subtracting (iii) from (i), we get
 
 $$
 {\sin\alpha - \sin\beta = \frac{b + y}{h} - \frac{y}{h}
 }{\Rightarrow \sin\alpha - \sin\beta = \frac{b + y - y}{h}
-}{\Rightarrow \sin\alpha - \sin\beta = \frac{b}{h}\ }
+}{\Rightarrow \sin\alpha - \sin\beta = \frac{b}{h}\ } \\
+\Rightarrow b = h\left( \sin\alpha - \sin\beta \right)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ldots(v)
 $$
-
-$$\Rightarrow b = h\left( \sin\alpha - \sin\beta \right)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ldots(v)$$
 
 On subtracting (iii) from (ii), we get
 
 $$
 {\cos\beta - \cos\alpha = \frac{a + x}{h} - \frac{x}{h}
-}{\Rightarrow \cos\beta - \cos\alpha = \frac{a + x - x}{h}}
-$$
-
-$$
+}{\Rightarrow \cos\beta - \cos\alpha = \frac{a + x - x}{h}} \\
 {\Rightarrow \cos\beta - \cos\alpha = \frac{a}{h}
 }{\Rightarrow a = h\left( \cos\beta - \cos\alpha \right)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ldots(v)}
 $$
 
 Now,
 
-$$\frac{a}{b} = \frac{h\left( \cos\beta - \cos\alpha \right)h}{\left( \sin\alpha - \sin\beta \right)}$$
-
-$$\Rightarrow \frac{a}{b} = \frac{\cos\beta - \cos\alpha}{\sin\alpha - \sin\beta}$$
-
-$$\Rightarrow \frac{a}{b} = \frac{\cos\beta - \cos\alpha}{- (\sin\beta - \sin{\alpha)}}$$
-
-$$\Rightarrow \frac{a}{b} = \frac{\cos\alpha - \cos\beta}{\sin\beta - \sin\alpha}$$
+$$
+\frac{a}{b} = \frac{h\left( \cos\beta - \cos\alpha \right)h}{\left( \sin\alpha - \sin\beta \right)} \\
+\Rightarrow \frac{a}{b} = \frac{\cos\beta - \cos\alpha}{\sin\alpha - \sin\beta} \\
+\Rightarrow \frac{a}{b} = \frac{\cos\beta - \cos\alpha}{- (\sin\beta - \sin{\alpha)}} \\
+\Rightarrow \frac{a}{b} = \frac{\cos\alpha - \cos\beta}{\sin\beta - \sin\alpha}
+$$
 
 Hence proved.
 
@@ -1924,11 +2185,15 @@ height of the light house be h metres and the line joining the ships
 passes through the foot of the light house, show that the distance
 between the ship is \*\*
 
-$$\frac{\mathbf{h}\left( \mathbf{tan\ \alpha + tan\ \beta} \right)}{\mathbf{tan\ \alpha\ tan\ \beta}}\mathbf{\ \ \ meters.}$$
+$$
+\frac{\mathbf{h}\left( \mathbf{tan\ \alpha + tan\ \beta} \right)}{\mathbf{tan\ \alpha\ tan\ \beta}}\mathbf{\ \ \ meters.}
+$$
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image40-ce084988.png" width="386" height="205" />**\
+**\
 Solution:** Let LH be the light house and A and B are two ships which
 make angles of elevation with L are α and β respectively
+
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image40-23ce68a3.png" width="386" height="205" />
 
 Let, height of the light house = $h$ m
 
@@ -1936,32 +2201,35 @@ AH $= x$ and BH = $y$
 
 Now, in ΔLAH
 
-$$\tan\alpha = \frac{LH}{AH}$$
-
-$$\Rightarrow \tan\alpha = \frac{h}{x}$$
-
-$$\Rightarrow x = \frac{h}{\tan\alpha}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ldots(i)$$
+$$
+\tan\alpha = \frac{LH}{AH} \\
+\Rightarrow \tan\alpha = \frac{h}{x} \\
+\Rightarrow x = \frac{h}{\tan\alpha}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ldots(i)
+$$
 
 Now, in ΔLAH
 
-$$\tan\beta = \frac{LH}{HB}$$
-
-$$\Rightarrow \tan\beta = \frac{h}{y}$$
-
-$$\Rightarrow y = \frac{h}{\tan\beta}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ldots(ii)$$
+$$
+\tan\beta = \frac{LH}{HB} \\
+\Rightarrow \tan\beta = \frac{h}{y} \\
+\Rightarrow y = \frac{h}{\tan\beta}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ldots(ii)
+$$
 
 Now, AB = $x + y$
 
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{h}{\tan\alpha} + \frac{h}{\tan\beta}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left\lbrack Using\ (i)\ and\ (ii) \right\rbrack$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{h\left( \tan\alpha + \tan\beta \right)}{\tan{\alpha\tan\beta}}$$
+$$
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{h}{\tan\alpha} + \frac{h}{\tan\beta}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left\lbrack Using\ (i)\ and\ (ii) \right\rbrack \\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{h\left( \tan\alpha + \tan\beta \right)}{\tan{\alpha\tan\beta}}
+$$
 
 Hence proved.
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image41-9ae3cb64.png" width="281" height="217" />\*40. From the top of a tower h metre
+\*40. From the top of a tower h metre
 high, the angles of depression of two objects, which are in the line
 with the foot of the tower are a and β (β > α). Find the distance
 between the two objects.\*\*
+
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image41-de7d76a4.png" width="281" height="217" />
 
 **Solution:** Let the two objects be at points C and D. \
 The angle of depression for the point C is β and
@@ -1969,31 +2237,29 @@ The angle of depression for the point C is β and
 for the point D is α.
 
 In ∆ABC,\
-$$tan\ \beta = \frac{AB}{BC}$$
 
-$$tan\ \beta = \frac{h}{BC}$$
+$$
+tan\ \beta = \frac{AB}{BC}
+$$
 
-$$\Rightarrow BC = \frac{h}{tan\ \beta}\ \ \ \ \ \ \ \ \ \ \ \ \ldots(i)$$
+$$
+tan\ \beta = \frac{h}{BC} \\
+\Rightarrow BC = \frac{h}{tan\ \beta}\ \ \ \ \ \ \ \ \ \ \ \ \ldots(i)
+$$
 
 In ∆ABD,
 
-$$tan\ \alpha = \frac{AB}{BD}$$
-
-$$\Rightarrow tan\ \alpha = \frac{h}{BC + CD}$$
-
-$$\Rightarrow tan\ \alpha = \frac{h}{BC + CD}$$
-
-$$\Rightarrow BC + CD\  = \frac{h}{tan\ \alpha}$$
-
-$$\Rightarrow \frac{h}{tan\ \beta} + CD\  = \frac{h}{tan\ \alpha}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left\lbrack Using\ (i) \right\rbrack$$
-
-$$\Rightarrow CD\  = \frac{h}{tan\ \alpha} - \frac{h}{tan\ \beta}$$
-
-$$\Rightarrow CD\  = \frac{h}{tan\ \alpha} - \frac{h}{tan\ \beta}$$
-
-$$\Rightarrow CD\  = h\left( \frac{1}{tan\ \alpha} - \frac{1}{tan\ \beta} \right)$$
-
-$$\Rightarrow CD\  = h\left( \cot\alpha - \cot\beta \right)$$
+$$
+tan\ \alpha = \frac{AB}{BD} \\
+\Rightarrow tan\ \alpha = \frac{h}{BC + CD} \\
+\Rightarrow tan\ \alpha = \frac{h}{BC + CD} \\
+\Rightarrow BC + CD\  = \frac{h}{tan\ \alpha} \\
+\Rightarrow \frac{h}{tan\ \beta} + CD\  = \frac{h}{tan\ \alpha}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left\lbrack Using\ (i) \right\rbrack \\
+\Rightarrow CD\  = \frac{h}{tan\ \alpha} - \frac{h}{tan\ \beta} \\
+\Rightarrow CD\  = \frac{h}{tan\ \alpha} - \frac{h}{tan\ \beta} \\
+\Rightarrow CD\  = h\left( \frac{1}{tan\ \alpha} - \frac{1}{tan\ \beta} \right) \\
+\Rightarrow CD\  = h\left( \cot\alpha - \cot\beta \right)
+$$
 
 **41. A window of a house is h metre above the ground. From the window,
 the angles of elevation and depression of the top and bottom of another
@@ -2004,7 +2270,7 @@ metres.**
 **\
 Solution:** Let the window be at point A, such that AE = $h$ m
 
-Let ED = AC $= x\ $m
+Let ED = AC $= x$m
 
 **To prove:**  BD = h(1 + tan α cot β)\
 
@@ -2013,40 +2279,42 @@ $$
 }{\tan\alpha = \frac{BC}{AC}}
 $$
 
-$$\Rightarrow \tan\alpha = \frac{BC}{x}$$
+$$
+\Rightarrow \tan\alpha = \frac{BC}{x} \\
+\Rightarrow x = \frac{BC}{\tan\alpha}\ \ \ \ \ \ \ \ \ \ \ \ldots(i)
+$$
 
-$$\Rightarrow x = \frac{BC}{\tan\alpha}\ \ \ \ \ \ \ \ \ \ \ \ldots(i)$$
-
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image42-7099760c.png" width="185" height="312" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image42-10420c0c.png" width="185" height="312" />
 
 In ∆ACD,\
-$$\tan\beta = \frac{CD}{AC}$$
 
-$$\Rightarrow \tan\beta = \frac{h}{x}$$
+$$
+\tan\beta = \frac{CD}{AC}
+$$
 
-$$\Rightarrow x = \frac{h}{\tan\beta}\ \ \ \ \ \ \ \ \ \ \ldots(ii)$$
+$$
+\Rightarrow \tan\beta = \frac{h}{x} \\
+\Rightarrow x = \frac{h}{\tan\beta}\ \ \ \ \ \ \ \ \ \ \ldots(ii)
+$$
 
 From (i) and (ii), we have
 
-$$\frac{BC}{\tan\alpha} = \frac{h}{\tan\beta}$$
-
-$$\Rightarrow BC = \frac{h\ \tan\alpha}{\tan\beta}$$
+$$
+\frac{BC}{\tan\alpha} = \frac{h}{\tan\beta} \\
+\Rightarrow BC = \frac{h\ \tan\alpha}{\tan\beta}
+$$
 
 Now, height of house = BC + CD
 
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{h\ \tan\alpha}{\tan\beta} + h$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{h\ \tan\alpha + h\tan\beta\ }{\tan\beta}$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = h\left( \frac{\tan\alpha + \tan\beta\ }{\tan\beta} \right)$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = h\left( \frac{\tan\alpha\ }{\tan\beta} + \frac{\tan\beta}{\tan\beta} \right)$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = h\left( \frac{\tan\alpha\ }{\tan\beta} + 1 \right)$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = h\left( \tan\alpha\cot\beta + 1 \right)$$
-
-$$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = h\left( {1 + tan}\alpha\cot\beta \right)$$
+$$
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{h\ \tan\alpha}{\tan\beta} + h \\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{h\ \tan\alpha + h\tan\beta\ }{\tan\beta} \\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = h\left( \frac{\tan\alpha + \tan\beta\ }{\tan\beta} \right) \\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = h\left( \frac{\tan\alpha\ }{\tan\beta} + \frac{\tan\beta}{\tan\beta} \right) \\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = h\left( \frac{\tan\alpha\ }{\tan\beta} + 1 \right) \\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = h\left( \tan\alpha\cot\beta + 1 \right) \\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = h\left( {1 + tan}\alpha\cot\beta \right)
+$$
 
 Hence proved.\
 \
@@ -2056,9 +2324,11 @@ certain instant the angles of elevation of a balloon from these windows
 are observed to be 60° and 30° respectively. Find the height of the
 balloon above the ground.\*\*
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image43-922a9765.png" width="131" height="242" />**Solution:** Let the window G be 2 m
+**Solution:** Let the window G be 2 m
 above the ground. \
 Window A be 4 m above the window G.
+
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image43-299c3d56.png" width="131" height="242" />
 
 Let, balloon be at point B which is $h$ m above from the upper window A
 
@@ -2068,33 +2338,30 @@ AG = CD = 4 m\
 \
 In ∆ABC,
 
-$$\tan{30{^\circ}} = \frac{BC}{AC}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{x}$$
-
-$$\Rightarrow x = h\sqrt{3}\ \ \ \ \ \ \ \ \ \ \ \ldots(i)$$
+$$
+\tan{30{^\circ}} = \frac{BC}{AC} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{x} \\
+\Rightarrow x = h\sqrt{3}\ \ \ \ \ \ \ \ \ \ \ \ldots(i)
+$$
 
 In ∆BGD,
 
-$$\tan{60{^\circ}} = \frac{BD}{GD}$$
-
-$$\Rightarrow \tan{60{^\circ}} = \frac{BC + CD}{AC}$$
-
-$$\Rightarrow \sqrt{3} = \frac{h + 4}{x}$$
-
-$$\Rightarrow x = \frac{h + 4}{\sqrt{3}}\ \ \ \ \ \ \ \ \ \ \ \ldots(i)$$
+$$
+\tan{60{^\circ}} = \frac{BD}{GD} \\
+\Rightarrow \tan{60{^\circ}} = \frac{BC + CD}{AC} \\
+\Rightarrow \sqrt{3} = \frac{h + 4}{x} \\
+\Rightarrow x = \frac{h + 4}{\sqrt{3}}\ \ \ \ \ \ \ \ \ \ \ \ldots(i)
+$$
 
 From (i) and (ii) we get,
 
-$$h\sqrt{3} = \frac{h + 4}{\sqrt{3}}$$
-
-$$\Rightarrow 3h = h + 4$$
-
-$$\Rightarrow 3h - h = 4$$
-
-$$\Rightarrow 2h = 4$$
-
-$$\Rightarrow h = 2$$
+$$
+h\sqrt{3} = \frac{h + 4}{\sqrt{3}} \\
+\Rightarrow 3h = h + 4 \\
+\Rightarrow 3h - h = 4 \\
+\Rightarrow 2h = 4 \\
+\Rightarrow h = 2
+$$
 
 ∴ BC = $h = 2$ m
 
@@ -2117,41 +2384,42 @@ basket.**
 
 **Solution:** Let AB $h$ be the height of the basket from the ground
 
-<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image44-c5be1555.png" width="301" height="166" />
+<img src="https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image44-fd0bb217.png" width="301" height="166" />
 
 In ΔABD
 
-$$\tan{30{^\circ}} = \frac{AB}{BD}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{BD}$$
+$$
+\tan{30{^\circ}} = \frac{AB}{BD} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{BD}
+$$
 
 $\Rightarrow BD = h\sqrt{3}$ ...(1)
 
 In ΔABC
 
-$$\tan{60{^\circ}} = \frac{AB}{BC}$$
-
-$$\Rightarrow \sqrt{3} = \frac{h}{BC}$$
-
-$$\Rightarrow BC = \frac{h}{\sqrt{3}}$$
+$$
+\tan{60{^\circ}} = \frac{AB}{BC} \\
+\Rightarrow \sqrt{3} = \frac{h}{BC} \\
+\Rightarrow BC = \frac{h}{\sqrt{3}}
+$$
 
 Now,
 
-$$BD - BC = CD$$
-
-$$\Rightarrow \ h\sqrt{3} - \frac{h}{\sqrt{3}} = 100$$
-
-$$\Rightarrow \frac{3h - h}{\sqrt{3}} = 100$$
-
-$$\Rightarrow 2h = 100\sqrt{3}$$
+$$
+BD - BC = CD \\
+\Rightarrow \ h\sqrt{3} - \frac{h}{\sqrt{3}} = 100 \\
+\Rightarrow \frac{3h - h}{\sqrt{3}} = 100 \\
+\Rightarrow 2h = 100\sqrt{3}
+$$
 
 $\Rightarrow h = 50\sqrt{3}$ m ....(2)
 
 **(i)** The height of the basket from the ground is $50\sqrt{3}$ m.
 
-$$\left( \mathbf{ii} \right)\sin{60{^\circ}} = \frac{AB}{AC}$$
-
-$$\Rightarrow \frac{\sqrt{3}}{2} = \frac{50\sqrt{3}}{AC}$$
+$$
+\left( \mathbf{ii} \right)\sin{60{^\circ}} = \frac{AB}{AC} \\
+\Rightarrow \frac{\sqrt{3}}{2} = \frac{50\sqrt{3}}{AC}
+$$
 
 $\Rightarrow AC = 100$ m
 
@@ -2180,18 +2448,16 @@ m height
 Let height of the other tower be h and distance between both of the
 towers be d
 
-![](https://media-library.blr1.digitaloceanspaces.com/document-conversions/696c9886c9cb8bbb0f80affb/image46-323efaa4.jpeg)In
+![](https://media-library.blr1.digitaloceanspaces.com/document-conversions/6983463fe6e6784058f1a4af/image46-eb4da670.jpeg)In
 ΔBAC,
 
-$$\tan 60{^\circ} = \frac{AB}{AC}$$
-
-$$\Rightarrow \sqrt{3} = \frac{24}{d}$$
-
-$$\Rightarrow d = \frac{24}{\sqrt{3}}$$
-
-$$\Rightarrow d = \frac{8 \times 3}{\sqrt{3}}$$
-
-$$\Rightarrow d = \frac{8 \times \sqrt{3} \times \sqrt{3}}{\sqrt{3}}$$
+$$
+\tan 60{^\circ} = \frac{AB}{AC} \\
+\Rightarrow \sqrt{3} = \frac{24}{d} \\
+\Rightarrow d = \frac{24}{\sqrt{3}} \\
+\Rightarrow d = \frac{8 \times 3}{\sqrt{3}} \\
+\Rightarrow d = \frac{8 \times \sqrt{3} \times \sqrt{3}}{\sqrt{3}}
+$$
 
 $\Rightarrow d = 8\sqrt{3}$ m ...(i)
 
@@ -2199,13 +2465,12 @@ $\Rightarrow d = 8\sqrt{3}$ m ...(i)
 
 In ΔDAC,
 
-$$\tan{30}{^\circ} = \frac{CD}{AC}$$
-
-$$\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{d}$$
-
-$$\Rightarrow h = \frac{d}{\sqrt{3}}$$
-
-$$\Rightarrow h = \frac{8\sqrt{3}}{\sqrt{3}}\ \ \ \ \ \ \ \ \ \ \ \ \left\lbrack Using\ (i) \right\rbrack$$
+$$
+\tan{30}{^\circ} = \frac{CD}{AC} \\
+\Rightarrow \frac{1}{\sqrt{3}} = \frac{h}{d} \\
+\Rightarrow h = \frac{d}{\sqrt{3}} \\
+\Rightarrow h = \frac{8\sqrt{3}}{\sqrt{3}}\ \ \ \ \ \ \ \ \ \ \ \ \left\lbrack Using\ (i) \right\rbrack
+$$
 
 $\Rightarrow h = 8$ m
 
@@ -2213,19 +2478,15 @@ $\Rightarrow h = 8$ m
 
 Now, in ΔBDE using Pythagoras theorem, we have
 
-$${BD}^{2} = BE^{2} + DE^{2}$$
-
-$$\Rightarrow {BD}^{2} = (AB - AE)^{2} + d^{2}$$
-
-$$\Rightarrow {BD}^{2} = (24 - 8)^{2} + \left( 8\sqrt{3} \right)^{2}$$
-
-$$\Rightarrow {BD}^{2} = (16)^{2} + (64 \times 3)$$
-
-$$\Rightarrow {BD}^{2} = 256 + 192$$
-
-$$\Rightarrow {BD}^{2} = 448$$
-
-$$\Rightarrow BD = \sqrt{8 \times 8 \times 7}$$
+$$
+{BD}^{2} = BE^{2} + DE^{2} \\
+\Rightarrow {BD}^{2} = (AB - AE)^{2} + d^{2} \\
+\Rightarrow {BD}^{2} = (24 - 8)^{2} + \left( 8\sqrt{3} \right)^{2} \\
+\Rightarrow {BD}^{2} = (16)^{2} + (64 \times 3) \\
+\Rightarrow {BD}^{2} = 256 + 192 \\
+\Rightarrow {BD}^{2} = 448 \\
+\Rightarrow BD = \sqrt{8 \times 8 \times 7}
+$$
 
 $\Rightarrow BD = 8\sqrt{7}$ m
 
