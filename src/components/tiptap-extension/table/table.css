@@ -10,7 +10,7 @@
 .ProseMirror table td,
 .ProseMirror table th {
   min-width: 1em;
-  border: 1px solid #ced4da;
+  border: 1px solid var(--tt-border-color);
   padding: 3px 5px;
   vertical-align: top;
   box-sizing: border-box;
@@ -20,7 +20,7 @@
 .ProseMirror table th {
   font-weight: bold;
   text-align: left;
-  background-color: #f1f3f5;
+  background-color: var(--tt-gray-light-100);
 }
 
 .ProseMirror table .selectedCell:after {
@@ -31,7 +31,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  background: rgba(200, 200, 255, 0.4);
+  background: var(--tt-gray-light-a-200);
   pointer-events: none;
 }
 
@@ -41,7 +41,7 @@
   top: 0;
   bottom: -2px;
   width: 4px;
-  background-color: #adf;
+  background-color: var(--tt-brand-color-400);
   pointer-events: none;
 }
 
@@ -49,23 +49,16 @@
   overflow-x: auto;
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .ProseMirror table td,
-  .ProseMirror table th {
-    border-color: #4b5563;
-  }
-
-  .ProseMirror table th {
-    background-color: #374151;
-  }
+/* Dark mode support via .dark class */
+.dark .ProseMirror table td,
+.dark .ProseMirror table th {
+  border-color: var(--tt-gray-dark-a-300);
 }
 
-:global(body.dark) .ProseMirror table td,
-:global(body.dark) .ProseMirror table th {
-  border-color: #4b5563;
+.dark .ProseMirror table th {
+  background-color: var(--tt-gray-dark-100);
 }
 
-:global(body.dark) .ProseMirror table th {
-  background-color: #374151;
+.dark .ProseMirror table .selectedCell:after {
+  background: var(--tt-gray-dark-a-200);
 }

@@ -210,12 +210,21 @@ const MobileToolbarContent = ({
   </>
 );
 
+export type EditorContentType = "html" | "json" | "markdown";
+
+export interface OnChangeParams {
+  html: string;
+  markdown: string;
+  json: Record<string, any>;
+}
+
 export interface EditorProps {
   initialValue?: string | Record<string, any>;
-  contentType?: "html" | "json" | "markdown";
+  contentType?: EditorContentType;
   className?: string;
   onImageUpload?: (file: File) => Promise<string>;
   onVideoUpload?: (file: File) => Promise<string>;
+  onChange?: (content: OnChangeParams) => void;
   variant?: "fullpage" | "input";
   // Input variant specific props
   minHeight?: number;
@@ -231,7 +240,7 @@ export function Editor({
   className,
   onImageUpload,
   onVideoUpload,
-
+  onChange,
   variant = "fullpage",
   minHeight,
   maxHeight,
@@ -376,14 +385,11 @@ export function Editor({
     content: initialValue,
     contentType,
     onUpdate: ({ editor }) => {
-      console.log("editor", editor);
-      // You can handle content updates here if needed
-      const json = editor.getJSON();
-      console.log("Editor content updated:", json);
-      const markdown = editor.getMarkdown();
-      console.log("Editor content in Markdown:", markdown);
-      // const html = editor.getHTML();
-      // console.log("Editor content in HTML:", html);
+      onChange?.({
+        html: editor.getHTML(),
+        markdown: editor.getMarkdown(),
+        json: editor.getJSON(),
+      });
     },
   });
 
