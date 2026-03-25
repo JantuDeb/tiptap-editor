@@ -11,6 +11,7 @@ import { Highlight } from "@tiptap/extension-highlight";
 import { Subscript } from "@tiptap/extension-subscript";
 import { Superscript } from "@tiptap/extension-superscript";
 import { Selection } from "@tiptap/extensions";
+import { TextSelection } from "@tiptap/pm/state";
 import { Markdown } from "@tiptap/markdown";
 import { FileHandler } from "@tiptap/extension-file-handler";
 
@@ -85,6 +86,7 @@ import {
 } from "@/components/bubble/bubble-media";
 import { RichTextBubbleTable } from "@/components/bubble/bubble-table";
 import Mathematics from "@/components/tiptap-extension/katex/katex";
+import { WordPaste } from "@/components/tiptap-extension/word-paste";
 import "katex/dist/katex.min.css";
 
 // A mock function to simulate image uploads
@@ -278,6 +280,18 @@ export function Editor({
           ? { "data-placeholder": placeholder }
           : {}),
       },
+      handleClick: (view, pos, event) => {
+        if (event.button !== 0) return false;
+
+        const { selection } = view.state;
+        if (selection.empty) return false;
+
+        // Collapse selection to click position
+        const $pos = view.state.doc.resolve(pos);
+        const newSel = TextSelection.near($pos);
+        view.dispatch(view.state.tr.setSelection(newSel));
+        return true;
+      },
     },
     extensions: [
       StarterKit.configure({
@@ -379,6 +393,19 @@ export function Editor({
       VideoUploadNode.configure({
         upload: (file) => handleUploadFile(file),
         maxSize: MAX_FILE_SIZE,
+      }),
+      WordPaste.configure({
+        onImageUpload: onImageUpload
+          ? async (dataUrl: string) => {
+              // Convert data URL to File for the upload callback
+              const res = await fetch(dataUrl);
+              const blob = await res.blob();
+              const file = new File([blob], "word-image.png", {
+                type: blob.type,
+              });
+              return onImageUpload(file);
+            }
+          : undefined,
       }),
       Mathematics,
     ],

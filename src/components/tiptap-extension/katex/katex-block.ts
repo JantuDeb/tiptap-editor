@@ -334,6 +334,7 @@ export const BlockMath = Node.create<BlockMathOptions>({
 
         isEditing = true;
         editorEl.value = currentNode.attrs.latex;
+        editorEl.rows = Math.max(4, currentNode.attrs.latex.split("\n").length);
 
         renderEl.style.display = "none";
         editorEl.style.display = "block";
@@ -368,13 +369,23 @@ export const BlockMath = Node.create<BlockMathOptions>({
         }
       }
 
-      const handleClick = (e: MouseEvent) => {
+      const handleClick = (_e: MouseEvent) => {
+        if (isEditing) return;
+
+        const pos = getPos();
+        if (pos == null) return;
+
+        editor.commands.setNodeSelection(pos);
+      };
+
+      const handleDblClick = (e: MouseEvent) => {
         e.preventDefault();
         e.stopPropagation();
         enterEditMode();
       };
 
-      renderEl.addEventListener("click", handleClick);
+      editorEl.addEventListener("click", handleClick);
+      wrapper.addEventListener("dblclick", handleDblClick);
 
       editorEl.addEventListener("keydown", (e) => {
         if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
@@ -387,6 +398,7 @@ export const BlockMath = Node.create<BlockMathOptions>({
           exitEditMode(false);
         }
       });
+
 
       editorEl.addEventListener("blur", () => exitEditMode(true));
 
@@ -416,7 +428,7 @@ export const BlockMath = Node.create<BlockMathOptions>({
         },
 
         destroy() {
-          renderEl.removeEventListener("click", handleClick);
+          wrapper.removeEventListener("dblclick", handleDblClick);
         },
       };
     };

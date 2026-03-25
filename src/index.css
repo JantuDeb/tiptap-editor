@@ -98,6 +98,10 @@ button:focus-visible {
   padding: 1rem 0.5rem;
 }
 
+.block-math-render .katex-display > .katex {
+  text-align: left;
+}
+
 .math-input,
 .block-math-editor {
   font-family:
