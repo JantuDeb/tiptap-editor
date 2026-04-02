@@ -246,12 +246,13 @@ const SPECIAL_CHARS = new Set([
 ]);
 
 /**
- * Helper to get a child element by local name (ignoring namespace)
+ * Helper to get a child element by local name (ignoring namespace and case).
  */
 function getChild(el: Element, localName: string): Element | null {
+  const target = localName.toLowerCase();
   for (let i = 0; i < el.children.length; i++) {
     const child = el.children[i];
-    if (getLocalName(child) === localName) {
+    if (getLocalName(child).toLowerCase() === target) {
       return child;
     }
   }
@@ -259,13 +260,14 @@ function getChild(el: Element, localName: string): Element | null {
 }
 
 /**
- * Get all children with a given local name
+ * Get all children with a given local name (ignoring namespace and case).
  */
 function getChildren(el: Element, localName: string): Element[] {
+  const target = localName.toLowerCase();
   const result: Element[] = [];
   for (let i = 0; i < el.children.length; i++) {
     const child = el.children[i];
-    if (getLocalName(child) === localName) {
+    if (getLocalName(child).toLowerCase() === target) {
       result.push(child);
     }
   }
@@ -273,10 +275,14 @@ function getChildren(el: Element, localName: string): Element[] {
 }
 
 /**
- * Get local name of element (strip namespace prefix)
+ * Get local name of element (strip namespace prefix).
+ * When parsed as text/html, `localName` for `<m:r>` is "m:r" (not "r"),
+ * so we must always strip the prefix.
  */
 function getLocalName(el: Element): string {
-  return el.localName || el.nodeName.replace(/^[^:]+:/, "");
+  const name = el.localName || el.nodeName;
+  const colonIndex = name.indexOf(":");
+  return colonIndex >= 0 ? name.slice(colonIndex + 1) : name;
 }
 
 /**
@@ -316,18 +322,66 @@ function convertChar(ch: string): string {
 }
 
 /**
- * Process an OMML 'r' (run) element - extracts text and converts to LaTeX
+ * Process an OMML 'r' (run) element - extracts text and converts to LaTeX.
+ * When parsed as text/html, <m:t> may not exist as a separate element —
+ * the text content may be directly inside <m:r>. Try <m:t> first, fall back
+ * to the run's own textContent (excluding property children like <m:rPr>).
  */
 function processRun(el: Element): string {
   const tEl = getChild(el, "t");
-  if (!tEl) return "";
+  let text: string;
+  if (tEl) {
+    text = tEl.textContent || "";
+  } else {
+    // Collect text excluding rPr (run properties) children
+    const rPr = getChild(el, "rpr") || getChild(el, "rPr");
+    if (rPr) {
+      // Get text from non-rPr children and text nodes
+      let t = "";
+      el.childNodes.forEach((node) => {
+        if (node === rPr) return;
+        t += node.textContent || "";
+      });
+      text = t;
+    } else {
+      text = el.textContent || "";
+    }
+  }
 
-  const text = tEl.textContent || "";
+  // Normalize whitespace: Word HTML often has newlines + indentation inside runs.
+  // Collapse runs of whitespace to a single space but preserve leading/trailing
+  // spaces so adjacent runs don't merge (e.g. "coefficient of " + "x").
+  text = text.replace(/\s+/g, " ");
+
+  // Check if this run is marked as normal text (not math italic)
+  const runProps = getChild(el, "rpr") || getChild(el, "rPr");
+  let isNorText = false;
+  if (runProps) {
+    const norEl = getChild(runProps, "nor");
+    if (norEl) isNorText = true;
+  }
+
   let result = "";
   for (const ch of text) {
     result += convertChar(ch);
   }
-  return escapeLatex(result);
+  result = escapeLatex(result);
+
+  // Wrap text runs in \text{} so LaTeX preserves spaces and renders words as text.
+  // This applies to: runs marked as normal text (nor), or runs that contain
+  // multi-character words (not single-letter math variables or operators).
+  if (isNorText && result.trim().length > 0) {
+    return `\\text{${result}}`;
+  }
+  if (/[a-zA-Z]{2,}/.test(result) && !result.startsWith("\\")) {
+    return `\\text{${result}}`;
+  }
+  // Preserve whitespace-only runs as LaTeX text spaces
+  if (/^\s+$/.test(result)) {
+    return `\\text{${result}}`;
+  }
+
+  return result;
 }
 
 /**
@@ -342,7 +396,26 @@ function processElement(el: Element): string {
       parts.push(converted);
     }
   }
-  return parts.join("");
+  return mergeTextCommands(parts.join(""));
+}
+
+/**
+ * Merge consecutive \text{...} commands into a single \text{...}.
+ * e.g. \text{coffiecient}\text{ }\text{of} → \text{coffiecient of}
+ */
+function mergeTextCommands(latex: string): string {
+  return latex.replace(
+    /\\text\{([^}]*)\}(?:\\text\{([^}]*)\})+/g,
+    (match) => {
+      const contents: string[] = [];
+      const re = /\\text\{([^}]*)\}/g;
+      let m: RegExpExecArray | null;
+      while ((m = re.exec(match)) !== null) {
+        contents.push(m[1]);
+      }
+      return `\\text{${contents.join("")}}`;
+    },
+  );
 }
 
 /**
@@ -662,21 +735,23 @@ function processSPre(el: Element): string {
 }
 
 /**
- * Convert a single OMML node to LaTeX
+ * Convert a single OMML node to LaTeX.
+ * Tag names are compared case-insensitively because DOMParser(text/html)
+ * lowercases all element names (e.g. sSup → ssup, groupChr → groupchr).
  */
 function convertNode(el: Element): string | null {
-  const tag = getLocalName(el);
+  const tag = getLocalName(el).toLowerCase();
 
   switch (tag) {
     case "r":
       return processRun(el);
     case "f":
       return processFraction(el);
-    case "sSub":
+    case "ssub":
       return processSSub(el);
-    case "sSup":
+    case "ssup":
       return processSSup(el);
-    case "sSubSup":
+    case "ssubsup":
       return processSSubSup(el);
     case "d":
       return processDelimiter(el);
@@ -690,19 +765,19 @@ function convertNode(el: Element): string | null {
       return processAccent(el);
     case "bar":
       return processBar(el);
-    case "groupChr":
+    case "groupchr":
       return processGroupChr(el);
-    case "limLow":
+    case "limlow":
       return processLimLow(el);
-    case "limUpp":
+    case "limupp":
       return processLimUpp(el);
     case "m":
       return processMatrix(el);
-    case "eqArr":
+    case "eqarr":
       return processEqArr(el);
     case "box":
       return processBox(el);
-    case "sPre":
+    case "spre":
       return processSPre(el);
     case "e":
     case "num":
@@ -713,8 +788,13 @@ function convertNode(el: Element): string | null {
     case "lim":
       return processElement(el);
     default:
-      // Skip property elements and unknown tags
-      if (tag.endsWith("Pr")) return null;
+      // Skip property elements (fPr, dPr, etc.)
+      if (tag.endsWith("pr")) return null;
+      // HTML wrapper elements (i, span, b, etc.) that Word inserts for styling —
+      // recurse through them to find the OMML elements inside.
+      if (["i", "b", "span", "em", "strong", "font"].includes(tag)) {
+        return processElement(el);
+      }
       return null;
   }
 }
@@ -736,22 +816,34 @@ export function ommlToLatex(oMathEl: Element): string {
 
 /**
  * Find all oMath elements in an HTML document (from Word paste).
- * Word puts math in <m:oMath> or <oMath> elements.
+ * When parsed as text/html, elements become <m:omath> (lowercase) and
+ * getElementsByTagName with the prefixed name is the most reliable way
+ * to find them across browsers.
  */
-export function findOmmlElements(doc: Document): Element[] {
+export function findOmmlElements(doc: Document | Element): Element[] {
   const results: Element[] = [];
 
-  // Try namespace-aware query
-  const nsElements = doc.getElementsByTagNameNS(OMML_NS, "oMath");
-  for (let i = 0; i < nsElements.length; i++) {
-    results.push(nsElements[i]);
-  }
+  // Try namespace-aware query first (works when parsed as XML)
+  try {
+    const nsElements = doc.getElementsByTagNameNS(OMML_NS, "oMath");
+    for (let i = 0; i < nsElements.length; i++) {
+      results.push(nsElements[i]);
+    }
+    if (results.length > 0) return results;
+  } catch { /* ignore */ }
 
+  // getElementsByTagName with prefix (works in HTML mode — case insensitive)
+  const prefixed = doc.getElementsByTagName("m:oMath");
+  for (let i = 0; i < prefixed.length; i++) {
+    results.push(prefixed[i]);
+  }
   if (results.length > 0) return results;
 
-  // Fallback: try with m: prefix (common in clipboard HTML)
-  const prefixedElements = doc.querySelectorAll("m\\:oMath, oMath");
-  prefixedElements.forEach((el) => results.push(el));
+  // Fallback: querySelectorAll
+  try {
+    const qsa = (doc as Document).querySelectorAll?.("m\\:oMath, m\\:omath, oMath, omath");
+    qsa?.forEach((el) => results.push(el));
+  } catch { /* ignore */ }
 
   return results;
 }
@@ -759,20 +851,27 @@ export function findOmmlElements(doc: Document): Element[] {
 /**
  * Find all oMathPara elements (display math containers) in a document.
  */
-export function findOmmlParaElements(doc: Document): Element[] {
+export function findOmmlParaElements(doc: Document | Element): Element[] {
   const results: Element[] = [];
 
-  const nsElements = doc.getElementsByTagNameNS(OMML_NS, "oMathPara");
-  for (let i = 0; i < nsElements.length; i++) {
-    results.push(nsElements[i]);
-  }
+  try {
+    const nsElements = doc.getElementsByTagNameNS(OMML_NS, "oMathPara");
+    for (let i = 0; i < nsElements.length; i++) {
+      results.push(nsElements[i]);
+    }
+    if (results.length > 0) return results;
+  } catch { /* ignore */ }
 
+  const prefixed = doc.getElementsByTagName("m:oMathPara");
+  for (let i = 0; i < prefixed.length; i++) {
+    results.push(prefixed[i]);
+  }
   if (results.length > 0) return results;
 
-  const prefixedElements = doc.querySelectorAll(
-    "m\\:oMathPara, oMathPara"
-  );
-  prefixedElements.forEach((el) => results.push(el));
+  try {
+    const qsa = (doc as Document).querySelectorAll?.("m\\:oMathPara, m\\:omathpara, oMathPara, omathpara");
+    qsa?.forEach((el) => results.push(el));
+  } catch { /* ignore */ }
 
   return results;
 }

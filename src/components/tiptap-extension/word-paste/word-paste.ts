@@ -8,6 +8,7 @@
  */
 import { Extension } from "@tiptap/core";
 import { Plugin, PluginKey } from "@tiptap/pm/state";
+import { DOMParser as PMDOMParser } from "@tiptap/pm/model";
 import {
   ommlToLatex,
   findOmmlElements,
@@ -41,12 +42,24 @@ function isWordContent(html: string): boolean {
 
 /**
  * Parse the clipboard HTML into a DOM document.
- * Word wraps math in XML namespaces, so we parse as XML where possible,
- * falling back to HTML parsing.
+ * Word wraps math in two conditional comment blocks:
+ *   <!--[if gte msEquation 12]><m:oMathPara>...</m:oMathPara><![endif]-->  (OMML - what we want)
+ *   <![if !msEquation]><v:shape>...</v:shape><![endif]>                     (image fallback - strip this)
+ * DOMParser (text/html) treats <!--[if...]>...</[endif]--> as comments and discards OMML content.
+ * We must unwrap the msEquation block and remove the !msEquation fallback block.
  */
 function parseWordHtml(html: string): Document {
+  // Remove the non-OMML image fallback blocks entirely
+  let processed = html.replace(
+    /<!\[if !msEquation\]>[\s\S]*?<!\[endif\]>/gi,
+    "",
+  );
+  // Unwrap the OMML conditional comment wrappers so the content is visible to the parser
+  processed = processed
+    .replace(/<!--\[if gte msEquation[^\]]*\]>/gi, "")
+    .replace(/<!\[endif\]-->/gi, "");
   const parser = new DOMParser();
-  return parser.parseFromString(html, "text/html");
+  return parser.parseFromString(processed, "text/html");
 }
 
 /**
@@ -83,9 +96,10 @@ function extractImages(doc: Document): Array<{ src: string; alt: string }> {
 function isDisplayMath(oMathEl: Element): boolean {
   const parent = oMathEl.parentElement;
   if (!parent) return false;
-  const parentTag =
-    parent.localName || parent.nodeName.replace(/^[^:]+:/, "");
-  return parentTag === "oMathPara";
+  const name = parent.localName || parent.nodeName;
+  const colonIndex = name.indexOf(":");
+  const parentTag = colonIndex >= 0 ? name.slice(colonIndex + 1) : name;
+  return parentTag.toLowerCase() === "omathpara";
 }
 
 /**
@@ -102,14 +116,13 @@ function replaceMathInHtml(html: string): {
   // Process oMathPara (block math) first
   const mathParas = findOmmlParaElements(doc);
   mathParas.forEach((para, index) => {
-    const oMathElements = findOmmlElements(
-      para as unknown as Document
-    ).length
+    const oMathElements = findOmmlElements(para as unknown as Document).length
       ? findOmmlElements(para as unknown as Document)
       : Array.from(para.children).filter((child) => {
-          const tag =
-            child.localName || child.nodeName.replace(/^[^:]+:/, "");
-          return tag === "oMath";
+          const name = child.localName || child.nodeName;
+          const colonIdx = name.indexOf(":");
+          const tag = colonIdx >= 0 ? name.slice(colonIdx + 1) : name;
+          return tag.toLowerCase() === "omath";
         });
 
     const latexParts: string[] = [];
@@ -148,11 +161,142 @@ function replaceMathInHtml(html: string): {
     }
   });
 
-  // Serialize back to HTML
+  // Merge consecutive math block placeholders into a single block.
+  // Word often splits multi-line equations into separate oMathPara elements,
+  // each in its own <p>. We combine them with \\ line breaks.
   const body = doc.body || doc.documentElement;
+  mergeMathBlocks(body, mathBlocks);
+
   const resultHtml = body.innerHTML;
 
   return { html: resultHtml, mathBlocks };
+}
+
+/**
+ * Check if a node is a math block placeholder (or a <p> containing only a math block placeholder).
+ * Returns the placeholder key if found, null otherwise.
+ */
+function getMathPlaceholder(node: Node): string | null {
+  if (!(node instanceof Element)) return null;
+
+  // Direct div placeholder
+  if (node.getAttribute("data-math-placeholder")) {
+    return node.getAttribute("data-math-placeholder");
+  }
+
+  // <p> containing only a math block div (possibly with empty spans)
+  if (node.tagName === "P") {
+    let placeholderDiv: Element | null = null;
+    for (let i = 0; i < node.childNodes.length; i++) {
+      const child = node.childNodes[i];
+      if (child.nodeType === Node.TEXT_NODE && child.textContent?.trim()) {
+        return null; // has meaningful text
+      }
+      if (child instanceof Element) {
+        if (child.getAttribute("data-math-placeholder")) {
+          placeholderDiv = child;
+        } else if (child.textContent?.trim()) {
+          return null; // has other meaningful content
+        }
+      }
+    }
+    return placeholderDiv?.getAttribute("data-math-placeholder") || null;
+  }
+
+  return null;
+}
+
+/**
+ * Check if a node is "empty" — whitespace-only text, empty <span>, empty <p>,
+ * or a <p>/<span> containing only whitespace/empty children.
+ */
+function isEmptyNode(node: Node): boolean {
+  if (node.nodeType === Node.TEXT_NODE) {
+    return !node.textContent?.trim();
+  }
+  if (node instanceof Element) {
+    const tag = node.tagName;
+    if (tag === "P" || tag === "SPAN" || tag === "BR") {
+      return !node.textContent?.trim();
+    }
+  }
+  return false;
+}
+
+/**
+ * Merge consecutive math block placeholders into a single block with \\\\ line separators.
+ * Skips empty/whitespace-only nodes between math blocks (Word often inserts empty <p>/<span> elements).
+ */
+function mergeMathBlocks(
+  container: Element,
+  mathBlocks: Map<string, { latex: string; isBlock: boolean }>,
+): void {
+  const children = Array.from(container.childNodes);
+  let i = 0;
+
+  while (i < children.length) {
+    const node = children[i];
+    const placeholder = getMathPlaceholder(node as Node);
+
+    if (!placeholder || !mathBlocks.has(placeholder)) {
+      i++;
+      continue;
+    }
+
+    // Found a math block — collect consecutive math blocks, skipping empty nodes
+    const group: { placeholder: string; nodeIndex: number }[] = [
+      { placeholder, nodeIndex: i },
+    ];
+    const emptyBetween: number[] = [];
+    let j = i + 1;
+    while (j < children.length) {
+      const next = children[j];
+      const nextPlaceholder = getMathPlaceholder(next as Node);
+      if (nextPlaceholder && mathBlocks.has(nextPlaceholder)) {
+        const nextData = mathBlocks.get(nextPlaceholder)!;
+        if (!nextData.isBlock) break;
+        group.push({ placeholder: nextPlaceholder, nodeIndex: j });
+        j++;
+      } else if (isEmptyNode(next)) {
+        emptyBetween.push(j);
+        j++;
+      } else {
+        break;
+      }
+    }
+
+    if (group.length > 1) {
+      // Merge: combine latex with \\ line separators
+      const lines = group.map((g) => mathBlocks.get(g.placeholder)!.latex);
+      const mergedLatex = lines.join(" \\\\ ");
+
+      // Update the first placeholder's latex
+      mathBlocks.set(group[0].placeholder, {
+        latex: mergedLatex,
+        isBlock: true,
+      });
+
+      // Remove the merged placeholders (except first) and empty nodes between them from DOM
+      const toRemove = [
+        ...group.slice(1).map((g) => g.nodeIndex),
+        ...emptyBetween,
+      ];
+      // Remove in reverse order to preserve indices
+      toRemove
+        .sort((a, b) => b - a)
+        .forEach((idx) => {
+          const nodeToRemove = children[idx];
+          nodeToRemove.parentNode?.removeChild(nodeToRemove);
+        });
+
+      // Remove merged entries from mathBlocks map
+      for (let k = 1; k < group.length; k++) {
+        mathBlocks.delete(group[k].placeholder);
+      }
+    }
+
+    i = j;
+  }
 }
 
 /**
@@ -171,11 +315,14 @@ function cleanWordHtml(html: string): string {
   // Remove empty spans with only mso styles
   html = html.replace(
     /<span[^>]*style="[^"]*mso-[^"]*"[^>]*>\s*<\/span>/gi,
-    ""
+    "",
   );
 
   // Clean up mso-* styles but keep other styles
   html = html.replace(/mso-[^;"]*;?/gi, "");
+
+  // Remove empty paragraphs (with only &nbsp; or whitespace)
+  html = html.replace(/<p[^>]*>\s*(&nbsp;|\s)*\s*<\/p>/gi, "");
 
   return html;
 }
@@ -197,101 +344,102 @@ export const WordPaste = Extension.create<WordPasteOptions>({
         key: wordPastePluginKey,
 
         props: {
-          transformPastedHTML(html) {
-            if (!isWordContent(html)) return html;
-
-            // Replace math elements with placeholders
-            const { html: processedHtml, mathBlocks } =
-              replaceMathInHtml(html);
-
-            // Clean up Word-specific markup
-            let cleaned = cleanWordHtml(processedHtml);
-
-            // Replace math placeholders with proper HTML nodes that Tiptap can parse
-            mathBlocks.forEach(({ latex, isBlock }, placeholder) => {
-              if (isBlock) {
-                cleaned = cleaned.replace(
-                  new RegExp(
-                    `<div[^>]*data-math-placeholder="${placeholder}"[^>]*>[^<]*</div>`,
-                    "g"
-                  ),
-                  `<div data-type="block-math" data-latex="${escapeHtmlAttr(latex)}"></div>`
-                );
-                // Also replace plain text placeholders
-                cleaned = cleaned.replace(
-                  placeholder,
-                  `<div data-type="block-math" data-latex="${escapeHtmlAttr(latex)}"></div>`
-                );
-              } else {
-                cleaned = cleaned.replace(
-                  new RegExp(
-                    `<span[^>]*data-math-placeholder="${placeholder}"[^>]*>[^<]*</span>`,
-                    "g"
-                  ),
-                  `<span data-type="inline-math" data-latex="${escapeHtmlAttr(latex)}"></span>`
-                );
-                cleaned = cleaned.replace(
-                  placeholder,
-                  `<span data-type="inline-math" data-latex="${escapeHtmlAttr(latex)}"></span>`
-                );
-              }
-            });
-
-            return cleaned;
-          },
-
-          handlePaste(view, event) {
+          handlePaste(this, view, event) {
             const clipboardData = event.clipboardData;
             if (!clipboardData) return false;
 
             const html = clipboardData.getData("text/html");
             if (!html || !isWordContent(html)) return false;
 
-            // Handle base64 images from Word asynchronously
-            const doc = parseWordHtml(html);
-            const images = extractImages(doc);
+            // Process the raw Word HTML (with OMML) before the browser sanitizes it
+            const { html: processedHtml, mathBlocks } = replaceMathInHtml(html);
+            let cleaned = cleanWordHtml(processedHtml);
 
-            if (images.length > 0 && extensionOptions.onImageUpload) {
-              // Process images asynchronously after paste
-              const uploadFn = extensionOptions.onImageUpload;
-              setTimeout(async () => {
-                for (const { src } of images) {
-                  try {
-                    const url = await uploadFn(src);
-                    if (url && url !== src) {
-                      // Find and replace the base64 image in the document
-                      const { state } = view;
-                      const { tr } = state;
-                      let replaced = false;
+            // Replace math placeholders with proper HTML nodes that Tiptap can parse
+            mathBlocks.forEach(({ latex, isBlock }, placeholder) => {
+              if (isBlock) {
+                const blockHtml = `<div data-type="block-math" data-latex="${escapeHtmlAttr(latex)}"></div>`;
+                cleaned = cleaned.replace(
+                  new RegExp(
+                    `<div[^>]*data-math-placeholder="${placeholder}"[^>]*>[^<]*</div>`,
+                    "g",
+                  ),
+                  blockHtml,
+                );
+                cleaned = cleaned.replace(placeholder, blockHtml);
+              } else {
+                const inlineHtml = `<span data-type="inline-math" data-latex="${escapeHtmlAttr(latex)}"></span>`;
+                cleaned = cleaned.replace(
+                  new RegExp(
+                    `<span[^>]*data-math-placeholder="${placeholder}"[^>]*>[^<]*</span>`,
+                    "g",
+                  ),
+                  inlineHtml,
+                );
+                cleaned = cleaned.replace(placeholder, inlineHtml);
+              }
+            });
 
-                      state.doc.descendants((node, pos) => {
-                        if (
-                          replaced ||
-                          node.type.name !== "image" ||
-                          node.attrs.src !== src
-                        )
-                          return;
+            // Unwrap block-math divs from surrounding <p> tags.
+            // <div> inside <p> is invalid HTML and causes browsers to auto-close
+            // the <p>, creating extra empty paragraphs.
+            cleaned = cleaned.replace(
+              /<p[^>]*>\s*(<div data-type="block-math"[^>]*><\/div>)\s*<\/p>/gi,
+              "$1",
+            );
 
-                        tr.setNodeMarkup(pos, undefined, {
-                          ...node.attrs,
-                          src: url,
+            // Parse the processed HTML into ProseMirror nodes and insert
+            const { state, dispatch } = view;
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = cleaned;
+
+            const pmSlice = PMDOMParser.fromSchema(state.schema).parseSlice(
+              tempDiv,
+              {
+                preserveWhitespace: false,
+                context: state.selection.$from,
+              },
+            );
+            const tr = state.tr.replaceSelection(pmSlice);
+            dispatch(tr.scrollIntoView());
+
+            // Handle base64 image upload asynchronously after paste
+            if (extensionOptions.onImageUpload) {
+              const images = extractImages(parseWordHtml(html));
+              if (images.length > 0) {
+                const uploadFn = extensionOptions.onImageUpload;
+                setTimeout(async () => {
+                  for (const { src } of images) {
+                    try {
+                      const url = await uploadFn(src);
+                      if (url && url !== src) {
+                        const { state: currentState } = view;
+                        const { tr } = currentState;
+                        let replaced = false;
+                        currentState.doc.descendants((node, pos) => {
+                          if (
+                            replaced ||
+                            node.type.name !== "image" ||
+                            node.attrs.src !== src
+                          )
+                            return;
+                          tr.setNodeMarkup(pos, undefined, {
+                            ...node.attrs,
+                            src: url,
+                          });
+                          replaced = true;
                         });
-                        replaced = true;
-                      });
-
-                      if (replaced) {
-                        view.dispatch(tr);
+                        if (replaced) view.dispatch(tr);
                       }
+                    } catch (err) {
+                      console.error("Failed to upload Word image:", err);
                     }
-                  } catch (err) {
-                    console.error("Failed to upload Word image:", err);
                   }
-                }
-              }, 100);
+                }, 100);
+              }
             }
 
-            // Let the default paste handling continue with the transformed HTML
-            return false;
+            return true;
           },
         },
       }),
