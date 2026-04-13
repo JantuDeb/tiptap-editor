@@ -17,7 +17,14 @@ function RichTextBubbleTable({ hiddenActions = [] }: RichTextBubbleTableProps) {
   const editable = editor?.isEditable;
 
   const shouldShow = ({ editor }: { editor: Editor }) => {
-    return isActive(editor.view.state, Table.name);
+    if (!isActive(editor.view.state, Table.name)) return false;
+    if (
+      isActive(editor.view.state, "blockMath") ||
+      isActive(editor.view.state, "inlineMath")
+    ) {
+      return false;
+    }
+    return true;
   };
 
   const isHidden = (key: string) => hiddenActions.includes(key);

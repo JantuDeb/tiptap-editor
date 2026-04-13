@@ -1,6 +1,10 @@
 import { InputRule, mergeAttributes, Node } from "@tiptap/core";
 import type { Node as PMNode } from "@tiptap/pm/model";
 import katex, { type KatexOptions } from "katex";
+import type { MathfieldElement } from "mathlive";
+
+let mathliveLoader: Promise<typeof import("mathlive")> | null = null;
+const loadMathlive = () => (mathliveLoader ??= import("mathlive"));
 
 /**
  * Configuration options for the InlineMath extension.
@@ -302,6 +306,8 @@ export const InlineMath = Node.create<InlineMathOptions>({
     const { katexOptions } = this.options;
 
     return ({ node, getPos, editor }) => {
+      let isEditing = false;
+      const cleanupFns: Array<() => void> = [];
       const wrapper = document.createElement("span");
       wrapper.className = "tiptap-math-inline";
       wrapper.contentEditable = "false";
@@ -309,15 +315,9 @@ export const InlineMath = Node.create<InlineMathOptions>({
       const renderEl = document.createElement("span");
       renderEl.className = "math-render";
 
-      const input = document.createElement("input");
-      input.className = "math-input";
-      input.type = "text";
-      input.value = node.attrs.latex;
-      input.autocomplete = "off";
-      input.spellcheck = false;
-      input.style.display = "none";
+      let input: MathfieldElement | null = null;
 
-      wrapper.append(renderEl, input);
+      wrapper.append(renderEl);
 
       function renderMath() {
         try {
@@ -329,19 +329,72 @@ export const InlineMath = Node.create<InlineMathOptions>({
         }
       }
 
-      function enterEdit() {
+      async function ensureInput() {
+        if (input) return input;
+        await loadMathlive();
+        const el = document.createElement("math-field") as MathfieldElement;
+        el.className = "math-input";
+        el.style.display = "none";
+
+        el.addEventListener(
+          "keydown",
+          (e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              e.stopPropagation();
+              exitEdit(true);
+            }
+            if (e.key === "Escape") {
+              e.preventDefault();
+              e.stopPropagation();
+              exitEdit(false);
+            }
+          },
+          true
+        );
+
+        const onDocPointerDown = (e: PointerEvent) => {
+          if (!isEditing) return;
+          const target = e.target as globalThis.Node | null;
+          if (!target) return;
+          if (wrapper.contains(target)) return;
+          if (
+            target instanceof Element &&
+            target.closest('[class*="ML__"], math-field')
+          ) {
+            return;
+          }
+          exitEdit(true);
+        };
+        document.addEventListener("pointerdown", onDocPointerDown, true);
+        cleanupFns.push(() =>
+          document.removeEventListener("pointerdown", onDocPointerDown, true)
+        );
+
+        wrapper.append(el);
+        input = el;
+        return el;
+      }
+
+      async function enterEdit() {
+        if (isEditing) return;
+        isEditing = true;
+        const el = await ensureInput();
+        if (!isEditing) return;
         renderEl.style.display = "none";
-        input.style.display = "inline-block";
-        input.value = node.attrs.latex;
-        input.focus();
-        input.select();
+        el.style.display = "inline-block";
+        el.value = node.attrs.latex;
+        el.focus();
+        el.executeCommand("selectAll");
       }
 
       function exitEdit(save = true) {
+        if (!isEditing) return;
+        isEditing = false;
         renderEl.style.display = "inline-block";
-        input.style.display = "none";
+        if (input) input.style.display = "none";
 
-        if (!save) return;
+        if (!save || !input) return;
 
         const pos = getPos();
         if (pos == null) return;
@@ -351,33 +404,18 @@ export const InlineMath = Node.create<InlineMathOptions>({
           .command(({ tr }) => {
             tr.setNodeMarkup(pos, undefined, {
               ...node.attrs,
-              latex: input.value,
+              latex: input!.getValue("latex"),
             });
             return true;
           })
           .run();
       }
 
-      // Click to edit
       renderEl.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        enterEdit();
+        void enterEdit();
       });
-
-      // Keyboard handling inside input
-      input.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          exitEdit(true);
-        }
-        if (e.key === "Escape") {
-          e.preventDefault();
-          exitEdit(false);
-        }
-      });
-
-      input.addEventListener("blur", () => exitEdit(true));
 
       renderMath();
 
@@ -387,18 +425,19 @@ export const InlineMath = Node.create<InlineMathOptions>({
         update(updatedNode) {
           if (updatedNode.type !== node.type) return false;
           node = updatedNode;
-          input.value = node.attrs.latex;
+          if (input) input.value = node.attrs.latex;
           renderMath();
           return true;
         },
 
         stopEvent(event) {
-          return event.target === input;
+          return !!input && event.target === input;
         },
 
         destroy() {
+          cleanupFns.forEach((fn) => fn());
           renderEl.remove();
-          input.remove();
+          input?.remove();
         },
       };
     };

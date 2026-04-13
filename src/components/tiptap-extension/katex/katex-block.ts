@@ -1,6 +1,21 @@
 import { InputRule, mergeAttributes, Node } from "@tiptap/core";
 import type { Node as PMNode } from "@tiptap/pm/model";
 import katex, { type KatexOptions } from "katex";
+import type { MathfieldElement } from "mathlive";
+
+let mathliveLoader: Promise<typeof import("mathlive")> | null = null;
+const loadMathlive = () => (mathliveLoader ??= import("mathlive"));
+
+function unwrapDisplaylines(latex: string): string {
+  const match = latex.match(/^\s*\\displaylines\s*\{([\s\S]*)\}\s*$/);
+  return match ? match[1].trim() : latex;
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "math-field": MathfieldElement;
+  }
+}
 
 /**
  * Configuration options for the BlockMath extension.
@@ -298,23 +313,19 @@ export const BlockMath = Node.create<BlockMathOptions>({
     return ({ node, getPos, editor }) => {
       let currentNode = node;
       let isEditing = false;
+      const cleanupFns: Array<() => void> = [];
 
       const wrapper = document.createElement("div");
       const renderEl = document.createElement("div");
-      const editorEl = document.createElement("textarea");
+      let editorEl: MathfieldElement | null = null;
 
       wrapper.className = "tiptap-mathematics-render block-math";
       wrapper.dataset.type = "block-math";
       wrapper.contentEditable = "false";
 
       renderEl.className = "block-math-render";
-      editorEl.className = "block-math-editor";
 
-      editorEl.spellcheck = false;
-      editorEl.autocomplete = "off";
-      editorEl.style.display = "none";
-
-      wrapper.append(renderEl, editorEl);
+      wrapper.append(renderEl);
 
       function renderMath() {
         try {
@@ -329,30 +340,79 @@ export const BlockMath = Node.create<BlockMathOptions>({
         }
       }
 
-      function enterEditMode() {
+      async function ensureEditor() {
+        if (editorEl) return editorEl;
+        await loadMathlive();
+        const el = document.createElement("math-field") as MathfieldElement;
+        el.className = "block-math-editor";
+        el.style.display = "none";
+
+        el.addEventListener(
+          "keydown",
+          (e) => {
+            if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+              e.preventDefault();
+              e.stopPropagation();
+              exitEditMode(true);
+            }
+            if (e.key === "Escape") {
+              e.preventDefault();
+              e.stopPropagation();
+              exitEditMode(false);
+            }
+          },
+          true
+        );
+
+        const onDocPointerDown = (e: PointerEvent) => {
+          if (!isEditing) return;
+          const target = e.target as globalThis.Node | null;
+          if (!target) return;
+          if (wrapper.contains(target)) return;
+          if (
+            target instanceof Element &&
+            target.closest('[class*="ML__"], math-field')
+          ) {
+            return;
+          }
+          exitEditMode(true);
+        };
+        document.addEventListener("pointerdown", onDocPointerDown, true);
+        cleanupFns.push(() =>
+          document.removeEventListener("pointerdown", onDocPointerDown, true)
+        );
+
+        wrapper.append(el);
+        editorEl = el;
+        return el;
+      }
+
+      async function enterEditMode() {
         if (!editor.isEditable || isEditing) return;
 
         isEditing = true;
-        editorEl.value = currentNode.attrs.latex;
-        editorEl.rows = Math.max(4, currentNode.attrs.latex.split("\n").length);
+        const el = await ensureEditor();
+        if (!isEditing) return;
+
+        el.value = currentNode.attrs.latex;
 
         renderEl.style.display = "none";
-        editorEl.style.display = "block";
+        el.style.display = "block";
 
-        editorEl.focus();
-        editorEl.setSelectionRange(0, editorEl.value.length);
+        el.focus();
+        el.executeCommand("selectAll");
       }
 
       function exitEditMode(save: boolean) {
         if (!isEditing) return;
 
         isEditing = false;
-        editorEl.style.display = "none";
+        if (editorEl) editorEl.style.display = "none";
         renderEl.style.display = "block";
 
-        if (!save) return;
+        if (!save || !editorEl) return;
 
-        const latex = editorEl.value.trim();
+        const latex = unwrapDisplaylines(editorEl.getValue("latex").trim());
         const pos = getPos();
 
         if (pos != null && latex !== currentNode.attrs.latex) {
@@ -381,26 +441,11 @@ export const BlockMath = Node.create<BlockMathOptions>({
       const handleDblClick = (e: MouseEvent) => {
         e.preventDefault();
         e.stopPropagation();
-        enterEditMode();
+        void enterEditMode();
       };
 
-      editorEl.addEventListener("click", handleClick);
+      wrapper.addEventListener("click", handleClick);
       wrapper.addEventListener("dblclick", handleDblClick);
-
-      editorEl.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
-          e.preventDefault();
-          exitEditMode(true);
-        }
-
-        if (e.key === "Escape") {
-          e.preventDefault();
-          exitEditMode(false);
-        }
-      });
-
-
-      editorEl.addEventListener("blur", () => exitEditMode(true));
 
       renderMath();
 
@@ -420,7 +465,7 @@ export const BlockMath = Node.create<BlockMathOptions>({
         },
 
         stopEvent(event) {
-          return event.target === editorEl;
+          return !!editorEl && event.target === editorEl;
         },
 
         ignoreMutation() {
@@ -429,6 +474,7 @@ export const BlockMath = Node.create<BlockMathOptions>({
 
         destroy() {
           wrapper.removeEventListener("dblclick", handleDblClick);
+          cleanupFns.forEach((fn) => fn());
         },
       };
     };

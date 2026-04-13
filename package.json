@@ -39,6 +39,7 @@
     "katex": "^0.16.27",
     "lodash-es": "^4.17.22",
     "lodash.throttle": "^4.1.1",
+    "mathlive": "^0.109.1",
     "react-hotkeys-hook": "^5.2.1"
   },
   "peerDependencies": {
