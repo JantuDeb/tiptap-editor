@@ -69,8 +69,6 @@ import { useWindowSize } from "@/hooks/use-window-size";
 import { useCursorVisibility } from "@/hooks/use-cursor-visibility";
 
 // --- Components ---
-import { ThemeToggle } from "@/theme-toggle";
-
 // --- Lib ---
 import { cn, MAX_FILE_SIZE } from "@/lib/tiptap-utils";
 
@@ -113,7 +111,6 @@ const MainToolbarContent = ({
 }) => {
   return (
     <>
-      <Spacer />
 
       <ToolbarGroup>
         <UndoRedoButton action="undo" />
@@ -172,13 +169,6 @@ const MainToolbarContent = ({
         <VideoUploadButton />
       </ToolbarGroup>
 
-      <Spacer />
-
-      {isMobile && <ToolbarSeparator />}
-
-      <ToolbarGroup>
-        <ThemeToggle />
-      </ToolbarGroup>
     </>
   );
 };
