@@ -1,0 +1,6 @@
+import { VariantProps } from 'class-variance-authority';
+import { toggleVariants } from './toggle-variants';
+import * as React from "react";
+import * as TogglePrimitive from "@radix-ui/react-toggle";
+declare function Toggle({ className, variant, size, ...props }: React.ComponentProps<typeof TogglePrimitive.Root> & VariantProps<typeof toggleVariants>): import("react/jsx-runtime").JSX.Element;
+export { Toggle, };
